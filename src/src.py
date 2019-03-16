@@ -1,10 +1,15 @@
 from Declaration import *
-
+from soundHandler import SoundHandler
 
 def game_loop():
-	
-	print(2*const.PI)
-	print(random.randint(0, 100))
+
+	while const.GAME_LOOP:
+		
+		for event in py.event.get():
+			if event.type == py.QUIT:
+				py.quit()
+				quit()
+
 
 if __name__ == "__main__":
 	py.init()
