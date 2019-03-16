@@ -9,6 +9,9 @@ def block(center_x,center_y,size,color):
 def bound():
 	for i in range(0,36):
 		block(boundary_x[i],boundary_y[i],60,cyan_blue)
+	for i in (190,250,310,370,430,490,550,610):
+		for j in (190,250,310,370,430,490,550,610):
+			block(i,j,60,white)
 	# block(400,400,600,cyan_blue)
 	# block(400,400,480,white)
 
