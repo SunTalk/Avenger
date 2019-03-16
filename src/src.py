@@ -6,7 +6,7 @@ test = interface()
 
 def game_loop():
 
-	test.set_start_botton(start_type = const.GAME_PAUSE)
+	test.set_start_botton(start_type = const.MENU)
 	test.loadUI(const.PATH, const.UIFILE, "11.png")
 	while const.GAME_LOOP:
 		
