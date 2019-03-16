@@ -1,40 +1,40 @@
-import pygame as p
+import pygame as py
 import time
 
 class SoundHandler():
 
 	def __init__(self, path, file, name):
-		p.mixer.init()
-		p.time.delay(1000)
-		p.mixer.music.load(path+file+name)
+		py.mixer.init()
+		py.time.delay(1000)
+		py.mixer.music.load(path+file+name)
 
 
 	def play(self):
 		print('play')
-		p.mixer.music.play()
+		py.mixer.music.play()
 
 	def stop(self):
-		p.mixer.music.stop()
+		py.mixer.music.stop()
 
 	def rewind(self):
-		p.mixer.music.rewind()
+		py.mixer.music.rewind()
 
 	def pause(self):
-		p.mixer.music.pause()
+		py.mixer.music.pause()
 
 	def unpause(self):
-		p.mixer.music.unpause()
+		py.mixer.music.unpause()
 
 	def set_volume(self):
-		p.mixer.music.set_volume()
+		py.mixer.music.set_volume()
 
 	def set_pos(self):
-		p.mixer.music.set_pos()
+		py.mixer.music.set_pos()
 
 	def get_volume(self):
-		return p.mixer.music.get_volume()
+		return py.mixer.music.get_volume()
 
 	def isPlaying(self):
-		return p.mixer.music.get_busy()
+		return py.mixer.music.get_busy()
 	def get_volume():
-		return p.mixer.music.get_volume()
+		return py.mixer.music.get_volume()
