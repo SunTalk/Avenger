@@ -1,152 +1,164 @@
 ## block center
-	# A1_x = 190 ,A2_x = 250 ,A3_x = 310 ,A4_x = 370 ,A5_x = 430 ,A6_x = 490 ,A7_x = 550 ,A8_x = 610
-	# B1_x = 190 ,B2_x = 250 ,B3_x = 310 ,B4_x = 370 ,B5_x = 430 ,B6_x = 490 ,B7_x = 550 ,B8_x = 610
-	# C1_x = 190 ,C2_x = 250 ,C3_x = 310 ,C4_x = 370 ,C5_x = 430 ,C6_x = 490 ,C7_x = 550 ,C8_x = 610
-	# D1_x = 190 ,D2_x = 250 ,D3_x = 310 ,D4_x = 370 ,D5_x = 430 ,D6_x = 490 ,D7_x = 550 ,D8_x = 610
-	# E1_x = 190 ,E2_x = 250 ,E3_x = 310 ,E4_x = 370 ,E5_x = 430 ,E6_x = 490 ,E7_x = 550 ,E8_x = 610
-	# F1_x = 190 ,F2_x = 250 ,F3_x = 310 ,F4_x = 370 ,F5_x = 430 ,F6_x = 490 ,F7_x = 550 ,F8_x = 610
-	# G1_x = 190 ,G2_x = 250 ,G3_x = 310 ,G4_x = 370 ,G5_x = 430 ,G6_x = 490 ,G7_x = 550 ,G8_x = 610
-	# H1_x = 190 ,H2_x = 250 ,H3_x = 310 ,H4_x = 370 ,H5_x = 430 ,H6_x = 490 ,H7_x = 550 ,H8_x = 610
+	# A1_x = one    ,A2_x = two    ,A3_x = three  ,A4_x = four   ,A5_x = five   ,A6_x = six    ,A7_x = seven  ,A8_x = eight 
+	# B1_x = one    ,B2_x = two    ,B3_x = three  ,B4_x = four   ,B5_x = five   ,B6_x = six    ,B7_x = seven  ,B8_x = eight 
+	# C1_x = one    ,C2_x = two    ,C3_x = three  ,C4_x = four   ,C5_x = five   ,C6_x = six    ,C7_x = seven  ,C8_x = eight 
+	# D1_x = one    ,D2_x = two    ,D3_x = three  ,D4_x = four   ,D5_x = five   ,D6_x = six    ,D7_x = seven  ,D8_x = eight 
+	# E1_x = one    ,E2_x = two    ,E3_x = three  ,E4_x = four   ,E5_x = five   ,E6_x = six    ,E7_x = seven  ,E8_x = eight 
+	# F1_x = one    ,F2_x = two    ,F3_x = three  ,F4_x = four   ,F5_x = five   ,F6_x = six    ,F7_x = seven  ,F8_x = eight 
+	# G1_x = one    ,G2_x = two    ,G3_x = three  ,G4_x = four   ,G5_x = five   ,G6_x = six    ,G7_x = seven  ,G8_x = eight 
+	# H1_x = one    ,H2_x = two    ,H3_x = three  ,H4_x = four   ,H5_x = five   ,H6_x = six    ,H7_x = seven  ,H8_x = eight 
 
-	# A1_y = 190 ,A2_y = 190 ,A3_y = 190 ,A4_y = 190 ,A5_y = 190 ,A6_y = 190 ,A7_y = 190 ,A8_y = 190
-	# B1_y = 250 ,B2_y = 250 ,B3_y = 250 ,B4_y = 250 ,B5_y = 250 ,B6_y = 250 ,B7_y = 250 ,B8_y = 250 
-	# C1_y = 310 ,C2_y = 310 ,C3_y = 310 ,C4_y = 310 ,C5_y = 310 ,C6_y = 310 ,C7_y = 310 ,C8_y = 310
-	# D1_y = 370 ,D2_y = 370 ,D3_y = 370 ,D4_y = 370 ,D5_y = 370 ,D6_y = 370 ,D7_y = 370 ,D8_y = 370
-	# E1_y = 430 ,E2_y = 430 ,E3_y = 430 ,E4_y = 430 ,E5_y = 430 ,E6_y = 430 ,E7_y = 430 ,E8_y = 430
-	# F1_y = 490 ,F2_y = 490 ,F3_y = 490 ,F4_y = 490 ,F5_y = 490 ,F6_y = 490 ,F7_y = 490 ,F8_y = 490
-	# G1_y = 550 ,G2_y = 550 ,G3_y = 550 ,G4_y = 550 ,G5_y = 550 ,G6_y = 550 ,G7_y = 550 ,G8_y = 550
-	# H1_y = 610 ,H2_y = 610 ,H3_y = 610 ,H4_y = 610 ,H5_y = 610 ,H6_y = 610 ,H7_y = 610 ,H8_y = 610
+	# A1_y = one    ,A2_y = one    ,A3_y = one    ,A4_y = one    ,A5_y = one    ,A6_y = one    ,A7_y = one    ,A8_y = one   
+	# B1_y = two    ,B2_y = two    ,B3_y = two    ,B4_y = two    ,B5_y = two    ,B6_y = two    ,B7_y = two    ,B8_y = two    
+	# C1_y = three  ,C2_y = three  ,C3_y = three  ,C4_y = three  ,C5_y = three  ,C6_y = three  ,C7_y = three  ,C8_y = three 
+	# D1_y = four   ,D2_y = four   ,D3_y = four   ,D4_y = four   ,D5_y = four   ,D6_y = four   ,D7_y = four   ,D8_y = four  
+	# E1_y = five   ,E2_y = five   ,E3_y = five   ,E4_y = five   ,E5_y = five   ,E6_y = five   ,E7_y = five   ,E8_y = five  
+	# F1_y = six    ,F2_y = six    ,F3_y = six    ,F4_y = six    ,F5_y = six    ,F6_y = six    ,F7_y = six    ,F8_y = six   
+	# G1_y = seven  ,G2_y = seven  ,G3_y = seven  ,G4_y = seven  ,G5_y = seven  ,G6_y = seven  ,G7_y = seven  ,G8_y = seven 
+	# H1_y = eight  ,H2_y = eight  ,H3_y = eight  ,H4_y = eight  ,H5_y = eight  ,H6_y = eight  ,H7_y = eight  ,H8_y = eight 
 ##
+zero  = 130
 
-boundary_x = [130,190,250,310,370,430,490,550,610,670,670,670,670,670,670,670,670,670,670,610,550,490,430,370,310,250,190,130,130,130,130,130,130,130,130,130]
-boundary_y = [130,130,130,130,130,130,130,130,130,130,190,250,310,370,430,490,550,610,670,670,670,670,670,670,670,670,670,670,610,550,490,430,370,310,250,190]
+one   = 190
+two   = 250
+three = 310
+four  = 370
+five  = 430
+six   = 490
+seven = 550
+eight = 610
 
-A1_x = 190 
-A2_x = 250 
-A3_x = 310 
-A4_x = 370 
-A5_x = 430 
-A6_x = 490 
-A7_x = 550 
-A8_x = 610
-B1_x = 190 
-B2_x = 250 
-B3_x = 310 
-B4_x = 370 
-B5_x = 430 
-B6_x = 490 
-B7_x = 550 
-B8_x = 610
-C1_x = 190 
-C2_x = 250 
-C3_x = 310 
-C4_x = 370 
-C5_x = 430 
-C6_x = 490 
-C7_x = 550 
-C8_x = 610
-D1_x = 190 
-D2_x = 250 
-D3_x = 310 
-D4_x = 370 
-D5_x = 430 
-D6_x = 490 
-D7_x = 550 
-D8_x = 610
-E1_x = 190 
-E2_x = 250 
-E3_x = 310 
-E4_x = 370 
-E5_x = 430 
-E6_x = 490 
-E7_x = 550 
-E8_x = 610
-F1_x = 190 
-F2_x = 250 
-F3_x = 310 
-F4_x = 370 
-F5_x = 430 
-F6_x = 490 
-F7_x = 550 
-F8_x = 610
-G1_x = 190 
-G2_x = 250 
-G3_x = 310 
-G4_x = 370 
-G5_x = 430 
-G6_x = 490 
-G7_x = 550 
-G8_x = 610
-H1_x = 190 
-H2_x = 250 
-H3_x = 310 
-H4_x = 370 
-H5_x = 430 
-H6_x = 490 
-H7_x = 550 
-H8_x = 610
+nine  = 670
 
-A1_y = 190 
-A2_y = 190 
-A3_y = 190 
-A4_y = 190 
-A5_y = 190 
-A6_y = 190 
-A7_y = 190 
-A8_y = 190
-B1_y = 250 
-B2_y = 250 
-B3_y = 250 
-B4_y = 250 
-B5_y = 250 
-B6_y = 250 
-B7_y = 250 
-B8_y = 250 
-C1_y = 310 
-C2_y = 310 
-C3_y = 310 
-C4_y = 310 
-C5_y = 310 
-C6_y = 310 
-C7_y = 310 
-C8_y = 310
-D1_y = 370 
-D2_y = 370 
-D3_y = 370 
-D4_y = 370 
-D5_y = 370 
-D6_y = 370 
-D7_y = 370 
-D8_y = 370
-E1_y = 430 
-E2_y = 430 
-E3_y = 430 
-E4_y = 430 
-E5_y = 430 
-E6_y = 430 
-E7_y = 430 
-E8_y = 430
-F1_y = 490 
-F2_y = 490 
-F3_y = 490 
-F4_y = 490 
-F5_y = 490 
-F6_y = 490 
-F7_y = 490 
-F8_y = 490
-G1_y = 550 
-G2_y = 550 
-G3_y = 550 
-G4_y = 550 
-G5_y = 550 
-G6_y = 550 
-G7_y = 550 
-G8_y = 550
-H1_y = 610 
-H2_y = 610 
-H3_y = 610 
-H4_y = 610 
-H5_y = 610 
-H6_y = 610 
-H7_y = 610 
-H8_y = 610
+boundary_x = [zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ]
+boundary_y = [zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ]
+
+A1_x = one    
+A2_x = two    
+A3_x = three  
+A4_x = four   
+A5_x = five   
+A6_x = six    
+A7_x = seven  
+A8_x = eight 
+B1_x = one    
+B2_x = two    
+B3_x = three  
+B4_x = four   
+B5_x = five   
+B6_x = six    
+B7_x = seven  
+B8_x = eight 
+C1_x = one    
+C2_x = two    
+C3_x = three  
+C4_x = four   
+C5_x = five   
+C6_x = six    
+C7_x = seven  
+C8_x = eight 
+D1_x = one    
+D2_x = two    
+D3_x = three  
+D4_x = four   
+D5_x = five   
+D6_x = six    
+D7_x = seven  
+D8_x = eight 
+E1_x = one    
+E2_x = two    
+E3_x = three  
+E4_x = four   
+E5_x = five   
+E6_x = six    
+E7_x = seven  
+E8_x = eight 
+F1_x = one    
+F2_x = two    
+F3_x = three  
+F4_x = four   
+F5_x = five   
+F6_x = six    
+F7_x = seven  
+F8_x = eight 
+G1_x = one    
+G2_x = two    
+G3_x = three  
+G4_x = four   
+G5_x = five   
+G6_x = six    
+G7_x = seven  
+G8_x = eight 
+H1_x = one    
+H2_x = two    
+H3_x = three  
+H4_x = four   
+H5_x = five   
+H6_x = six    
+H7_x = seven  
+H8_x = eight 
+
+A1_y = one    
+A2_y = one    
+A3_y = one    
+A4_y = one    
+A5_y = one    
+A6_y = one    
+A7_y = one    
+A8_y = one   
+B1_y = two    
+B2_y = two    
+B3_y = two    
+B4_y = two    
+B5_y = two    
+B6_y = two    
+B7_y = two    
+B8_y = two    
+C1_y = three  
+C2_y = three  
+C3_y = three  
+C4_y = three  
+C5_y = three  
+C6_y = three  
+C7_y = three  
+C8_y = three 
+D1_y = four   
+D2_y = four   
+D3_y = four   
+D4_y = four   
+D5_y = four   
+D6_y = four   
+D7_y = four   
+D8_y = four  
+E1_y = five   
+E2_y = five   
+E3_y = five   
+E4_y = five   
+E5_y = five   
+E6_y = five   
+E7_y = five   
+E8_y = five  
+F1_y = six    
+F2_y = six    
+F3_y = six    
+F4_y = six    
+F5_y = six    
+F6_y = six    
+F7_y = six    
+F8_y = six   
+G1_y = seven  
+G2_y = seven  
+G3_y = seven  
+G4_y = seven  
+G5_y = seven  
+G6_y = seven  
+G7_y = seven  
+G8_y = seven 
+H1_y = eight  
+H2_y = eight  
+H3_y = eight  
+H4_y = eight  
+H5_y = eight  
+H6_y = eight  
+H7_y = eight  
+H8_y = eight 
