@@ -16,7 +16,7 @@ class interface():
 		self.draw()
 
 		if drawBotton:
-			self.draw_start_botton(self.start_botton_x, self.start_botton_y, self.start_botton_width, self.start_botton_height, self.start_botton_color)
+			self.draw_start_botton()
 			self.write()
 
 		## better write in game loop
@@ -26,8 +26,8 @@ class interface():
 	def draw(self):
 		display.blit(self.backgroundImg, (0, 0))
 
-	def draw_start_botton(self, x, y, width, height, color):
-		py.draw.rect(display, color, [x, y, width, height])
+	def draw_start_botton(self):
+		py.draw.rect(display, self.start_botton_color, [self.start_botton_x, self.start_botton_y, self.start_botton_width, self.start_botton_height])
 
 	def write(self):
 		self.message(self.start_botton_text)
