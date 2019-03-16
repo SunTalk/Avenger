@@ -8,7 +8,7 @@ import os
 ## const variable
 
 const.WIDTH 	 = 1200
-const.HEIGHT 	 = 600
+const.HEIGHT 	 = 800
 
 const.PATH       = os.getcwd()
 const.MUSICFILE  = '\\data\\music\\'
