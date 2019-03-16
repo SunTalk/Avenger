@@ -4,6 +4,7 @@ import random
 import const
 import numpy as np
 import os
+from block_center import *
 
 ## const variable
 
@@ -21,10 +22,16 @@ const.GAME_LOOP  = True
 black = (0, 0, 0)
 white = (255, 255, 255)
 red   = (255, 0, 0)
+cyan_blue = (0, 255, 255)
 ##
 
 ## display
 
 display = py.display.set_mode((const.WIDTH, const.HEIGHT))
+py.display.set_caption('Avenger')
 
+##
+
+## clock
+clock = py.time.Clock()
 ##
