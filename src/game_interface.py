@@ -2,19 +2,25 @@ from Declaration import *
 
 py.init()
 
-def block(center_x,center_y,size,color):
-	py.draw.rect(display,color,[center_x-size/2,center_y-size/2,size,size])
-	py.draw.rect(display,black,[center_x-size/2,center_y-size/2,size,size],3)
+def block(where,center_x,center_y,size,color):
+	py.draw.rect(where,color,[center_x-size/2,center_y-size/2,size,size])
+	py.draw.rect(where,black,[center_x-size/2,center_y-size/2,size,size],3)
 
-def bound():
+def bound(where):
 	for i in range(0,36):
-		block(boundary_x[i],boundary_y[i],60,cyan_blue)
-	for i in (190,250,310,370,430,490,550,610):
-		for j in (190,250,310,370,430,490,550,610):
-			block(i,j,60,white)
+		block(where,boundary_x[i],boundary_y[i],60,cyan_blue)
+	for i in (90,150,210,270,330,390,450,510):
+		for j in (90,150,210,270,330,390,450,510):
+			block(where,i,j,60,white)
 	# block(400,400,600,cyan_blue)
 	# block(400,400,480,white)
+seat_x = 2
+seat_y = 5
 
+board = py.Surface((600,600))
+board.fill(white)
+bound(board)
+block(board,board_x[seat_x][seat_y],board_y[seat_x][seat_y],60,red)
 
 while const.GAME_LOOP:
 	
@@ -22,10 +28,14 @@ while const.GAME_LOOP:
 		if event.type == py.QUIT:
 			py.quit()
 			quit()
+		if event.type == py.KEYDOWN:
+			if event.key == py.K_RIGHT:
+				board = py.transform.rotate(board,-90)
+			if event.key == py.K_LEFT:
+				board = py.transform.rotate(board,90)
 
 	display.fill(white)
-	bound()
-	block(B5_x,B5_y,60,red)
+	display.blit(board,(100,100))
 
 	py.display.update()
 	clock.tick(60)

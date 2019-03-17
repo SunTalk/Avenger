@@ -1,164 +1,168 @@
+import const
 ## block center
-	# A1_x = one    ,A2_x = two    ,A3_x = three  ,A4_x = four   ,A5_x = five   ,A6_x = six    ,A7_x = seven  ,A8_x = eight 
-	# B1_x = one    ,B2_x = two    ,B3_x = three  ,B4_x = four   ,B5_x = five   ,B6_x = six    ,B7_x = seven  ,B8_x = eight 
-	# C1_x = one    ,C2_x = two    ,C3_x = three  ,C4_x = four   ,C5_x = five   ,C6_x = six    ,C7_x = seven  ,C8_x = eight 
-	# D1_x = one    ,D2_x = two    ,D3_x = three  ,D4_x = four   ,D5_x = five   ,D6_x = six    ,D7_x = seven  ,D8_x = eight 
-	# E1_x = one    ,E2_x = two    ,E3_x = three  ,E4_x = four   ,E5_x = five   ,E6_x = six    ,E7_x = seven  ,E8_x = eight 
-	# F1_x = one    ,F2_x = two    ,F3_x = three  ,F4_x = four   ,F5_x = five   ,F6_x = six    ,F7_x = seven  ,F8_x = eight 
-	# G1_x = one    ,G2_x = two    ,G3_x = three  ,G4_x = four   ,G5_x = five   ,G6_x = six    ,G7_x = seven  ,G8_x = eight 
-	# H1_x = one    ,H2_x = two    ,H3_x = three  ,H4_x = four   ,H5_x = five   ,H6_x = six    ,H7_x = seven  ,H8_x = eight 
+	# A1_x = const.ONE    ,A2_x = const.TWO    ,A3_x = const.THREE  ,A4_x = const.FOUR   ,A5_x = const.FIVE   ,A6_x = const.SIX    ,A7_x = const.SEVEN  ,A8_x = const.EIGHT 
+	# B1_x = const.ONE    ,B2_x = const.TWO    ,B3_x = const.THREE  ,B4_x = const.FOUR   ,B5_x = const.FIVE   ,B6_x = const.SIX    ,B7_x = const.SEVEN  ,B8_x = const.EIGHT 
+	# C1_x = const.ONE    ,C2_x = const.TWO    ,C3_x = const.THREE  ,C4_x = const.FOUR   ,C5_x = const.FIVE   ,C6_x = const.SIX    ,C7_x = const.SEVEN  ,C8_x = const.EIGHT 
+	# D1_x = const.ONE    ,D2_x = const.TWO    ,D3_x = const.THREE  ,D4_x = const.FOUR   ,D5_x = const.FIVE   ,D6_x = const.SIX    ,D7_x = const.SEVEN  ,D8_x = const.EIGHT 
+	# E1_x = const.ONE    ,E2_x = const.TWO    ,E3_x = const.THREE  ,E4_x = const.FOUR   ,E5_x = const.FIVE   ,E6_x = const.SIX    ,E7_x = const.SEVEN  ,E8_x = const.EIGHT 
+	# F1_x = const.ONE    ,F2_x = const.TWO    ,F3_x = const.THREE  ,F4_x = const.FOUR   ,F5_x = const.FIVE   ,F6_x = const.SIX    ,F7_x = const.SEVEN  ,F8_x = const.EIGHT 
+	# G1_x = const.ONE    ,G2_x = const.TWO    ,G3_x = const.THREE  ,G4_x = const.FOUR   ,G5_x = const.FIVE   ,G6_x = const.SIX    ,G7_x = const.SEVEN  ,G8_x = const.EIGHT 
+	# H1_x = const.ONE    ,H2_x = const.TWO    ,H3_x = const.THREE  ,H4_x = const.FOUR   ,H5_x = const.FIVE   ,H6_x = const.SIX    ,H7_x = const.SEVEN  ,H8_x = const.EIGHT 
 
-	# A1_y = one    ,A2_y = one    ,A3_y = one    ,A4_y = one    ,A5_y = one    ,A6_y = one    ,A7_y = one    ,A8_y = one   
-	# B1_y = two    ,B2_y = two    ,B3_y = two    ,B4_y = two    ,B5_y = two    ,B6_y = two    ,B7_y = two    ,B8_y = two    
-	# C1_y = three  ,C2_y = three  ,C3_y = three  ,C4_y = three  ,C5_y = three  ,C6_y = three  ,C7_y = three  ,C8_y = three 
-	# D1_y = four   ,D2_y = four   ,D3_y = four   ,D4_y = four   ,D5_y = four   ,D6_y = four   ,D7_y = four   ,D8_y = four  
-	# E1_y = five   ,E2_y = five   ,E3_y = five   ,E4_y = five   ,E5_y = five   ,E6_y = five   ,E7_y = five   ,E8_y = five  
-	# F1_y = six    ,F2_y = six    ,F3_y = six    ,F4_y = six    ,F5_y = six    ,F6_y = six    ,F7_y = six    ,F8_y = six   
-	# G1_y = seven  ,G2_y = seven  ,G3_y = seven  ,G4_y = seven  ,G5_y = seven  ,G6_y = seven  ,G7_y = seven  ,G8_y = seven 
-	# H1_y = eight  ,H2_y = eight  ,H3_y = eight  ,H4_y = eight  ,H5_y = eight  ,H6_y = eight  ,H7_y = eight  ,H8_y = eight 
+	# A1_y = const.ONE    ,A2_y = const.ONE    ,A3_y = const.ONE    ,A4_y = const.ONE    ,A5_y = const.ONE    ,A6_y = const.ONE    ,A7_y = const.ONE    ,A8_y = const.ONE   
+	# B1_y = const.TWO    ,B2_y = const.TWO    ,B3_y = const.TWO    ,B4_y = const.TWO    ,B5_y = const.TWO    ,B6_y = const.TWO    ,B7_y = const.TWO    ,B8_y = const.TWO    
+	# C1_y = const.THREE  ,C2_y = const.THREE  ,C3_y = const.THREE  ,C4_y = const.THREE  ,C5_y = const.THREE  ,C6_y = const.THREE  ,C7_y = const.THREE  ,C8_y = const.THREE 
+	# D1_y = const.FOUR   ,D2_y = const.FOUR   ,D3_y = const.FOUR   ,D4_y = const.FOUR   ,D5_y = const.FOUR   ,D6_y = const.FOUR   ,D7_y = const.FOUR   ,D8_y = const.FOUR  
+	# E1_y = const.FIVE   ,E2_y = const.FIVE   ,E3_y = const.FIVE   ,E4_y = const.FIVE   ,E5_y = const.FIVE   ,E6_y = const.FIVE   ,E7_y = const.FIVE   ,E8_y = const.FIVE  
+	# F1_y = const.SIX    ,F2_y = const.SIX    ,F3_y = const.SIX    ,F4_y = const.SIX    ,F5_y = const.SIX    ,F6_y = const.SIX    ,F7_y = const.SIX    ,F8_y = const.SIX   
+	# G1_y = const.SEVEN  ,G2_y = const.SEVEN  ,G3_y = const.SEVEN  ,G4_y = const.SEVEN  ,G5_y = const.SEVEN  ,G6_y = const.SEVEN  ,G7_y = const.SEVEN  ,G8_y = const.SEVEN 
+	# H1_y = const.EIGHT  ,H2_y = const.EIGHT  ,H3_y = const.EIGHT  ,H4_y = const.EIGHT  ,H5_y = const.EIGHT  ,H6_y = const.EIGHT  ,H7_y = const.EIGHT  ,H8_y = const.EIGHT 
 ##
-zero  = 130
+const.ZERO  = 30
 
-one   = 190
-two   = 250
-three = 310
-four  = 370
-five  = 430
-six   = 490
-seven = 550
-eight = 610
+const.ONE   = 90
+const.TWO   = 150
+const.THREE = 210
+const.FOUR  = 270
+const.FIVE  = 330
+const.SIX   = 390
+const.SEVEN = 450
+const.EIGHT = 510
 
-nine  = 670
+const.NINE  = 570
 
-boundary_x = [zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ]
-boundary_y = [zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ]
+boundary_x = [const.ZERO  ,const.ONE   ,const.TWO   ,const.THREE ,const.FOUR  ,const.FIVE  ,const.SIX   ,const.SEVEN ,const.EIGHT ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.EIGHT ,const.SEVEN ,const.SIX   ,const.FIVE  ,const.FOUR  ,const.THREE ,const.TWO   ,const.ONE   ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ]
+boundary_y = [const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ONE   ,const.TWO   ,const.THREE ,const.FOUR  ,const.FIVE  ,const.SIX   ,const.SEVEN ,const.EIGHT ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.NINE  ,const.EIGHT ,const.SEVEN ,const.SIX   ,const.FIVE  ,const.FOUR  ,const.THREE ,const.TWO   ,const.ONE   ]
 
-A1_x = one    
-A2_x = two    
-A3_x = three  
-A4_x = four   
-A5_x = five   
-A6_x = six    
-A7_x = seven  
-A8_x = eight 
-B1_x = one    
-B2_x = two    
-B3_x = three  
-B4_x = four   
-B5_x = five   
-B6_x = six    
-B7_x = seven  
-B8_x = eight 
-C1_x = one    
-C2_x = two    
-C3_x = three  
-C4_x = four   
-C5_x = five   
-C6_x = six    
-C7_x = seven  
-C8_x = eight 
-D1_x = one    
-D2_x = two    
-D3_x = three  
-D4_x = four   
-D5_x = five   
-D6_x = six    
-D7_x = seven  
-D8_x = eight 
-E1_x = one    
-E2_x = two    
-E3_x = three  
-E4_x = four   
-E5_x = five   
-E6_x = six    
-E7_x = seven  
-E8_x = eight 
-F1_x = one    
-F2_x = two    
-F3_x = three  
-F4_x = four   
-F5_x = five   
-F6_x = six    
-F7_x = seven  
-F8_x = eight 
-G1_x = one    
-G2_x = two    
-G3_x = three  
-G4_x = four   
-G5_x = five   
-G6_x = six    
-G7_x = seven  
-G8_x = eight 
-H1_x = one    
-H2_x = two    
-H3_x = three  
-H4_x = four   
-H5_x = five   
-H6_x = six    
-H7_x = seven  
-H8_x = eight 
+A1_x = const.ONE    
+A2_x = const.TWO    
+A3_x = const.THREE  
+A4_x = const.FOUR   
+A5_x = const.FIVE   
+A6_x = const.SIX    
+A7_x = const.SEVEN  
+A8_x = const.EIGHT 
+B1_x = const.ONE    
+B2_x = const.TWO    
+B3_x = const.THREE  
+B4_x = const.FOUR   
+B5_x = const.FIVE   
+B6_x = const.SIX    
+B7_x = const.SEVEN  
+B8_x = const.EIGHT 
+C1_x = const.ONE    
+C2_x = const.TWO    
+C3_x = const.THREE  
+C4_x = const.FOUR   
+C5_x = const.FIVE   
+C6_x = const.SIX    
+C7_x = const.SEVEN  
+C8_x = const.EIGHT 
+D1_x = const.ONE    
+D2_x = const.TWO    
+D3_x = const.THREE  
+D4_x = const.FOUR   
+D5_x = const.FIVE   
+D6_x = const.SIX    
+D7_x = const.SEVEN  
+D8_x = const.EIGHT 
+E1_x = const.ONE    
+E2_x = const.TWO    
+E3_x = const.THREE  
+E4_x = const.FOUR   
+E5_x = const.FIVE   
+E6_x = const.SIX    
+E7_x = const.SEVEN  
+E8_x = const.EIGHT 
+F1_x = const.ONE    
+F2_x = const.TWO    
+F3_x = const.THREE  
+F4_x = const.FOUR   
+F5_x = const.FIVE   
+F6_x = const.SIX    
+F7_x = const.SEVEN  
+F8_x = const.EIGHT 
+G1_x = const.ONE    
+G2_x = const.TWO    
+G3_x = const.THREE  
+G4_x = const.FOUR   
+G5_x = const.FIVE   
+G6_x = const.SIX    
+G7_x = const.SEVEN  
+G8_x = const.EIGHT 
+H1_x = const.ONE    
+H2_x = const.TWO    
+H3_x = const.THREE  
+H4_x = const.FOUR   
+H5_x = const.FIVE   
+H6_x = const.SIX    
+H7_x = const.SEVEN  
+H8_x = const.EIGHT 
 
-A1_y = one    
-A2_y = one    
-A3_y = one    
-A4_y = one    
-A5_y = one    
-A6_y = one    
-A7_y = one    
-A8_y = one   
-B1_y = two    
-B2_y = two    
-B3_y = two    
-B4_y = two    
-B5_y = two    
-B6_y = two    
-B7_y = two    
-B8_y = two    
-C1_y = three  
-C2_y = three  
-C3_y = three  
-C4_y = three  
-C5_y = three  
-C6_y = three  
-C7_y = three  
-C8_y = three 
-D1_y = four   
-D2_y = four   
-D3_y = four   
-D4_y = four   
-D5_y = four   
-D6_y = four   
-D7_y = four   
-D8_y = four  
-E1_y = five   
-E2_y = five   
-E3_y = five   
-E4_y = five   
-E5_y = five   
-E6_y = five   
-E7_y = five   
-E8_y = five  
-F1_y = six    
-F2_y = six    
-F3_y = six    
-F4_y = six    
-F5_y = six    
-F6_y = six    
-F7_y = six    
-F8_y = six   
-G1_y = seven  
-G2_y = seven  
-G3_y = seven  
-G4_y = seven  
-G5_y = seven  
-G6_y = seven  
-G7_y = seven  
-G8_y = seven 
-H1_y = eight  
-H2_y = eight  
-H3_y = eight  
-H4_y = eight  
-H5_y = eight  
-H6_y = eight  
-H7_y = eight  
-H8_y = eight 
+A1_y = const.ONE    
+A2_y = const.ONE    
+A3_y = const.ONE    
+A4_y = const.ONE    
+A5_y = const.ONE    
+A6_y = const.ONE    
+A7_y = const.ONE    
+A8_y = const.ONE   
+B1_y = const.TWO    
+B2_y = const.TWO    
+B3_y = const.TWO    
+B4_y = const.TWO    
+B5_y = const.TWO    
+B6_y = const.TWO    
+B7_y = const.TWO    
+B8_y = const.TWO    
+C1_y = const.THREE  
+C2_y = const.THREE  
+C3_y = const.THREE  
+C4_y = const.THREE  
+C5_y = const.THREE  
+C6_y = const.THREE  
+C7_y = const.THREE  
+C8_y = const.THREE 
+D1_y = const.FOUR   
+D2_y = const.FOUR   
+D3_y = const.FOUR   
+D4_y = const.FOUR   
+D5_y = const.FOUR   
+D6_y = const.FOUR   
+D7_y = const.FOUR   
+D8_y = const.FOUR  
+E1_y = const.FIVE   
+E2_y = const.FIVE   
+E3_y = const.FIVE   
+E4_y = const.FIVE   
+E5_y = const.FIVE   
+E6_y = const.FIVE   
+E7_y = const.FIVE   
+E8_y = const.FIVE  
+F1_y = const.SIX    
+F2_y = const.SIX    
+F3_y = const.SIX    
+F4_y = const.SIX    
+F5_y = const.SIX    
+F6_y = const.SIX    
+F7_y = const.SIX    
+F8_y = const.SIX   
+G1_y = const.SEVEN  
+G2_y = const.SEVEN  
+G3_y = const.SEVEN  
+G4_y = const.SEVEN  
+G5_y = const.SEVEN  
+G6_y = const.SEVEN  
+G7_y = const.SEVEN  
+G8_y = const.SEVEN 
+H1_y = const.EIGHT  
+H2_y = const.EIGHT  
+H3_y = const.EIGHT  
+H4_y = const.EIGHT  
+H5_y = const.EIGHT  
+H6_y = const.EIGHT  
+H7_y = const.EIGHT  
+H8_y = const.EIGHT 
+
+board_x = [[A1_x,A2_x,A3_x,A4_x,A5_x,A6_x,A7_x,A8_x],[B1_x,B2_x,B3_x,B4_x,B5_x,B6_x,B7_x,B8_x],[C1_x,C2_x,C3_x,C4_x,C5_x,C6_x,C7_x,C8_x],[D1_x,D2_x,D3_x,D4_x,D5_x,D6_x,D7_x,D8_x],[E1_x,E2_x,E3_x,E4_x,E5_x,E6_x,E7_x,E8_x],[F1_x,F2_x,F3_x,F4_x,F5_x,F6_x,F7_x,F8_x],[G1_x,G2_x,G3_x,G4_x,G5_x,G6_x,G7_x,G8_x],[H1_x,H2_x,H3_x,H4_x,H5_x,H6_x,H7_x,H8_x]]
+board_y = [[A1_y,A2_y,A3_y,A4_y,A5_y,A6_y,A7_y,A8_y],[B1_y,B2_y,B3_y,B4_y,B5_y,B6_y,B7_y,B8_y],[C1_y,C2_y,C3_y,C4_y,C5_y,C6_y,C7_y,C8_y],[D1_y,D2_y,D3_y,D4_y,D5_y,D6_y,D7_y,D8_y],[E1_y,E2_y,E3_y,E4_y,E5_y,E6_y,E7_y,E8_y],[F1_y,F2_y,F3_y,F4_y,F5_y,F6_y,F7_y,F8_y],[G1_y,G2_y,G3_y,G4_y,G5_y,G6_y,G7_y,G8_y],[H1_y,H2_y,H3_y,H4_y,H5_y,H6_y,H7_y,H8_y]]
