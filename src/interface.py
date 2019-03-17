@@ -73,3 +73,48 @@ class interface():
 			self.start_botton_text   	= text
 			self.start_botton_font   	= font
 			self.start_botton_font_size = size
+	def set_quit_botton(self, x=0, y=0, width=0, height=0, color=0, text=None, font=None, back_type=0):
+		if back_type == const.MENU:
+			print("type = MENU")
+			self.back_botton_x 	 		= const.MENU_QUIT_BUTTON_X
+			self.back_botton_y 	 		= const.MENU_QUIT_BUTTON_Y
+			self.back_botton_width  	= const.MENU_QUIT_BUTTON_WIDTH
+			self.back_botton_height 	= const.MENU_QUIT_BUTTON_HEIGHT
+			self.back_botton_color  	= white
+			self.back_botton_text   	= "Quit"
+			self.back_botton_font   	= const.MENU_QUIT_BUTTON_FONT
+			self.back_botton_font_size  = const.MENU_QUIT_BUTTON_SIZE
+
+		elif back_type == const.INFO:
+			print("type = GAME_PAUSE")
+			self.back_botton_x 	 		= const.INFO_BACK_BUTTON_X
+			self.back_botton_y 	 		= const.INFO_BACK_BUTTON_Y
+			self.back_botton_width  	= const.INFO_BACK_BUTTON_WIDTH
+			self.back_botton_height 	= const.INFO_BACK_BUTTON_HEIGHT
+			self.back_botton_color  	= white
+			self.back_botton_text   	= "MENU"
+			self.back_botton_font   	= const.INFO_BACK_BUTTON_FONT
+			self.back_botton_font_size 	= const.INFO_BACK_BUTTON_SIZE 
+		
+		elif back_type == const.GAME_PAUSE:
+			print("type = GAME_PAUSE")
+			self.back_botton_x 	 		= const.GAME_PAUSE_LEFT_BUTTON_X
+			self.back_botton_y 	 		= const.GAME_PAUSE_LEFT_BUTTON_Y
+			self.back_botton_width  	= const.GAME_PAUSE_LEFT_BUTTON_WIDTH
+			self.back_botton_height 	= const.GAME_PAUSE_LEFT_BUTTON_HEIGHT
+			self.back_botton_color  	= white
+			self.back_botton_text   	= "MENU"
+			self.back_botton_font   	= const.GAME_PAUSE_LEFT_BUTTON_FONT
+			self.back_botton_font_size 	= const.GAME_PAUSE_LEFT_BUTTON_SIZE 
+
+		else:
+			print("type = CUSTOM")
+			self.back_botton_x 	 		= x
+			self.back_botton_y 	 		= y
+			self.back_botton_width  	= width
+			self.back_botton_height 	= height
+			self.back_botton_color  	= color
+			self.back_botton_text   	= text
+			self.back_botton_font   	= font
+			self.back_botton_font_size 	= size
+

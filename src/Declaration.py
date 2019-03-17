@@ -27,12 +27,12 @@ const.FONTFILE   = '\\data\\Font\\'
 
 const.GAME_LOOP  = True
 
-const.MENU_START_BUTTON_X 	   = const.WIDTH/10
-const.MENU_START_BUTTON_Y 	   = const.HEIGHT/10
-const.MENU_START_BUTTON_WIDTH  = const.WIDTH/10
-const.MENU_START_BUTTON_HEIGHT = const.HEIGHT/10
-const.MENU_START_BUTTON_FONT   = 'LucidaBrightDemiBold.ttf'
-const.MENU_START_BUTTON_SIZE   = 50
+const.MENU_START_BUTTON_X 	   			= const.WIDTH/10
+const.MENU_START_BUTTON_Y 	   			= const.HEIGHT/10
+const.MENU_START_BUTTON_WIDTH  			= const.WIDTH/10
+const.MENU_START_BUTTON_HEIGHT 			= const.HEIGHT/10
+const.MENU_START_BUTTON_FONT   			= 'LucidaBrightDemiBold.ttf'
+const.MENU_START_BUTTON_SIZE   			= 50
 const.GAME_PAUSE_CONTINUE_BUTTON_X		= const.WIDTH*0.4
 const.GAME_PAUSE_CONTINUE_BUTTON_Y		= const.HEIGHT*0.25
 const.GAME_PAUSE_CONTINUE_BUTTON_WIDTH	= const.WIDTH/5
