@@ -17,18 +17,18 @@
 	# G1_y = seven  ,G2_y = seven  ,G3_y = seven  ,G4_y = seven  ,G5_y = seven  ,G6_y = seven  ,G7_y = seven  ,G8_y = seven 
 	# H1_y = eight  ,H2_y = eight  ,H3_y = eight  ,H4_y = eight  ,H5_y = eight  ,H6_y = eight  ,H7_y = eight  ,H8_y = eight 
 ##
-zero  = 130
+zero  = 30
 
-one   = 190
-two   = 250
-three = 310
-four  = 370
-five  = 430
-six   = 490
-seven = 550
-eight = 610
+one   = 90
+two   = 150
+three = 210
+four  = 270
+five  = 330
+six   = 390
+seven = 450
+eight = 510
 
-nine  = 670
+nine  = 570
 
 boundary_x = [zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ]
 boundary_y = [zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,zero  ,one   ,two   ,three ,four  ,five  ,six   ,seven ,eight ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,nine  ,eight ,seven ,six   ,five  ,four  ,three ,two   ,one   ]
