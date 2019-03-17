@@ -14,11 +14,13 @@ def bound(where):
 			block(where,i,j,60,white)
 	# block(400,400,600,cyan_blue)
 	# block(400,400,480,white)
+seat_x = 2
+seat_y = 5
 
 board = py.Surface((600,600))
 board.fill(white)
 bound(board)
-box = block(board,B5_x,B5_y,60,red)
+block(board,board_x[seat_x][seat_y],board_y[seat_x][seat_y],60,red)
 
 while const.GAME_LOOP:
 	
@@ -28,9 +30,9 @@ while const.GAME_LOOP:
 			quit()
 		if event.type == py.KEYDOWN:
 			if event.key == py.K_RIGHT:
-				board = py.transform.rotate(board,90)
-			if event.key == py.K_LEFT:
 				board = py.transform.rotate(board,-90)
+			if event.key == py.K_LEFT:
+				board = py.transform.rotate(board,90)
 
 	display.fill(white)
 	display.blit(board,(100,100))
