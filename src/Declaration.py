@@ -19,6 +19,7 @@ const.STORY       = 4
 const.GAME_PLAY   = 5
 const.GAME_PAUSE  = 6
 const.GAME_FINISH = 7
+const.OTHER       = 8
 
 const.PATH       = os.getcwd()
 const.MUSICFILE  = '\\data\\music\\'
@@ -27,18 +28,44 @@ const.FONTFILE   = '\\data\\Font\\'
 
 const.GAME_LOOP  = True
 
-const.MENU_START_BUTTON_X 	   			= const.WIDTH/10
-const.MENU_START_BUTTON_Y 	   			= const.HEIGHT/10
-const.MENU_START_BUTTON_WIDTH  			= const.WIDTH/10
-const.MENU_START_BUTTON_HEIGHT 			= const.HEIGHT/10
-const.MENU_START_BUTTON_FONT   			= 'LucidaBrightDemiBold.ttf'
-const.MENU_START_BUTTON_SIZE   			= 50
-const.GAME_PAUSE_CONTINUE_BUTTON_X		= const.WIDTH*0.4
-const.GAME_PAUSE_CONTINUE_BUTTON_Y		= const.HEIGHT*0.25
-const.GAME_PAUSE_CONTINUE_BUTTON_WIDTH	= const.WIDTH/5
-const.GAME_PAUSE_CONTINUE_BUTTON_HEIGHT = const.HEIGHT/10
+const.MENU_START_BUTTON_X               = const.WIDTH*0.1
+const.MENU_START_BUTTON_Y               = const.HEIGHT*0.1
+const.MENU_START_BUTTON_WIDTH           = const.WIDTH*0.1
+const.MENU_START_BUTTON_HEIGHT          = const.HEIGHT*0.1
+const.MENU_START_BUTTON_FONT            = 'LucidaBrightDemiBold.ttf'
+const.MENU_START_BUTTON_SIZE            = 50
+
+const.GAME_PAUSE_CONTINUE_BUTTON_X      = const.WIDTH*0.4
+const.GAME_PAUSE_CONTINUE_BUTTON_Y      = const.HEIGHT*0.25
+const.GAME_PAUSE_CONTINUE_BUTTON_WIDTH  = const.WIDTH*0.2
+const.GAME_PAUSE_CONTINUE_BUTTON_HEIGHT = const.HEIGHT*0.1
 const.GAME_PAUSE_CONTINUE_BUTTON_FONT   = 'LucidaBrightDemiBold.ttf'
 const.GAME_PAUSE_CONTINUE_BUTTON_SIZE   = 50
+
+                                        ### TODO
+const.MENU_QUIT_BUTTON_X                = const.WIDTH*0.1
+const.MENU_QUIT_BUTTON_Y                = const.HEIGHT*0.5
+const.MENU_QUIT_BUTTON_WIDTH            = const.WIDTH*0.1
+const.MENU_QUIT_BUTTON_HEIGHT           = const.HEIGHT*0.1
+const.MENU_QUIT_BUTTON_FONT             = 'LucidaBrightDemiBold.ttf'
+const.MENU_QUIT_BUTTON_SIZE             = 50
+
+const.INFO_BACK_BUTTON_X                = const.WIDTH*0.125
+const.INFO_BACK_BUTTON_Y                = const.HEIGHT - 5*(const.HEIGHT*0.1)
+const.INFO_BACK_BUTTON_WIDTH            = const.WIDTH*0.125
+const.INFO_BACK_BUTTON_HEIGHT           = const.HEIGHT*0.1
+const.INFO_BACK_BUTTON_FONT             = 'LucidaBrightDemiBold.ttf'
+const.INFO_BACK_BUTTON_SIZE             = 50
+
+const.GAME_PAUSE_LEFT_BUTTON_X          = const.WIDTH*0.4
+const.GAME_PAUSE_LEFT_BUTTON_Y          = const.HEIGHT*0.75
+const.GAME_PAUSE_LEFT_BUTTON_WIDTH      = const.WIDTH*0.2
+const.GAME_PAUSE_LEFT_BUTTON_HEIGHT     = const.HEIGHT*0.1
+const.GAME_PAUSE_LEFT_BUTTON_FONT       = 'LucidaBrightDemiBold.ttf'
+const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
+
+###
+
 ##
 
 ## rgb

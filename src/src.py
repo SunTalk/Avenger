@@ -1,13 +1,16 @@
 from Declaration import *
 from soundHandler import SoundHandler
 from interface import *
+from Image import *
 
 test = interface()
+testImg = Image()
 
 def game_loop():
 
-	test.set_start_botton(start_type = const.MENU)
-	test.loadUI(const.PATH, const.UIFILE, "11.png")
+	testImg.loadUI(const.UIFILE, "11.png")
+	test.loadUI(testImg.getImg())
+	test.set_botton(const.INFO)
 	while const.GAME_LOOP:
 		
 		for event in py.event.get():
@@ -16,6 +19,8 @@ def game_loop():
 				quit()
 
 		test.update(True)
+		#test.writeText("hi", black, 300, 300, const.MENU_START_BUTTON_FONT, 50)
+		py.display.update()
 
 
 if __name__ == "__main__":
