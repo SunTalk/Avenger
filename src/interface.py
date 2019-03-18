@@ -3,7 +3,9 @@ from Declaration import *
 class interface():
 
 	def __init__(self):
-		pass
+		self.textFont    = None
+		self.textSurface = None
+		self.textRec     = None
 	
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -15,11 +17,14 @@ class interface():
 	def update(self, drawBotton):
 		self.draw()
 
+		if self.textSurface != None:
+			self.writeMSG()
+
 		if drawBotton:
 			self.draw_botton()
 
 		## better write in game loop
-		py.display.update()
+		# py.display.update()
 		##
 
 	def draw(self):
@@ -40,6 +45,15 @@ class interface():
 	def draw_back_botton(self):
 		py.draw.rect(display, self.back_botton_color, [self.back_botton_x, self.back_botton_y, self.back_botton_width, self.back_botton_height])
 
+	def writeMSG(self):
+		display.blit(self.textSurface, self.textRec)
+
+	def writeText(self, text, color, center_x, center_y, font, size):
+		self.textFont       = py.font.Font(const.PATH+const.FONTFILE+font, size)
+		self.textSurface    = self.textFont.render(text, True, color)
+		self.textRec        = self.textSurface.get_rect()
+		self.textRec.center = (center_x, center_y)
+
 	def write(self):
 		if self.start_type == 'start':
 			self.message(self.start_botton_text, self.start_botton_font, self.start_botton_font_size)
@@ -50,7 +64,7 @@ class interface():
 			display.blit(self.textSurface_bc, self.textRec_bc)
 
 	def message(self, text, font, size):
-		self.textFont    	= py.font.Font(const.PATH+const.FONTFILE+font, size)
+		self.textFont = py.font.Font(const.PATH+const.FONTFILE+font, size)
 		
 		if self.start_type == 'start':
 			self.textSurface_st    = self.textFont.render(text, True, red)
@@ -108,7 +122,7 @@ class interface():
 			self.type                   = 'start'
 
 		else:
-			self.start_type                   = None
+			self.start_type             = None
 			print("pass")
 			pass
 
@@ -163,4 +177,5 @@ class interface():
 		
 		else:
 			self.back_type             = None
+			print("pass")
 			pass

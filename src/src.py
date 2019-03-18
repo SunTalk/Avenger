@@ -19,6 +19,8 @@ def game_loop():
 				quit()
 
 		test.update(True)
+		#test.writeText("hi", black, 300, 300, const.MENU_START_BUTTON_FONT, 50)
+		py.display.update()
 
 
 if __name__ == "__main__":

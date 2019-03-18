@@ -28,10 +28,10 @@ const.FONTFILE   = '\\data\\Font\\'
 
 const.GAME_LOOP  = True
 
-const.MENU_START_BUTTON_X               = const.WIDTH/10
-const.MENU_START_BUTTON_Y               = const.HEIGHT/10
-const.MENU_START_BUTTON_WIDTH           = const.WIDTH/10
-const.MENU_START_BUTTON_HEIGHT          = const.HEIGHT/10
+const.MENU_START_BUTTON_X               = const.WIDTH*0.1
+const.MENU_START_BUTTON_Y               = const.HEIGHT*0.1
+const.MENU_START_BUTTON_WIDTH           = const.WIDTH*0.1
+const.MENU_START_BUTTON_HEIGHT          = const.HEIGHT*0.1
 const.MENU_START_BUTTON_FONT            = 'LucidaBrightDemiBold.ttf'
 const.MENU_START_BUTTON_SIZE            = 50
 
@@ -43,17 +43,17 @@ const.GAME_PAUSE_CONTINUE_BUTTON_FONT   = 'LucidaBrightDemiBold.ttf'
 const.GAME_PAUSE_CONTINUE_BUTTON_SIZE   = 50
 
                                         ### TODO
-const.MENU_QUIT_BUTTON_X                = const.WIDTH/10
-const.MENU_QUIT_BUTTON_Y                = const.HEIGHT/2
-const.MENU_QUIT_BUTTON_WIDTH            = const.WIDTH/10
-const.MENU_QUIT_BUTTON_HEIGHT           = const.HEIGHT/10
+const.MENU_QUIT_BUTTON_X                = const.WIDTH*0.1
+const.MENU_QUIT_BUTTON_Y                = const.HEIGHT*0.5
+const.MENU_QUIT_BUTTON_WIDTH            = const.WIDTH*0.1
+const.MENU_QUIT_BUTTON_HEIGHT           = const.HEIGHT*0.1
 const.MENU_QUIT_BUTTON_FONT             = 'LucidaBrightDemiBold.ttf'
 const.MENU_QUIT_BUTTON_SIZE             = 50
 
-const.INFO_BACK_BUTTON_X                = const.WIDTH/8
-const.INFO_BACK_BUTTON_Y                = const.HEIGHT - 5*(const.HEIGHT/10)
-const.INFO_BACK_BUTTON_WIDTH            = const.WIDTH/8
-const.INFO_BACK_BUTTON_HEIGHT           = const.HEIGHT/10
+const.INFO_BACK_BUTTON_X                = const.WIDTH*0.125
+const.INFO_BACK_BUTTON_Y                = const.HEIGHT - 5*(const.HEIGHT*0.1)
+const.INFO_BACK_BUTTON_WIDTH            = const.WIDTH*0.125
+const.INFO_BACK_BUTTON_HEIGHT           = const.HEIGHT*0.1
 const.INFO_BACK_BUTTON_FONT             = 'LucidaBrightDemiBold.ttf'
 const.INFO_BACK_BUTTON_SIZE             = 50
 
