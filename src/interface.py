@@ -6,6 +6,8 @@ class interface():
 		self.textFont    = None
 		self.textSurface = None
 		self.textRec     = None
+		self.start_type  = None
+		self.back_type   = None
 	
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -14,18 +16,14 @@ class interface():
 		self.backgroundImg = img
 		print("img set")
 
-	def update(self, drawBotton):
+	def update(self):
 		self.draw()
 
 		if self.textSurface != None:
 			self.writeMSG()
 
-		if drawBotton:
-			self.draw_botton()
-
-		## better write in game loop
-		# py.display.update()
-		##
+		# drawBotton:
+		self.draw_botton()
 
 	def draw(self):
 		display.blit(self.backgroundImg, (0, 0))
