@@ -10,7 +10,7 @@ def game_loop():
 
 	testImg.loadUI(const.UIFILE, "11.png")
 	test.loadUI(testImg.getImg())
-	test.set_botton(const.MENU)
+	test.set_botton(const.INFO)
 	while const.GAME_LOOP:
 		
 		for event in py.event.get():
