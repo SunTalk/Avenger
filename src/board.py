@@ -63,11 +63,9 @@ def board_display(surface):
 	if board_change_angle > 0 :
 		board_angle += 2
 		board_change_angle -=2
-		action = False
 	if board_change_angle < 0 :
 		board_angle -= 2
 		board_change_angle += 2
-		action = False
 	if board_change_angle == 0 :
 		action = True
 	board_angle = board_angle % 360
@@ -79,15 +77,22 @@ def board_display(surface):
 def board_action(event):
 	global board_change_angle
 	global board_mode
+	global action
+	global move
+
 	if event.type == py.KEYDOWN:
 		if event.key == py.K_RIGHT:
-			if action :
+			if action and move == False :
+				action = False
+				move = True
 				board_change_angle = -90
 				board_mode += 1
 				board_mode = board_mode%4
 				print('right')
 		if event.key == py.K_LEFT:
-			if action :
+			if action and move == False :
+				action = False
+				move = True
 				board_change_angle = 90
 				board_mode -= 1
 				board_mode = board_mode%4
@@ -131,7 +136,8 @@ def clear_solider() :
 
 move = False
 def solider_down() :
-	if move :
+	global move
+	if action and move :
 		for i in range(0,len(solider_y)) :
 			if board_mode == 0 :
 				if solider_x[i] < 7 :
@@ -145,7 +151,21 @@ def solider_down() :
 			if board_mode == 3 :
 				if solider_y[i] > 0 :
 					solider_y[i] -= 1
-		py.time.delay(50)
+		py.time.delay(100)
+		if board_mode == 0 :
+			if solider_x[i] == 7 :
+				move = False
+		if board_mode == 1 :
+			if solider_y[i] == 7 :
+				move = False
+		if board_mode == 2 :
+			if solider_x[i] == 0 :
+				move = False
+		if board_mode == 3 :
+			if solider_y[i] == 0 :
+				move = False
+		py.time.delay(100)
+
 
 ## end chess
 
