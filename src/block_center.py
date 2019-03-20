@@ -37,6 +37,8 @@ boundary_y = [const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,const.ZERO  ,c
 board_x = [[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT],[const.ONE,const.TWO,const.THREE,const.FOUR,const.FIVE,const.SIX,const.SEVEN,const.EIGHT]]
 board_y = [[const.ONE,const.ONE,const.ONE,const.ONE,const.ONE,const.ONE,const.ONE,const.ONE],[const.TWO,const.TWO,const.TWO,const.TWO,const.TWO,const.TWO,const.TWO,const.TWO],[const.THREE,const.THREE,const.THREE,const.THREE,const.THREE,const.THREE,const.THREE,const.THREE],[const.FOUR,const.FOUR,const.FOUR,const.FOUR,const.FOUR,const.FOUR,const.FOUR,const.FOUR],[const.FIVE,const.FIVE,const.FIVE,const.FIVE,const.FIVE,const.FIVE,const.FIVE,const.FIVE],[const.SIX,const.SIX,const.SIX,const.SIX,const.SIX,const.SIX,const.SIX,const.SIX],[const.SEVEN,const.SEVEN,const.SEVEN,const.SEVEN,const.SEVEN,const.SEVEN,const.SEVEN,const.SEVEN],[const.EIGHT,const.EIGHT,const.EIGHT,const.EIGHT,const.EIGHT,const.EIGHT,const.EIGHT,const.EIGHT]]
 
+is_board = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
+
 A1_x = 0
 A2_x = 0
 A3_x = 0

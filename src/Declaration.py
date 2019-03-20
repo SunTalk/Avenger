@@ -72,6 +72,7 @@ const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 black = (0, 0, 0)
 white = (255, 255, 255)
 red   = (255, 0, 0)
+green = (0, 255, 0)
 cyan_blue = (0, 255, 255)
 ##
 
