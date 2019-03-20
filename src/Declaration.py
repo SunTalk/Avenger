@@ -12,6 +12,7 @@ from block_center import *
 const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
+const.GAME_NONE   = 0
 const.MENU        = 1
 const.INFO        = 2
 const.PLOT        = 3
@@ -74,6 +75,7 @@ white = (255, 255, 255)
 red   = (255, 0, 0)
 green = (0, 255, 0)
 cyan_blue = (0, 255, 255)
+gray      = (204, 204, 204)
 ##
 
 ## display
@@ -87,9 +89,8 @@ py.display.set_caption('Avenger')
 clock = py.time.Clock()
 ##
 
-## dictionary
 
-
-
+##
+GAME_SATE = const.GAME_NONE
 ##
 
