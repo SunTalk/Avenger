@@ -3,17 +3,31 @@ from Declaration import *
 class interface():
 
 	def __init__(self):
-		self.textFont    = None
-		self.textSurface = None
-		self.textRec     = None
-		self.start_type  = None
-		self.back_type   = None
-		self.other_type  = None
-		self.press_start = False
-		self.press_back  = False
+		self.textFont     = None
+		self.textSurface  = None
+		self.textRec      = None
+		self.start_type   = None
+		self.back_type    = None
+		self.custom_type  = None
+		self.press_start  = False
+		self.press_back   = False
+		self.init_custom_button()
+		self.custom_index = 0
 		
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
+
+	def init_custom_button(self):
+		self.custom_button_x         = list()
+		self.custom_button_y         = list()
+		self.custom_button_width     = list()
+		self.custom_button_height    = list()
+		self.custom_button_color     = list()
+		self.custom_button_text      = list()
+		self.custom_button_font      = list()
+		self.custom_button_font_size = list()
+		self.custom_text_color       = list()
+		self.press_custom            = list()
 
 	def loadUI(self, img):
 		self.backgroundImg = img
@@ -40,11 +54,19 @@ class interface():
 			self.draw_back_button()
 			self.write()
 
+		if self.custom_type != None:
+			for i in range(0, self.custom_index):
+				self.draw_bt(self.custom_button_color[i], self.custom_button_x[i], self.custom_button_y[i], self.custom_button_width[i], self.custom_button_height[i])
+				self.write(self.custom_text_color[i])
+
 	def draw_start_button(self):
 		py.draw.rect(display, self.start_button_color, [self.start_button_x, self.start_button_y, self.start_button_width, self.start_button_height])
 
 	def draw_back_button(self):
 		py.draw.rect(display, self.back_button_color, [self.back_button_x, self.back_button_y, self.back_button_width, self.back_button_height])
+
+	def draw_bt(self, color, x, y, width, height):
+		py.draw.rect(display, color, [x, y, width, height])
 
 	def writeMSG(self):
 		display.blit(self.textSurface, self.textRec)
@@ -55,7 +77,7 @@ class interface():
 		self.textRec        = self.textSurface.get_rect()
 		self.textRec.center = (center_x, center_y)
 
-	def write(self):
+	def write(self, color=(0, 0, 0)):
 		if self.start_type == 'start':
 			self.message(self.start_button_text, self.start_button_font, self.start_button_font_size)
 			display.blit(self.textSurface_st, self.textRec_st)
@@ -64,7 +86,12 @@ class interface():
 			self.message(self.back_button_text, self.back_button_font, self.back_button_font_size)
 			display.blit(self.textSurface_bc, self.textRec_bc)
 
-	def message(self, text, font, size):
+		if self.custom_type != None:
+			for i in range(0, self.custom_index):
+				self.message(self.custom_button_text[i], self.custom_button_font[i], self.custom_button_font_size[i], color, i)
+				display.blit(self.textSurface_ct, self.textRec_ct)
+
+	def message(self, text, font, size, color=(0,0,0), index=0):
 		self.textFont = py.font.Font(const.PATH+const.FONTFILE+font, size)
 		
 		if self.start_type == 'start':
@@ -78,6 +105,13 @@ class interface():
 			self.textSurface_bc    = self.textFont.render(text, True, red)
 			self.textRec_bc        = self.textSurface_bc.get_rect()
 			self.textRec_bc.center = ((self.back_button_x+(self.back_button_width/2), (self.back_button_y+(self.back_button_height/2))))
+		else:
+			pass
+
+		if self.custom_type != None:
+			self.textSurface_ct    = self.textFont.render(text, True, color)
+			self.textRec_ct        = self.textSurface_ct.get_rect()
+			self.textRec_ct.center = ((self.custom_button_x[index]+(self.custom_button_width[index]/2), (self.custom_button_y[index]+(self.custom_button_height[index]/2))))
 		else:
 			pass
 
@@ -110,13 +144,43 @@ class interface():
 				self.back_button_color = white
 				self.press_back = False
 
+		if self.custom_type != None:
+			for i in range(0, self.custom_index):
+				if (py.mouse.get_pos()[0] > self.custom_button_x[i]) and (py.mouse.get_pos()[0] < (self.custom_button_x[i]+self.custom_button_width[i])):
+					if (py.mouse.get_pos()[1] > self.custom_button_y[i]) and (py.mouse.get_pos()[1] <= (self.custom_button_y[i]+self.custom_button_height[i])):
+						self.custom_button_color[i] = gray
+						if event.type == py.MOUSEBUTTONDOWN:
+							self.press_custom[i] = True
+							print("{} pressed".format(self.custom_button_text[i]))
+					else:
+						self.custom_button_color[i] = white
+						self.press_custom[i] = False
+				else:
+					self.custom_button_color[i] = white
+					self.press_custom[i] = False
+
 		# if event.type == py.KEYDOWN:
 
 	def set_button(self, type):
 		self.set_start_button(start_type=type)
 		self.set_quit_button(back_type=type)
 
-	def set_start_button(self, x=0, y=0, width=0, height=0, color=0, text=None, font=None, start_type=0):
+	def set_custom_button(self, x, y, width, height, color, text, font=Font_EN, size=50, textColor=red):
+		print("set custom button")
+		self.custom_button_x.append(x)
+		self.custom_button_y.append(y)
+		self.custom_button_width.append(width)
+		self.custom_button_height.append(height)
+		self.custom_button_color.append(color)
+		self.custom_button_text.append(text)
+		self.custom_button_font.append(font)
+		self.custom_button_font_size.append(size)
+		self.custom_text_color.append(textColor)
+		self.press_custom.append(False)
+		self.custom_type = 'custom'
+		self.custom_index += 1
+
+	def set_start_button(self, x=0, y=0, width=0, height=0, color=0, text=None, font=None, size=0,start_type=0):
 		if start_type == const.MENU:
 			print("start_type = MENU")
 			self.start_button_x 	 	= const.MENU_START_BUTTON_X
@@ -158,7 +222,7 @@ class interface():
 			print("pass")
 			pass
 
-	def set_quit_button(self, x=0, y=0, width=0, height=0, color=0, text=None, font=None, back_type=0):
+	def set_quit_button(self, x=0, y=0, width=0, height=0, color=0, text=None, font=None, size=0, back_type=0):
 		if back_type == const.MENU:
 			print("back_type = MENU")
 			self.back_button_x         = const.MENU_QUIT_BUTTON_X
@@ -211,11 +275,22 @@ class interface():
 			self.back_type             = None
 			print("pass")
 			pass
+	def get_custom_button_name(self, name):
+		for i in range(0, self.custom_index):
+			if self.custom_button_text[i] == name and self.press_custom[i]:
+				return True
 
 	def start_is_press(self):
 		return self.press_start
 	def back_is_press(self):
 		return self.press_back
+	def custom_is_press(self):
+		if self.custom_type != None:
+			for i in range(0, self.custom_index):
+				if self.press_custom[i]:
+					return self.press_custom[i]
 	def clearFlag(self):
-		self.press_start = False
-		self.press_back  = False
+		self.press_start  = False
+		self.press_back   = False
+		for i in range(0, self.custom_index):
+			self.press_custom[i] = False
