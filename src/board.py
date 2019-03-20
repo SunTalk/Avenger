@@ -35,6 +35,7 @@ def blitRotate(surf, image, pos, originPos, angle):
 
 	# rotate and blit the image
 	surf.blit(rotated_image, origin)
+	# py.draw.rect (surf, (255, 0, 0), (*origin, *rotated_image.get_size()))
 
 ## end blitRotate
 
@@ -48,6 +49,8 @@ def board_build() :
 		block(board,board_x[obstacle_x[i]][obstacle_y[i]],board_y[obstacle_x[i]][obstacle_y[i]],60,cyan_blue)
 	for i in range( 0 ,len(solider_x) ) :
 		block(board,board_x[solider_x[i]][solider_y[i]],board_y[solider_x[i]][solider_y[i]],60,red)
+	for i in range( 0 ,len(enemy_x) ) :
+		block(board,board_x[enemy_x[i]][enemy_y[i]],board_y[enemy_x[i]][enemy_y[i]],60,green)
 
 board_angle = 0
 board_change_angle = 0
@@ -63,11 +66,9 @@ def board_display(surface):
 	if board_change_angle > 0 :
 		board_angle += 2
 		board_change_angle -=2
-		action = False
 	if board_change_angle < 0 :
 		board_angle -= 2
 		board_change_angle += 2
-		action = False
 	if board_change_angle == 0 :
 		action = True
 	board_angle = board_angle % 360
@@ -79,15 +80,22 @@ def board_display(surface):
 def board_action(event):
 	global board_change_angle
 	global board_mode
+	global action
+	global move
+
 	if event.type == py.KEYDOWN:
 		if event.key == py.K_RIGHT:
-			if action :
+			if action and move == False :
+				action = False
+				move = True
 				board_change_angle = -90
 				board_mode += 1
 				board_mode = board_mode%4
 				print('right')
 		if event.key == py.K_LEFT:
-			if action :
+			if action and move == False :
+				action = False
+				move = True
 				board_change_angle = 90
 				board_mode -= 1
 				board_mode = board_mode%4
@@ -111,8 +119,11 @@ obstacle_y = []
 def add_obstacle(x,y) :
 	obstacle_x.append(x)
 	obstacle_y.append(y)
+	is_board[x][y] = 1
 
 def clear_obstacle() :
+	for i in range(0,len(obstacle_x)) :
+		is_board[obstacle_x[i]][obstacle_y[i]] = 0
 	obstacle_x.clear()
 	obstacle_y.clear()
 	board_build()
@@ -121,31 +132,117 @@ solider_x = []
 solider_y = []
 
 def add_solider(x,y) :
-	solider_x.append(x)
-	solider_y.append(y)
+	if is_board[x][y] == 0:
+		is_board[x][y] = 1
+		solider_x.append(x)
+		solider_y.append(y)
 
 def clear_solider() :
+	for i in range(0,len(solider_x)) :
+		is_board[solider_x[i]][solider_y[i]] = 0
 	solider_x.clear()
 	solider_y.clear()
 	board_build()
 
 move = False
 def solider_down() :
-	if move :
-		for i in range(0,len(solider_y)) :
+	if action and move :
+		for i in range(0,len(solider_x)) :
 			if board_mode == 0 :
-				if solider_x[i] < 7 :
-					solider_x[i] += 1
+				if solider_x[i] < 7 and is_board[solider_x[i]+1][solider_y[i]] == 0 :
+					is_board[solider_x[i]][solider_y[i]] = 0
+					is_board[solider_x[i]+1][solider_y[i]] = 1
+					solider_x[i] += 1	
 			if board_mode == 1 :
-				if solider_y[i] < 7 :
+				if solider_y[i] < 7 and is_board[solider_x[i]][solider_y[i]+1] == 0 :
+					is_board[solider_x[i]][solider_y[i]] = 0
+					is_board[solider_x[i]][solider_y[i]+1] = 1
 					solider_y[i] += 1
 			if board_mode == 2 :
-				if solider_x[i] > 0 :
+				if solider_x[i] > 0 and is_board[solider_x[i]-1][solider_y[i]] == 0 :
+					is_board[solider_x[i]][solider_y[i]] = 0
+					is_board[solider_x[i]-1][solider_y[i]] = 1
 					solider_x[i] -= 1
 			if board_mode == 3 :
-				if solider_y[i] > 0 :
+				if solider_y[i] > 0 and is_board[solider_x[i]][solider_y[i]-1] == 0 :
+					is_board[solider_x[i]][solider_y[i]] = 0
+					is_board[solider_x[i]][solider_y[i]-1] = 1
 					solider_y[i] -= 1
-		py.time.delay(50)
 
+## end solider down
+
+enemy_x = []
+enemy_y = []
+
+def add_enemy(x,y) :
+	if is_board[x][y] == 0:
+		is_board[x][y] = 1
+		enemy_x.append(x)
+		enemy_y.append(y)
+
+def clear_enemy() :
+	for i in range(0,len(enemy_x)) :
+		is_board[enemy_x[i]][enemy_y[i]] = 0
+	enemy_x.clear()
+	enemy_y.clear()
+	board_build()
+
+move = False
+def enemy_down() :
+	if action and move :
+		for i in range(0,len(enemy_x)) :
+			if board_mode == 0 :
+				if enemy_x[i] < 7 and is_board[enemy_x[i]+1][enemy_y[i]] == 0 :
+					is_board[enemy_x[i]][enemy_y[i]] = 0
+					is_board[enemy_x[i]+1][enemy_y[i]] = 1
+					enemy_x[i] += 1	
+			if board_mode == 1 :
+				if enemy_y[i] < 7 and is_board[enemy_x[i]][enemy_y[i]+1] == 0 :
+					is_board[enemy_x[i]][enemy_y[i]] = 0
+					is_board[enemy_x[i]][enemy_y[i]+1] = 1
+					enemy_y[i] += 1
+			if board_mode == 2 :
+				if enemy_x[i] > 0 and is_board[enemy_x[i]-1][enemy_y[i]] == 0 :
+					is_board[enemy_x[i]][enemy_y[i]] = 0
+					is_board[enemy_x[i]-1][enemy_y[i]] = 1
+					enemy_x[i] -= 1
+			if board_mode == 3 :
+				if enemy_y[i] > 0 and is_board[enemy_x[i]][enemy_y[i]-1] == 0 :
+					is_board[enemy_x[i]][enemy_y[i]] = 0
+					is_board[enemy_x[i]][enemy_y[i]-1] = 1
+					enemy_y[i] -= 1
+
+## end enemy down
+
+def move_checker():
+	global move
+	check_move = False
+	for i in range(0,len(solider_x)) :
+		if board_mode == 0 :
+			if solider_x[i] < 7 and is_board[solider_x[i]+1][solider_y[i]] == 0 :
+				check_move = True
+		if board_mode == 1 :
+			if solider_y[i] < 7 and is_board[solider_x[i]][solider_y[i]+1] == 0 :
+				check_move = True
+		if board_mode == 2 :
+			if solider_x[i] > 0 and is_board[solider_x[i]-1][solider_y[i]] == 0 :
+				check_move = True
+		if board_mode == 3 :
+			if solider_y[i] > 0 and is_board[solider_x[i]][solider_y[i]-1] == 0 :
+				check_move = True
+	for i in range(0,len(enemy_x)) :
+		if board_mode == 0 :
+			if enemy_x[i] < 7 and is_board[enemy_x[i]+1][enemy_y[i]] == 0 :
+				check_move = True
+		if board_mode == 1 :
+			if enemy_y[i] < 7 and is_board[enemy_x[i]][enemy_y[i]+1] == 0 :
+				check_move = True
+		if board_mode == 2 :
+			if enemy_x[i] > 0 and is_board[enemy_x[i]-1][enemy_y[i]] == 0 :
+				check_move = True
+		if board_mode == 3 :
+			if enemy_y[i] > 0 and is_board[enemy_x[i]][enemy_y[i]-1] == 0 :
+				check_move = True
+	move = check_move
 ## end chess
 
