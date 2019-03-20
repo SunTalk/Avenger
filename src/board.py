@@ -77,11 +77,13 @@ def board_display(surface):
 
 ## end board_display
 
+start_move = False
 def board_action(event):
 	global board_change_angle
 	global board_mode
 	global action
 	global move
+	global start_move
 
 	if event.type == py.KEYDOWN:
 		if event.key == py.K_RIGHT:
@@ -92,6 +94,7 @@ def board_action(event):
 				board_mode += 1
 				board_mode = board_mode%4
 				print('right')
+				start_move = True
 		if event.key == py.K_LEFT:
 			if action and move == False :
 				action = False
@@ -100,12 +103,9 @@ def board_action(event):
 				board_mode -= 1
 				board_mode = board_mode%4
 				print('left')
+				start_move = True
 		if event.key == py.K_DOWN :
 			print('down')
-		if event.key == 'q' :
-			add_obstacle(B5_x,B5_y)
-			add_solider(A1_x,A1_y)
-			board_build()
 
 ## end board_action
 
@@ -137,6 +137,20 @@ def add_solider(x,y) :
 		solider_x.append(x)
 		solider_y.append(y)
 
+def kill_solider(x,y) :
+	for i in range(0,len(solider_x)) :
+		if solider_x[i] == x and solider_y[i] == y :
+			is_board[solider_x[i]][solider_y[i]] = 0
+			del solider_x[i]
+			del solider_y[i]
+			return
+
+def is_solider(x,y) :
+	for i in range(0,len(solider_x)) :
+		if solider_x[i] == x and solider_y[i] == y :
+			return True
+	return False
+
 def clear_solider() :
 	for i in range(0,len(solider_x)) :
 		is_board[solider_x[i]][solider_y[i]] = 0
@@ -152,7 +166,7 @@ def solider_down() :
 				if solider_x[i] < 7 and is_board[solider_x[i]+1][solider_y[i]] == 0 :
 					is_board[solider_x[i]][solider_y[i]] = 0
 					is_board[solider_x[i]+1][solider_y[i]] = 1
-					solider_x[i] += 1	
+					solider_x[i] += 1
 			if board_mode == 1 :
 				if solider_y[i] < 7 and is_board[solider_x[i]][solider_y[i]+1] == 0 :
 					is_board[solider_x[i]][solider_y[i]] = 0
@@ -175,10 +189,24 @@ enemy_x = []
 enemy_y = []
 
 def add_enemy(x,y) :
-	if is_board[x][y] == 0:
+	if is_board[x][y] == 0 :
 		is_board[x][y] = 1
 		enemy_x.append(x)
 		enemy_y.append(y)
+
+def kill_enemy(x,y) :
+	for i in range(0,len(enemy_x)) :
+		if enemy_x[i] == x and enemy_y[i] == y :
+			is_board[enemy_x[i]][enemy_y[i]] = 0
+			del enemy_x[i]
+			del enemy_y[i]
+			return
+
+def is_enemy(x,y) :
+	for i in range(0,len(enemy_x)) :
+		if enemy_x[i] == x and enemy_y[i] == y :
+			return True
+	return False
 
 def clear_enemy() :
 	for i in range(0,len(enemy_x)) :
@@ -195,7 +223,7 @@ def enemy_down() :
 				if enemy_x[i] < 7 and is_board[enemy_x[i]+1][enemy_y[i]] == 0 :
 					is_board[enemy_x[i]][enemy_y[i]] = 0
 					is_board[enemy_x[i]+1][enemy_y[i]] = 1
-					enemy_x[i] += 1	
+					enemy_x[i] += 1
 			if board_mode == 1 :
 				if enemy_y[i] < 7 and is_board[enemy_x[i]][enemy_y[i]+1] == 0 :
 					is_board[enemy_x[i]][enemy_y[i]] = 0
@@ -243,6 +271,56 @@ def move_checker():
 		if board_mode == 3 :
 			if enemy_y[i] > 0 and is_board[enemy_x[i]][enemy_y[i]-1] == 0 :
 				check_move = True
-	move = check_move
+	if start_move :
+		move = check_move
+
+## edn move checker
+
+def defeat():
+	if move == False and action == True :
+		# py.time.delay(500)
+		if board_mode == 0 :
+			for i in range(7,0,-1):
+				for j in range(0,8):
+					if is_board[i][j] == 1 and is_board[i-1][j] == 1 :
+						if is_solider(i,j) and is_enemy(i-1,j) :
+							kill_solider(i,j)
+							return
+						if is_enemy(i,j) and is_solider(i-1,j) :
+							kill_enemy(i,j)
+							return
+		if board_mode == 1 :
+			for j in range(7,0,-1):
+				for i in range(0,8):
+					if is_board[i][j] == 1 and is_board[i][j-1] == 1 :
+						if is_solider(i,j) and is_enemy(i,j-1) :
+							kill_solider(i,j)
+							return
+						if is_enemy(i,j) and is_solider(i,j-1) :
+							kill_enemy(i,j)
+							return
+		if board_mode == 2 :
+			for i in range(0,7):
+				for j in range(0,8):
+					if is_board[i][j] == 1 and is_board[i+1][j] == 1 :
+						if is_solider(i,j) and is_enemy(i+1,j) :
+							kill_solider(i,j)
+							return
+						if is_enemy(i,j) and is_solider(i+1,j) :
+							kill_enemy(i,j)
+							return
+		if board_mode == 3 :
+			for j in range(0,7):
+				for i in range(0,8):
+					if is_board[i][j] == 1 and is_board[i][j+1] == 1 :
+						if is_solider(i,j) and is_enemy(i,j+1) :
+							kill_solider(i,j)
+							return
+						if is_enemy(i,j) and is_solider(i,j+1) :
+							kill_enemy(i,j)
+							return
+
+## end defeat
+
 ## end chess
 
