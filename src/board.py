@@ -87,7 +87,7 @@ def board_action(event):
 
 	if event.type == py.KEYDOWN:
 		if event.key == py.K_RIGHT:
-			if action and move == False :
+			if action == True and move == False :
 				action = False
 				move = True
 				board_change_angle = -90
@@ -96,7 +96,7 @@ def board_action(event):
 				print('right')
 				start_move = True
 		if event.key == py.K_LEFT:
-			if action and move == False :
+			if action == True and move == False :
 				action = False
 				move = True
 				board_change_angle = 90
@@ -278,47 +278,46 @@ def move_checker():
 
 def defeat():
 	if move == False and action == True :
-		# py.time.delay(500)
 		if board_mode == 0 :
 			for i in range(7,0,-1):
 				for j in range(0,8):
 					if is_board[i][j] == 1 and is_board[i-1][j] == 1 :
 						if is_solider(i,j) and is_enemy(i-1,j) :
 							kill_solider(i,j)
-							return
+							py.time.delay(100)
 						if is_enemy(i,j) and is_solider(i-1,j) :
 							kill_enemy(i,j)
-							return
+							py.time.delay(100)
 		if board_mode == 1 :
 			for j in range(7,0,-1):
 				for i in range(0,8):
 					if is_board[i][j] == 1 and is_board[i][j-1] == 1 :
 						if is_solider(i,j) and is_enemy(i,j-1) :
 							kill_solider(i,j)
-							return
+							py.time.delay(100)
 						if is_enemy(i,j) and is_solider(i,j-1) :
 							kill_enemy(i,j)
-							return
+							py.time.delay(100)
 		if board_mode == 2 :
 			for i in range(0,7):
 				for j in range(0,8):
 					if is_board[i][j] == 1 and is_board[i+1][j] == 1 :
 						if is_solider(i,j) and is_enemy(i+1,j) :
 							kill_solider(i,j)
-							return
+							py.time.delay(100)
 						if is_enemy(i,j) and is_solider(i+1,j) :
 							kill_enemy(i,j)
-							return
+							py.time.delay(100)
 		if board_mode == 3 :
 			for j in range(0,7):
 				for i in range(0,8):
 					if is_board[i][j] == 1 and is_board[i][j+1] == 1 :
 						if is_solider(i,j) and is_enemy(i,j+1) :
 							kill_solider(i,j)
-							return
+							py.time.delay(100)
 						if is_enemy(i,j) and is_solider(i,j+1) :
 							kill_enemy(i,j)
-							return
+							py.time.delay(100)
 
 ## end defeat
 
