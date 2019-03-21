@@ -48,8 +48,8 @@ def board_build() :
 	bound(board)
 	for i in range( 0 ,len(obstacle_x) ) :
 		block(board,board_x[obstacle_x[i]][obstacle_y[i]],board_y[obstacle_x[i]][obstacle_y[i]],60,cyan_blue)
-	for i in range( 0 ,len(solider_x) ) :
-		block(board,board_x[solider_x[i]][solider_y[i]],board_y[solider_x[i]][solider_y[i]],60,red)
+	for i in range( 0 ,len(soldier_x) ) :
+		block(board,board_x[soldier_x[i]][soldier_y[i]],board_y[soldier_x[i]][soldier_y[i]],60,red)
 	for i in range( 0 ,len(enemy_x) ) :
 		block(board,board_x[enemy_x[i]][enemy_y[i]],board_y[enemy_x[i]][enemy_y[i]],60,green)
 
@@ -129,62 +129,62 @@ def clear_obstacle() :
 	obstacle_y.clear()
 	board_build()
 
-solider_x = []
-solider_y = []
+soldier_x = []
+soldier_y = []
 
-def add_solider(x,y) :
+def add_soldier(x,y) :
 	if is_board[x][y] == 0:
 		is_board[x][y] = 1
-		solider_x.append(x)
-		solider_y.append(y)
+		soldier_x.append(x)
+		soldier_y.append(y)
 
-def kill_solider(x,y) :
-	for i in range(0,len(solider_x)) :
-		if solider_x[i] == x and solider_y[i] == y :
-			is_board[solider_x[i]][solider_y[i]] = 0
-			del solider_x[i]
-			del solider_y[i]
+def kill_soldier(x,y) :
+	for i in range(0,len(soldier_x)) :
+		if soldier_x[i] == x and soldier_y[i] == y :
+			is_board[soldier_x[i]][soldier_y[i]] = 0
+			del soldier_x[i]
+			del soldier_y[i]
 			return
 
-def is_solider(x,y) :
-	for i in range(0,len(solider_x)) :
-		if solider_x[i] == x and solider_y[i] == y :
+def is_soldier(x,y) :
+	for i in range(0,len(soldier_x)) :
+		if soldier_x[i] == x and soldier_y[i] == y :
 			return True
 	return False
 
-def clear_solider() :
-	for i in range(0,len(solider_x)) :
-		is_board[solider_x[i]][solider_y[i]] = 0
-	solider_x.clear()
-	solider_y.clear()
+def clear_soldier() :
+	for i in range(0,len(soldier_x)) :
+		is_board[soldier_x[i]][soldier_y[i]] = 0
+	soldier_x.clear()
+	soldier_y.clear()
 	board_build()
 
 move = False
-def solider_down() :
+def soldier_down() :
 	if action and move :
-		for i in range(0,len(solider_x)) :
+		for i in range(0,len(soldier_x)) :
 			if board_mode == 0 :
-				if solider_x[i] < 7 and is_board[solider_x[i]+1][solider_y[i]] == 0 :
-					is_board[solider_x[i]][solider_y[i]] = 0
-					is_board[solider_x[i]+1][solider_y[i]] = 1
-					solider_x[i] += 1
+				if soldier_x[i] < 7 and is_board[soldier_x[i]+1][soldier_y[i]] == 0 :
+					is_board[soldier_x[i]][soldier_y[i]] = 0
+					is_board[soldier_x[i]+1][soldier_y[i]] = 1
+					soldier_x[i] += 1
 			if board_mode == 1 :
-				if solider_y[i] < 7 and is_board[solider_x[i]][solider_y[i]+1] == 0 :
-					is_board[solider_x[i]][solider_y[i]] = 0
-					is_board[solider_x[i]][solider_y[i]+1] = 1
-					solider_y[i] += 1
+				if soldier_y[i] < 7 and is_board[soldier_x[i]][soldier_y[i]+1] == 0 :
+					is_board[soldier_x[i]][soldier_y[i]] = 0
+					is_board[soldier_x[i]][soldier_y[i]+1] = 1
+					soldier_y[i] += 1
 			if board_mode == 2 :
-				if solider_x[i] > 0 and is_board[solider_x[i]-1][solider_y[i]] == 0 :
-					is_board[solider_x[i]][solider_y[i]] = 0
-					is_board[solider_x[i]-1][solider_y[i]] = 1
-					solider_x[i] -= 1
+				if soldier_x[i] > 0 and is_board[soldier_x[i]-1][soldier_y[i]] == 0 :
+					is_board[soldier_x[i]][soldier_y[i]] = 0
+					is_board[soldier_x[i]-1][soldier_y[i]] = 1
+					soldier_x[i] -= 1
 			if board_mode == 3 :
-				if solider_y[i] > 0 and is_board[solider_x[i]][solider_y[i]-1] == 0 :
-					is_board[solider_x[i]][solider_y[i]] = 0
-					is_board[solider_x[i]][solider_y[i]-1] = 1
-					solider_y[i] -= 1
+				if soldier_y[i] > 0 and is_board[soldier_x[i]][soldier_y[i]-1] == 0 :
+					is_board[soldier_x[i]][soldier_y[i]] = 0
+					is_board[soldier_x[i]][soldier_y[i]-1] = 1
+					soldier_y[i] -= 1
 
-## end solider down
+## end soldier down
 
 enemy_x = []
 enemy_y = []
@@ -246,18 +246,18 @@ def enemy_down() :
 def move_checker():
 	global move
 	check_move = False
-	for i in range(0,len(solider_x)) :
+	for i in range(0,len(soldier_x)) :
 		if board_mode == 0 :
-			if solider_x[i] < 7 and is_board[solider_x[i]+1][solider_y[i]] == 0 :
+			if soldier_x[i] < 7 and is_board[soldier_x[i]+1][soldier_y[i]] == 0 :
 				check_move = True
 		if board_mode == 1 :
-			if solider_y[i] < 7 and is_board[solider_x[i]][solider_y[i]+1] == 0 :
+			if soldier_y[i] < 7 and is_board[soldier_x[i]][soldier_y[i]+1] == 0 :
 				check_move = True
 		if board_mode == 2 :
-			if solider_x[i] > 0 and is_board[solider_x[i]-1][solider_y[i]] == 0 :
+			if soldier_x[i] > 0 and is_board[soldier_x[i]-1][soldier_y[i]] == 0 :
 				check_move = True
 		if board_mode == 3 :
-			if solider_y[i] > 0 and is_board[solider_x[i]][solider_y[i]-1] == 0 :
+			if soldier_y[i] > 0 and is_board[soldier_x[i]][soldier_y[i]-1] == 0 :
 				check_move = True
 	for i in range(0,len(enemy_x)) :
 		if board_mode == 0 :
@@ -283,40 +283,40 @@ def defeat():
 			for i in range(7,0,-1):
 				for j in range(0,8):
 					if is_board[i][j] == 1 and is_board[i-1][j] == 1 :
-						if is_solider(i,j) and is_enemy(i-1,j) :
-							kill_solider(i,j)
+						if is_soldier(i,j) and is_enemy(i-1,j) :
+							kill_soldier(i,j)
 							py.time.delay(100)
-						if is_enemy(i,j) and is_solider(i-1,j) :
+						if is_enemy(i,j) and is_soldier(i-1,j) :
 							kill_enemy(i,j)
 							py.time.delay(100)
 		if board_mode == 1 :
 			for j in range(7,0,-1):
 				for i in range(0,8):
 					if is_board[i][j] == 1 and is_board[i][j-1] == 1 :
-						if is_solider(i,j) and is_enemy(i,j-1) :
-							kill_solider(i,j)
+						if is_soldier(i,j) and is_enemy(i,j-1) :
+							kill_soldier(i,j)
 							py.time.delay(100)
-						if is_enemy(i,j) and is_solider(i,j-1) :
+						if is_enemy(i,j) and is_soldier(i,j-1) :
 							kill_enemy(i,j)
 							py.time.delay(100)
 		if board_mode == 2 :
 			for i in range(0,7):
 				for j in range(0,8):
 					if is_board[i][j] == 1 and is_board[i+1][j] == 1 :
-						if is_solider(i,j) and is_enemy(i+1,j) :
-							kill_solider(i,j)
+						if is_soldier(i,j) and is_enemy(i+1,j) :
+							kill_soldier(i,j)
 							py.time.delay(100)
-						if is_enemy(i,j) and is_solider(i+1,j) :
+						if is_enemy(i,j) and is_soldier(i+1,j) :
 							kill_enemy(i,j)
 							py.time.delay(100)
 		if board_mode == 3 :
 			for j in range(0,7):
 				for i in range(0,8):
 					if is_board[i][j] == 1 and is_board[i][j+1] == 1 :
-						if is_solider(i,j) and is_enemy(i,j+1) :
-							kill_solider(i,j)
+						if is_soldier(i,j) and is_enemy(i,j+1) :
+							kill_soldier(i,j)
 							py.time.delay(100)
-						if is_enemy(i,j) and is_solider(i,j+1) :
+						if is_enemy(i,j) and is_soldier(i,j+1) :
 							kill_enemy(i,j)
 							py.time.delay(100)
 
@@ -328,18 +328,21 @@ def defeat():
 ##### -------------------- chang it to class -------------------- #####
 ##### -------------------- chang it to class -------------------- #####
 
-class chess() :
+class chess :
 
 	def __init__(self,x,y,camp) :
-		self.x = x
-		self.y = y
-		self.camp = camp
-		self.order = None
+		if is_board[x][y] == 0 :
+			self.x = x
+			self.y = y
+			self.camp = camp
+			self.order = None
+			is_board[x][y] = 1
+
 
 	def draw(self) :
 		if self.camp == 'obstacle' :
 			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
-		elif self.camp == 'solider' :
+		elif self.camp == 'soldier' :
 			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
 		elif self.camp == 'enemy' :
 			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
@@ -351,7 +354,7 @@ class chess() :
 
 	def down(self) :
 		if action and move :
-			if self.camp == 'solider' or self.camp == 'enemy' :
+			if self.camp == 'soldier' or self.camp == 'enemy' :
 				if board_mode == 0 :
 					if self.x < 7 and is_board[self.x+1][self.y] == 0 :
 						is_board[self.x][self.y] = 0
@@ -376,7 +379,7 @@ class chess() :
 	def kill(self,x,y) :
 		if self.x == x and self.y == y :
 			is_board[self.x][self.y] = 0
-			return kill
+			return 'kill'
 		return None
 
 	def check(self) :
