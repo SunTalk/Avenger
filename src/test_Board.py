@@ -1,9 +1,8 @@
 from Declaration import *
-from board import *
+# from board import *
 
 from interface import *
 
-game = interface()
 
 class testBoard():
 
@@ -81,3 +80,8 @@ class testBoard():
 					# start_move = True
 			if event.key == py.K_DOWN :
 				print('down')
+	def get_action(self):
+		return self.action
+
+	def get_mode(self):
+		return self.mode

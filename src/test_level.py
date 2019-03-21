@@ -1,10 +1,15 @@
 from Declaration import *
 from chess import *
-from board import *
+# from board import *
+from test_Board import *
+from interface import *
+
+test_b = testBoard()
+game = interface()
 
 obstacle_list = []
-soldier_list = []
-enemy_list = []
+soldier_list  = []
+enemy_list    = []
 
 obstacle_list.append(chess(A6_x,A6_y,const.OBSTACLE))
 obstacle_list.append(chess(B5_x,B5_y,const.OBSTACLE))
@@ -28,14 +33,15 @@ enemy_list.append(chess(A8_x,A8_y,const.ENEMY))
 enemy_list.append(chess(E5_x,E5_y,const.ENEMY))
 
 def test_level_run() :
+	#print(soldier_list)
 	for i in range(0,len(obstacle_list)) :
-		obstacle_list[i].draw()
-	for i in range(0,len(soldier_list)) :
-		soldier_list[i].draw()
-		soldier_list[i].check()
-		soldier_list[i].down()
+		obstacle_list[i].draw(test_b.board, game)
+	for i in range(0,len(soldier_list)):
+		soldier_list[i].draw(test_b.board, game)
+		soldier_list[i].check(test_b.get_mode())
+		soldier_list[i].down(test_b.get_mode())
 	for i in range(0,len(enemy_list)) :
-		enemy_list[i].draw()
-		enemy_list[i].check()
-		enemy_list[i].down()
+		enemy_list[i].draw(test_b.board, game)
+		enemy_list[i].check(test_b.get_mode())
+		enemy_list[i].down(test_b.get_mode())
 	# defeat_class(soldier_list,enemy_list)

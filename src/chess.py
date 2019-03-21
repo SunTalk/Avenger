@@ -1,5 +1,7 @@
 import const
-from board import *
+from block_center import *
+from Declaration import *
+# from board import *
 
 const.OBSTACLE = 1
 const.SOLDIER  = 2
@@ -14,6 +16,7 @@ class chess() :
 			self.camp = camp
 			self.order = None
 			self.move = False
+			# mode = 0
 			is_board[x][y] = camp
 
 	def get_move(self) :
@@ -32,47 +35,48 @@ class chess() :
 			return self.camp
 		return None
 	
-	def check(self) :
-		if board_mode == 0 :
+	def check(self, mode) :
+		if mode == 0 :
 			if self.x < 7 and is_board[self.x+1][self.y] == 0 :
 				self.move = True
 			else :
 				self.move = False
-		if board_mode == 1 :
+		if mode == 1 :
 			if self.y < 7 and is_board[self.x][self.y+1] == 0 :
 				self.move = True
 			else :
 				self.move = False
-		if board_mode == 2 :
+		if mode == 2 :
 			if self.x > 0 and is_board[self.x-1][self.y] == 0 :
 				self.move = True
 			else :
 				self.move = False
-		if board_mode == 3 :
+		if mode == 3 :
 			if self.y > 0 and is_board[self.x][self.y-1] == 0 :
 				self.move = True
 			else :
 				self.move = False
 
-	def down(self) :
+	def down(self, mode) :
+
 		if self.move :
 			if self.camp == const.SOLDIER or self.camp == const.ENEMY :
-				if board_mode == 0 :
+				if mode == 0 :
 					if self.x < 7 and is_board[self.x+1][self.y] == 0 :
 						is_board[self.x][self.y] = 0
 						is_board[self.x+1][self.y] = self.camp
 						self.x += 1
-				if board_mode == 1 :
+				if mode == 1 :
 					if self.y < 7 and is_board[self.x][self.y+1] == 0 :
 						is_board[self.x][self.y] = 0
 						is_board[self.x][self.y+1] = self.camp
 						self.y += 1
-				if board_mode == 2 :
+				if mode == 2 :
 					if self.x > 0 and is_board[self.x-1][self.y] == 0 :
 						is_board[self.x][self.y] = 0
 						is_board[self.x-1][self.y] = self.camp
 						self.x -= 1
-				if board_mode == 3 :
+				if mode == 3 :
 					if self.y > 0 and is_board[self.x][self.y-1] == 0 :
 						is_board[self.x][self.y] = 0
 						is_board[self.x][self.y-1] = self.camp
