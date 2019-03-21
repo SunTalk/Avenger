@@ -16,19 +16,20 @@ class chess() :
 			self.camp = camp
 			self.order = None
 			self.move = False
-			# mode = 0
+			self.life = True
 			is_board[x][y] = camp
 
 	def get_move(self) :
 		return self.move
 
 	def draw(self, board, class_interface) :
-		if self.camp == const.OBSTACLE :
-			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
-		elif self.camp == const.SOLDIER :
-			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
-		elif self.camp == const.ENEMY :
-			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
+		if self.life :
+			if self.camp == const.OBSTACLE :
+				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
+			elif self.camp == const.SOLDIER :
+				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
+			elif self.camp == const.ENEMY :
+				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
 
 	def whoami(self,x,y):
 		if self.x == x and self.y == y :
@@ -57,9 +58,9 @@ class chess() :
 			else :
 				self.move = False
 
-	def down(self, mode) :
+	def down(self, mode,action) :
 
-		if self.move :
+		if self.move and action :
 			if self.camp == const.SOLDIER or self.camp == const.ENEMY :
 				if mode == 0 :
 					if self.x < 7 and is_board[self.x+1][self.y] == 0 :
@@ -86,8 +87,7 @@ class chess() :
 	def kill(self,x,y) :
 		if self.x == x and self.y == y :
 			is_board[self.x][self.y] = 0
-			return 'kill'
-		return None
+			self.life = False
 
 ### end class chess
 
@@ -95,35 +95,43 @@ class chess() :
 # 	for i in range()
 
 
-def defeat_class(list_soldier,list_enemy):
-	if board_mode == 0 :
+def defeat_class(mode,list_soldier,list_enemy):
+	if mode == 0 :
 		for i in range(7,0,-1):
 			for j in range(0,8):
 				if is_board[i][j] == 2 and is_board[i-1][j] == 3 :
-					kill(i,j)
+					for k in range(0,len(list_soldier)) :
+						list_soldier[k].kill(i,j)
 				if is_board[i][j] == 3 and is_board[i-1][j] == 2 :
-					kill(i-1,j)
+					for k in range(0,len(list_enemy)) :
+						list_enemy[k].kill(i,j)
 
-	if board_mode == 1 :
+	if mode == 1 :
 		for j in range(7,0,-1):
 			for i in range(0,8):
 				if is_board[i][j] == 2 and is_board[i][j-1] == 3 :
-					kill(i,j)
+					for k in range(0,len(list_soldier)) :
+						list_soldier[k].kill(i,j)
 				if is_board[i][j] == 3 and is_board[i][j-1] == 2 :
-					kill(i,j-1)
+					for k in range(0,len(list_enemy)) :
+						list_enemy[k].kill(i,j)
 
-	if board_mode == 2 :
+	if mode == 2 :
 		for i in range(0,7):
 			for j in range(0,8):
 				if is_board[i][j] == 2 and is_board[i+1][j] == 3 :
-					kill(i,j)
+					for k in range(0,len(list_soldier)) :
+						list_soldier[k].kill(i,j)
 				if is_board[i][j] == 3 and is_board[i+1][j] == 2 :
-					kill(i+1,j)
+					for k in range(0,len(list_enemy)) :
+						list_enemy[k].kill(i,j)
 	
-	if board_mode == 3 :
+	if mode == 3 :
 		for j in range(0,7):
 			for i in range(0,8):
 				if is_board[i][j] == 2 and is_board[i][j+1] == 3 :
-					kill(i,j)
+					for k in range(0,len(list_soldier)) :
+						list_soldier[k].kill(i,j)
 				if is_board[i][j] == 3 and is_board[i][j+1] == 2 :
-					kill(i,j+1)
+					for k in range(0,len(list_enemy)) :
+						list_enemy[k].kill(i,j)

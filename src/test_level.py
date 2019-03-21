@@ -32,16 +32,25 @@ enemy_list.append(chess(A7_x,A7_y,const.ENEMY))
 enemy_list.append(chess(A8_x,A8_y,const.ENEMY))
 enemy_list.append(chess(E5_x,E5_y,const.ENEMY))
 
+test_b.build(game)
+
 def test_level_run() :
+
+	test_b.display(display)
+	test_b.build(game)
+	test_b.set_move_time()
+
 	#print(soldier_list)
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].draw(test_b.board, game)
 	for i in range(0,len(soldier_list)):
 		soldier_list[i].draw(test_b.board, game)
-		soldier_list[i].check(test_b.get_mode())
-		soldier_list[i].down(test_b.get_mode())
+		if test_b.get_start_move() :
+			soldier_list[i].check(test_b.get_mode())
+		soldier_list[i].down(test_b.get_mode(),test_b.get_action())
 	for i in range(0,len(enemy_list)) :
 		enemy_list[i].draw(test_b.board, game)
-		enemy_list[i].check(test_b.get_mode())
-		enemy_list[i].down(test_b.get_mode())
-	# defeat_class(soldier_list,enemy_list)
+		if test_b.get_start_move() :
+			enemy_list[i].check(test_b.get_mode())
+		enemy_list[i].down(test_b.get_mode(),test_b.get_action())
+	defeat_class(test_b.get_mode(),soldier_list,enemy_list)

@@ -9,14 +9,19 @@ class testBoard():
 	def __init__(self):
 		self.board 		  = py.Surface((600, 600))
 		self.action       = True
-		self.move         = False
+		self.move         = 0
 		self.angle        = 0
 		self.change_angle = 0
 		self.center_pos   = (400, 400)
 		self.mode         = 0
+		self.start_move   = False
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
+
+	def set_move_time(self) :
+		if self.move > 0 :
+			self.move -= 1
 
 	def blitRotate(self, surf, image, pos, originPos, angle):
 
@@ -61,27 +66,31 @@ class testBoard():
 	def event_handle(self, event):
 		if event.type == py.KEYDOWN:
 			if event.key == py.K_RIGHT:
-				if self.action == True: #and self.move == False :
+				if self.action == True and self.move == 0 :
 					self.action = False
-					#self.move = True
+					self.move = 60
 					self.change_angle = -90
 					self.mode += 1
 					self.mode = self.mode%4
 					print('right')
-					# start_move = True
+					self.start_move = True
 			if event.key == py.K_LEFT:
-				if self.action == True:# and self.move == False :
+				if self.action == True and self.move == 0 :
 					self.action = False
-					#self.move = True
+					self.move = 60
 					self.change_angle = 90
 					self.mode -= 1
 					self.mode = self.mode%4
 					print('left')
-					# start_move = True
+					self.start_move = True
 			if event.key == py.K_DOWN :
 				print('down')
+
 	def get_action(self):
 		return self.action
 
 	def get_mode(self):
 		return self.mode
+
+	def get_start_move(self) :
+		return self.start_move

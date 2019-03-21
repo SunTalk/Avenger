@@ -43,7 +43,7 @@ py.init()
 # test_r = chess(D3_x,D3_y, const.SOLDIER)
 
 
-test_b.build(game)
+# test_b.build(game)
 
 while const.GAME_LOOP:
 
@@ -54,13 +54,13 @@ while const.GAME_LOOP:
 		test_b.event_handle(event)
 
 	display.fill(white)
-	test_b.display(display)
+	# test_b.display(display)
 
 	# soldier_down()
 	# enemy_down()
 	# defeat()
 	# move_checker()
-	test_b.build(game)
+	# test_b.build(game)
 
 ## ----
 	
