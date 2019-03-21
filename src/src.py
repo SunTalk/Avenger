@@ -3,12 +3,16 @@ from soundHandler import SoundHandler
 from interface import *
 from Image import *
 
+soundHandler = SoundHandler()
+
 menu   = interface()
 info   = interface()
 game   = interface()
 finish = interface()
 
 Font = Font_EN
+
+music = False
 
 def init():
 
@@ -34,9 +38,24 @@ def init():
 	finish.loadUI(image.getImg(const.GAME_FINISH))
 
 	GAME_SATE = const.MENU
+	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear_screen():
 	display.fill(white)
+
+def loadMUSIC(name):
+
+	if music:
+		if soundHandler.isPlaying():
+			soundHandler.stop()
+
+		soundHandler.loadMUSIC(name)
+		py.time.delay(500)
+
+def play_music():
+	if music:
+		if not soundHandler.isPlaying():
+			soundHandler.play()
 
 def event_judge(class_object):
 	for event in py.event.get():
@@ -53,6 +72,8 @@ def run_menu():
 
 	global GAME_SATE
 
+	play_music()
+	
 	event_judge(menu)
 	update(menu)
 	if menu.start_is_press():
@@ -60,6 +81,7 @@ def run_menu():
 		GAME_SATE = const.GAME_PLAY
 		menu.clearFlag()
 		clear_screen()
+		loadMUSIC(const.MUSICNAME[const.STORY])
 
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
@@ -99,13 +121,12 @@ def run_game_play():
 
 	global GAME_SATE
 
+	play_music()
+
 	event_judge(finish)
 	update(game)
 	clear_screen()
 
-	py.time.delay(1000)
-
-	GAME_SATE = const.GAME_FINISH
 
 	pass
 
