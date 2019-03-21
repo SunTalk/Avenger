@@ -9,13 +9,13 @@ class chess() :
 		self.camp = camp
 		self.order = None
 
-	def draw(self) :
+	def draw(self, board, class_interface) :
 		if self.camp == 'obstacle' :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
 		elif self.camp == 'solider' :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
 		elif self.camp == 'enemy' :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
 
 	def whoami(self,x,y):
 		if self.x == x and self.y == y :

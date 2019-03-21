@@ -1,6 +1,7 @@
 from Declaration import *
 # from chess import *
-
+######## 可寫在interface
+## TODO ICEJJ
 def block(where,center_x,center_y,size,color):
 	py.draw.rect(where,color,[center_x-size/2,center_y-size/2,size,size])
 	py.draw.rect(where,black,[center_x-size/2,center_y-size/2,size,size],3)
@@ -11,6 +12,8 @@ def bound(where):
 	for i in (90,150,210,270,330,390,450,510):
 		for j in (90,150,210,270,330,390,450,510):
 			block(where,i,j,60,white)
+##########
+
 	# block(400,400,600,cyan_blue)
 	# block(400,400,480,white)
 

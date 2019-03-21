@@ -1,5 +1,9 @@
 from board import *
-# from chess import *
+from test_Board import *
+from chess import *
+from interface import *
+
+game = interface()
 
 py.init()
 
@@ -25,8 +29,9 @@ py.init()
 # add_enemy(E5_x,E5_y)
 
 test_r = chess(D3_x,D3_y,'solider')
+test_b = testBoard()
 
-board_build()
+test_b.build(game)
 
 while const.GAME_LOOP:
 
@@ -34,20 +39,20 @@ while const.GAME_LOOP:
 		if event.type == py.QUIT:
 			py.quit()
 			quit()
-		board_action(event)
+		test_b.event_handle(event)
 
 	display.fill(white)
-	board_display(display)
+	test_b.display(display)
 
 	# solider_down()
 	# enemy_down()
 	# defeat()
 	# move_checker()
-	board_build()
+	test_b.build(game)
 
 ## ----
 	
-	test_r.draw()
+	test_r.draw(test_b.board, game)
 	test_r.down()
 	test_r.check()
 
