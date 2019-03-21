@@ -4,6 +4,11 @@ from test_Board import *
 from chess import *
 from interface import *
 from Declaration import *
+# from test_Board import *
+# from chess import *
+# from interface import *
+
+# game = interface()
 
 py.init()
 
