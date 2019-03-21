@@ -19,13 +19,13 @@ class chess() :
 	def get_move(self) :
 		return self.move
 
-	def draw(self) :
+	def draw(self, board, class_interface) :
 		if self.camp == const.OBSTACLE :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
 		elif self.camp == const.SOLDIER :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
 		elif self.camp == const.ENEMY :
-			block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
 
 	def whoami(self,x,y):
 		if self.x == x and self.y == y :

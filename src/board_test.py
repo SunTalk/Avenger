@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 from test_level import *
+=======
+from board import *
+from test_Board import *
+from chess import *
+from interface import *
+
+game = interface()
+>>>>>>> 90b03967a98e96beadbc24db7925e5a74a2ea5d3
 
 py.init()
 
@@ -30,7 +39,10 @@ py.init()
 # chess_list.append(chess(D3_x,D3_y,'obstacle'))
 # chess_list.append(chess(D3_x,D3_y,'soldier'))
 
-board_build()
+# test_r = chess(D3_x,D3_y,'solider')
+# test_b = testBoard()
+
+# test_b.build(game)
 
 while const.GAME_LOOP:
 
@@ -38,23 +50,28 @@ while const.GAME_LOOP:
 		if event.type == py.QUIT:
 			py.quit()
 			quit()
-		board_action(event)
+		test_b.event_handle(event)
 
 	display.fill(white)
-	board_display(display)
+	test_b.display(display)
 
 	# soldier_down()
 	# enemy_down()
 	# defeat()
 	# move_checker()
-	board_build()
+	test_b.build(game)
 
 ## ----
 	
+
 	# for i in range(0,len(chess_list)) :
 	# 	chess_list[i].draw()
 	# 	chess_list[i].down()
 	# 	chess_list[i].check()
+
+	# test_r.draw(test_b.board, game)
+	# test_r.down()
+	# test_r.check()
 
 	test_level_run()
 

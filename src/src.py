@@ -101,6 +101,7 @@ def run_game_play():
 
 	event_judge(finish)
 	update(game)
+	clear_screen()
 
 	py.time.delay(1000)
 
@@ -120,6 +121,7 @@ def run_game_finish():
 
 	event_judge(finish)
 	update(finish)
+	clear_screen()
 
 	pass
 

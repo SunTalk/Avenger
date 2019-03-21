@@ -1,4 +1,5 @@
 from Declaration import *
+from block_center import *
 
 class interface():
 
@@ -28,6 +29,17 @@ class interface():
 		self.custom_button_font_size = list()
 		self.custom_text_color       = list()
 		self.press_custom            = list()
+
+	def block(self, surface, center_x, center_y, size, color):
+		py.draw.rect(surface,color,[center_x-size/2,center_y-size/2,size,size])
+		py.draw.rect(surface,black,[center_x-size/2,center_y-size/2,size,size],3)
+
+	def bound(self, surface):
+		for i in range(0,36):
+			self.block(surface,boundary_x[i],boundary_y[i],60,cyan_blue)
+		for i in (90,150,210,270,330,390,450,510):
+			for j in (90,150,210,270,330,390,450,510):
+				self.block(surface,i,j,60,white)
 
 	def loadUI(self, img):
 		self.backgroundImg = img
