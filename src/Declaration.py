@@ -5,6 +5,7 @@ import const
 import numpy as np
 import os
 from block_center import *
+from Image import *
 # from multipledispatch import dispatch
 
 Font_EN = 'LucidaBrightDemiBold.ttf'
@@ -13,6 +14,8 @@ Font_EN = 'LucidaBrightDemiBold.ttf'
 
 const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
+
+const.UINAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', 'GAME_PLAY', None, 'GAME_FINISH']
 
 const.GAME_NONE   = 0
 const.MENU        = 1
@@ -71,6 +74,8 @@ const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 
 ##
 
+image = Image()
+
 ## rgb
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -94,5 +99,18 @@ clock = py.time.Clock()
 
 ##
 GAME_SATE = const.GAME_NONE
+##
+
+
+## function
+
+def load_built_in_UI():
+
+	for i in range(const.MENU, const.OTHER):
+		if(i == const.GAME_PAUSE):
+			image.loadUI(const.UIFILE, None)
+			continue
+		image.loadUI(const.UIFILE, const.UINAME[i]+'.jpg')
+
 ##
 

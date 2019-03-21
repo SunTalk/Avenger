@@ -233,7 +233,7 @@ class interface():
 			self.back_button_text      = "Quit"
 			self.back_button_font      = const.MENU_QUIT_BUTTON_FONT
 			self.back_button_font_size = const.MENU_QUIT_BUTTON_SIZE
-			self.back_type            = 'back'
+			self.back_type             = 'back'
 
 		elif back_type == const.INFO:
 			print("back_type = INFO")

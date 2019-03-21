@@ -3,9 +3,10 @@ from soundHandler import SoundHandler
 from interface import *
 from Image import *
 
-image = Image()
-menu  = interface()
-info  = interface()
+menu   = interface()
+info   = interface()
+game   = interface()
+finish = interface()
 
 Font = Font_EN
 
@@ -13,8 +14,11 @@ def init():
 
 	global GAME_SATE
 
-	image.loadUI(const.UIFILE, "11.png")
-	menu.loadUI(image.getImg())
+	load_built_in_UI()
+
+	menu.loadUI(image.getImg(const.MENU))
+	info.loadUI(image.getImg(const.INFO))
+
 	menu.set_button(const.MENU)
 	menu.set_custom_button(const.MENU_START_BUTTON_X,
 						   const.MENU_START_BUTTON_Y+2*const.MENU_START_BUTTON_HEIGHT,
@@ -24,11 +28,10 @@ def init():
 						   "INFO"
 						   )
 
-	image.loadUI(const.UIFILE, "INFO.jpg")
-	info.loadUI(image.getImg())
 	info.set_button(const.INFO)
-	
 
+	game.loadUI(image.getImg(const.GAME_PLAY))
+	finish.loadUI(image.getImg(const.GAME_FINISH))
 
 	GAME_SATE = const.MENU
 
@@ -52,18 +55,19 @@ def run_menu():
 
 	event_judge(menu)
 	update(menu)
-	#print("run menu")
 	if menu.start_is_press():
 		print("play game")
+		GAME_SATE = const.GAME_PLAY
 		menu.clearFlag()
 		clear_screen()
+
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
+			print('INFO')
 			GAME_SATE = const.INFO
-		elif menu.get_custom_button_name('hihi'):
-			print("hihi")
 		menu.clearFlag()
 		clear_screen()
+
 	elif menu.back_is_press():
 		exit()
 
@@ -73,25 +77,50 @@ def run_info():
 
 	event_judge(info)
 	update(info)
-	#print("run info")
+	
 	if info.back_is_press():
 		GAME_SATE = const.MENU
 		info.clearFlag()
 		clear_screen()
 
 def run_plot():
+
+	global GAME_SATE
+
 	pass
 
 def run_story():
+
+	global GAME_SATE
+
 	pass
 
 def run_game_play():
+
+	global GAME_SATE
+
+	event_judge(finish)
+	update(game)
+
+	py.time.delay(1000)
+
+	GAME_SATE = const.GAME_FINISH
+
 	pass
 
 def run_game_pause():
+
+	global GAME_SATE
+
 	pass
 
 def run_game_finish():
+
+	global GAME_SATE
+
+	event_judge(finish)
+	update(finish)
+
 	pass
 
 
@@ -101,6 +130,16 @@ switch = {
 		run_menu,
 	const.INFO:
 		run_info,
+	const.PLOT:
+		run_plot,
+	const.STORY:
+		run_story,
+	const.GAME_PLAY:
+		run_game_play,
+	const.GAME_PAUSE:
+		run_game_pause,
+	const.GAME_FINISH:
+		run_game_finish
 }
 
 def game_loop():
