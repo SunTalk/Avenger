@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 from test_level import *
-=======
-from board import *
-from test_Board import *
-from chess import *
-from interface import *
+# from board import *
+# from test_Board import *
+# from chess import *
+# from interface import *
 
-game = interface()
->>>>>>> 90b03967a98e96beadbc24db7925e5a74a2ea5d3
+# game = interface()
 
 py.init()
 
