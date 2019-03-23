@@ -15,6 +15,7 @@ class testBoard():
 		self.center_pos   = (400, 400)
 		self.mode         = 0
 		self.start_move   = False
+		self.spin         = False
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -54,11 +55,14 @@ class testBoard():
 		if self.change_angle > 0:
 			self.angle        += 2
 			self.change_angle -=2
+			self.spin = True
 		if self.change_angle < 0:
 			self.angle        -=2
 			self.change_angle +=2
+			self.spin = True
 		if self.change_angle == 0:
 			self.action = True
+			self.spin = False
 		self.angle %= 360
 
 		self.blitRotate(surface, self.board, self.center_pos, (300,300), self.angle)
@@ -72,7 +76,7 @@ class testBoard():
 					self.change_angle = -90
 					self.mode += 1
 					self.mode = self.mode%4
-					print('right')
+					print('right',self.mode)
 					self.start_move = True
 			if event.key == py.K_LEFT:
 				if self.action == True and self.move == 0 :
@@ -81,7 +85,7 @@ class testBoard():
 					self.change_angle = 90
 					self.mode -= 1
 					self.mode = self.mode%4
-					print('left')
+					print('left',self.mode)
 					self.start_move = True
 			if event.key == py.K_DOWN :
 				print('down')
@@ -94,3 +98,6 @@ class testBoard():
 
 	def get_start_move(self) :
 		return self.start_move
+
+	def  get_spin(self):
+		return self.spin

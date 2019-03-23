@@ -53,4 +53,5 @@ def test_level_run() :
 		if test_b.get_start_move() :
 			enemy_list[i].check(test_b.get_mode())
 		enemy_list[i].down(test_b.get_mode(),test_b.get_action())
-	defeat_class(test_b.get_mode(),soldier_list,enemy_list)
+		
+	obstacle_list[0].defeat(test_b.get_spin(),test_b.get_mode(),soldier_list,enemy_list)
