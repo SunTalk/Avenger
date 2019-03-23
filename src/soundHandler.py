@@ -1,13 +1,16 @@
 import pygame as py
 import time
+from Declaration import *
 
 class SoundHandler():
 
-	def __init__(self, path, file, name):
+	def __init__(self):
 		py.mixer.init()
 		py.time.delay(1000)
-		py.mixer.music.load(path+file+name)
+		py.set_volume(8)
 
+	def loadMUSIC(self, name):
+		py.mixer.music.load(const.PATH+const.MUSICFILE+name+".mp3")
 
 	def play(self):
 		print('play')
