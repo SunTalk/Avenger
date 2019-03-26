@@ -78,14 +78,14 @@ const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 image = Image()
 
 ## rgb
-black = (0, 0, 0)
-white = (255, 255, 255)
-red   = (255, 0, 0)
+black     = (0, 0, 0)
+white     = (255, 255, 255)
+red       = (255, 0, 0)
 orangered = (255,69,0)
-yellow = (255,255,0)
-green = (0, 255, 0)
-blue = (0,0,255)
-purple = (128,0,128)
+yellow    = (255,255,0)
+green     = (0, 255, 0)
+blue      = (0,0,255)
+purple    = (128,0,128)
 cyan_blue = (0, 255, 255)
 gray      = (204, 204, 204)
 ##

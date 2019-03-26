@@ -46,6 +46,7 @@ def test_level_run() :
 	test_b.build(game)
 	test_b.set_move_time()
 
+
 	#print(soldier_list)
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].draw(test_b.board, game)

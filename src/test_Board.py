@@ -53,16 +53,16 @@ class testBoard():
 
 	def display(self, surface):
 		if self.change_angle > 0:
-			self.angle        += 2
-			self.change_angle -=2
-			self.spin = True
+			self.angle         += 2
+			self.change_angle  -=2
+			self.spin           = True
 		if self.change_angle < 0:
-			self.angle        -=2
-			self.change_angle +=2
-			self.spin = True
+			self.angle         -=2
+			self.change_angle  +=2
+			self.spin           = True
 		if self.change_angle == 0:
 			self.action = True
-			self.spin = False
+			self.spin   = False
 		self.angle %= 360
 
 		self.blitRotate(surface, self.board, self.center_pos, (300,300), self.angle)
@@ -71,22 +71,22 @@ class testBoard():
 		if event.type == py.KEYDOWN:
 			if event.key == py.K_RIGHT:
 				if self.action == True and self.move == 0 :
-					self.action = False
-					self.move = 60
+					self.action       = False
+					self.move         = 60
 					self.change_angle = -90
-					self.mode += 1
-					self.mode = self.mode%4
+					self.mode        += 1
+					self.mode         = self.mode%4
+					self.start_move   = True
 					print('right',self.mode)
-					self.start_move = True
 			if event.key == py.K_LEFT:
 				if self.action == True and self.move == 0 :
-					self.action = False
-					self.move = 60
+					self.action       = False
+					self.move         = 60
 					self.change_angle = 90
-					self.mode -= 1
-					self.mode = self.mode%4
+					self.mode        -= 1
+					self.mode         = self.mode%4
+					self.start_move   = True
 					print('left',self.mode)
-					self.start_move = True
 			if event.key == py.K_DOWN :
 				print('down')
 

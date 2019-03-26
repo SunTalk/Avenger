@@ -2,9 +2,9 @@ import const
 from block_center import *
 from Declaration import *
 
-const.OBSTACLE = 1
-const.SOLDIER  = 2
-const.ENEMY    = 3
+const.OBSTACLE  = 1
+const.SOLDIER   = 2
+const.ENEMY     = 3
 
 const.SERVANT   = 1
 const.COMMANDER = 2
@@ -14,13 +14,13 @@ class chess() :
 
 	def __init__(self,x,y,camp,rank=0) :
 		if is_board[x][y] == 0 :
-			self.x = x
-			self.y = y
-			self.camp = camp
-			self.rank = rank
-			self.order = None
-			self.move = False
-			self.life = True
+			self.x         = x
+			self.y         = y
+			self.camp      = camp
+			self.rank      = rank
+			self.order     = None
+			self.move      = False
+			self.life      = True
 			is_board[x][y] = camp
 
 	def get_move(self) :
@@ -30,19 +30,9 @@ class chess() :
 		if self.camp == const.OBSTACLE :
 			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
 		elif self.camp == const.SOLDIER :
-			if self.rank == const.KING :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
-			if self.rank == const.COMMANDER :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
-			if self.rank == const.SERVANT :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
 		elif self.camp == const.ENEMY :
-			if self.rank == const.KING :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
-			if self.rank == const.COMMANDER :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
-			if self.rank == const.SERVANT :
-				class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
+			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
 
 		textFont       = py.font.Font(const.PATH+const.FONTFILE+"Regular.ttf", 25)
 		textSurface    = textFont.render(str(self.rank), True, black)
