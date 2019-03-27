@@ -91,7 +91,7 @@ gray      = (204, 204, 204)
 ##
 
 ## display
-
+py.init()
 display = py.display.set_mode((const.WIDTH, const.HEIGHT))
 py.display.set_caption('Avenger')
 

@@ -32,6 +32,7 @@ class Image():
 			print("img is not exist")
 
 	def getImg(self, index):
+		print(index)
 		return self.img[index]
 
 	def getName(self, index):

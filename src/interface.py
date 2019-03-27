@@ -1,6 +1,5 @@
 from Declaration import *
 from block_center import *
-
 class interface():
 
 	def __init__(self):
@@ -80,14 +79,14 @@ class interface():
 	def draw_bt(self, color, x, y, width, height):
 		py.draw.rect(display, color, [x, y, width, height])
 
-	def writeMSG(self):
-		display.blit(self.textSurface, self.textRec)
+	# def writeMSG(self):
+	# 	display.blit(self.textSurface, self.textRec)
 
-	def writeText(self, text, color, center_x, center_y, font, size):
-		self.textFont       = py.font.Font(const.PATH+const.FONTFILE+font, size)
-		self.textSurface    = self.textFont.render(text, True, color)
-		self.textRec        = self.textSurface.get_rect()
-		self.textRec.center = (center_x, center_y)
+	# def writeText(self, text, center_x, center_y, font, color=(255, 0, 0),size=50):
+	# 	self.textFont       = py.font.Font(const.PATH+const.FONTFILE+font, size)
+	# 	self.textSurface    = self.textFont.render(text, True, color)
+	# 	self.textRec        = self.textSurface.get_rect()
+	# 	self.textRec.center = (center_x, center_y)
 
 	def write(self, color=(0, 0, 0)):
 		if self.start_type == 'start':
@@ -104,6 +103,7 @@ class interface():
 				display.blit(self.textSurface_ct, self.textRec_ct)
 
 	def message(self, text, font, size, color=(0,0,0), index=0):
+
 		self.textFont = py.font.Font(const.PATH+const.FONTFILE+font, size)
 		
 		if self.start_type == 'start':

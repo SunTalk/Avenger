@@ -7,7 +7,7 @@ class SoundHandler():
 	def __init__(self):
 		py.mixer.init()
 		py.time.delay(1000)
-		py.set_volume(8)
+		py.mixer.music.set_volume(8)
 
 	def loadMUSIC(self, name):
 		py.mixer.music.load(const.PATH+const.MUSICFILE+name+".mp3")
