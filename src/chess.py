@@ -35,11 +35,17 @@ class chess() :
 			self.move      = False
 			self.life      = True
 			is_board[x][y] = camp
+		else :
+			self.life      = False
 
 	def get_move(self) :
+		if self.life == False :
+			return False
 		return self.move
 
 	def draw(self, board, class_interface) :
+		if self.life == False :
+			return
 		if self.camp == const.OBSTACLE :
 			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
 		elif self.camp == const.SOLDIER :
@@ -70,6 +76,8 @@ class chess() :
 		return None
 	
 	def check(self, mode) :
+		if self.life == False :
+			return
 		if mode == 0 :
 			if self.x < 7 and is_board[self.x+1][self.y] == 0 :
 				self.move = True
@@ -92,7 +100,8 @@ class chess() :
 				self.move = False
 
 	def down(self, mode,action) :
-
+		if self.life == False :
+			return
 		if self.move and action :
 			if self.camp == const.SOLDIER or self.camp == const.ENEMY :
 				if mode == 0 :
@@ -118,11 +127,15 @@ class chess() :
 
 
 	def get_rank(self,x,y) :
+		if self.life == False :
+			return 0
 		if self.x == x and self.y == y :
 			return self.rank
 		return 0
 
 	def kill(self,x,y,rank) :
+		if self.life == False :
+			return False
 		if self.x == x and self.y == y and rank >= self.rank :
 			is_board[self.x][self.y] = 0
 			print('kill: ',x,y,is_board[x][y],self.camp)
@@ -130,9 +143,13 @@ class chess() :
 		return False
 
 	def kill_myself(self) :
+		if self.life == False :
+			return
 		is_board[self.x][self.y] = 0
 
 	def defeat(self,spin,mode,list_soldier,list_enemy) : # let OBSTACLE be a base
+		if self.life == False :
+			return
 		rank = 0
 		if spin :
 			return

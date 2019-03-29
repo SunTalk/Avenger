@@ -15,6 +15,7 @@ class testBoard():
 		self.spin         = False
 		self.reset        = False
 		self.player       = const.ONE_PLAYER
+		self.count        = 0
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -99,7 +100,8 @@ class testBoard():
 					self.mode         = self.mode%4
 					self.start_move   = True
 					self.player       = const.TWO_PLAYER
-					print('right',self.mode)
+					self.count       += 1
+					print('right',self.mode,'player',const.ONE_PLAYER)
 			if event.key == py.K_LEFT and self.player == const.ONE_PLAYER :
 				if self.action == True and self.move == 0 :
 					self.action       = False
@@ -109,7 +111,8 @@ class testBoard():
 					self.mode         = self.mode%4
 					self.start_move   = True
 					self.player       = const.TWO_PLAYER 
-					print('left',self.mode)
+					self.count       += 1
+					print('left',self.mode,'player',const.ONE_PLAYER)
 			if event.key == py.K_d and self.player == const.TWO_PLAYER :
 				if self.action == True and self.move == 0 :
 					self.action       = False
@@ -119,7 +122,8 @@ class testBoard():
 					self.mode         = self.mode%4
 					self.start_move   = True
 					self.player       = const.ONE_PLAYER
-					print('right',self.mode)
+					self.count       += 1
+					print('right',self.mode,'player',const.TWO_PLAYER)
 			if event.key == py.K_a and self.player == const.TWO_PLAYER :
 				if self.action == True and self.move == 0 :
 					self.action       = False
@@ -129,9 +133,16 @@ class testBoard():
 					self.mode         = self.mode%4
 					self.start_move   = True
 					self.player       = const.ONE_PLAYER 
-					print('left',self.mode)
+					self.count       += 1
+					print('left',self.mode,'player',const.TWO_PLAYER)
 			if event.key == py.K_SPACE :
 				self.reset = True
+
+	def random_count(self) :
+		if self.count == 5 :
+			self.count = 0
+			return True
+		return False
 
 	def get_action(self):
 		return self.action
