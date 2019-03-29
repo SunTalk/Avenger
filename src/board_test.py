@@ -41,7 +41,7 @@ while const.GAME_LOOP:
 
 	# test_level_run()
 	# level_one_run()
-	level_two_run()
+	# level_two_run()
 	# level_three_run()
 
 	py.display.update()
