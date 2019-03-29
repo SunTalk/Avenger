@@ -2,11 +2,17 @@ from Declaration import *
 from soundHandler import SoundHandler
 from interface import *
 from Image import *
+from test_level import *
+from level_one import *
+from level_two import *
+from level_three import *
+from level_double import *
 
 soundHandler = SoundHandler()
 
 menu   = interface()
 info   = interface()
+plot   = interface()
 game   = interface()
 finish = interface()
 
@@ -34,11 +40,18 @@ def init():
 
 	info.set_button(const.INFO)
 
+	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP")
+
 	game.loadUI(image.getImg(const.GAME_PLAY))
 	finish.loadUI(image.getImg(const.GAME_FINISH))
+	plot.loadUI(None)
 
 	GAME_SATE = const.MENU
 	loadMUSIC(const.MUSICNAME[const.MENU])
+
+def clear(class_object):
+	clear_screen()
+	class_object.clearFlag()
 
 def clear_screen():
 	display.fill(white)
@@ -64,9 +77,28 @@ def event_judge(class_object):
 			quit()
 		class_object.event_handle(event)
 
+def event_judge_game_play(class_object, level_board):
+	for event in py.event.get():
+		if event.type == py.QUIT:
+			py.quit()
+			quit()
+		class_object.event_handle(event)
+		level_board.event_handle(event)
+
 def update(class_object):
 	class_object.update()
+
+	if GAME_SATE == const.GAME_PLAY:
+		if PLAYING_STATE == const.LEVEL_ONE:
+			print("play level one")
+			level_one_run()
+		elif PLAYING_STATE == const.LEVEL_TWO:
+			level_two_run()
+		elif PLAYING_STATE == const.LEVEL_THREE:
+			level_three_run()
+
 	py.display.update()
+	clock.tick(fps)
 
 def run_menu():
 
@@ -78,17 +110,15 @@ def run_menu():
 	update(menu)
 	if menu.start_is_press():
 		print("play game")
-		GAME_SATE = const.GAME_PLAY
-		menu.clearFlag()
-		clear_screen()
+		GAME_SATE = const.PLOT
+		clear(menu)
 		loadMUSIC(const.MUSICNAME[const.STORY])
 
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
 			print('INFO')
 			GAME_SATE = const.INFO
-		menu.clearFlag()
-		clear_screen()
+		clear(menu)
 
 	elif menu.back_is_press():
 		exit()
@@ -102,12 +132,27 @@ def run_info():
 	
 	if info.back_is_press():
 		GAME_SATE = const.MENU
-		info.clearFlag()
-		clear_screen()
+		clear(info)
 
 def run_plot():
 
 	global GAME_SATE
+	global PLAYING_STATE
+
+	event_judge(plot)
+	update(plot)
+
+	if plot.custom_is_press():
+		if plot.get_custom_button_name('SKIP'):
+			print('SKIP')
+			GAME_SATE     = const.GAME_PLAY
+			PLAYING_STATE = const.LEVEL_ONE
+			clear(plot)
+			level_one_set()
+
+	#while story is playing
+	#if story is finish
+		#
 
 	pass
 
@@ -123,10 +168,10 @@ def run_game_play():
 
 	play_music()
 
-	event_judge(finish)
-	update(game)
-	clear_screen()
+	while 1:
+		event_judge_game_play(game, level_one_board)
 
+		update(game)
 
 	pass
 

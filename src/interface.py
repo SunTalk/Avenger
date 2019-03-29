@@ -13,6 +13,7 @@ class interface():
 		self.press_back   = False
 		self.init_custom_button()
 		self.custom_index = 0
+		self.draw_white   = False
 		
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -41,8 +42,11 @@ class interface():
 				self.block(surface,i,j,60,white)
 
 	def loadUI(self, img):
-		self.backgroundImg = img
-		print("img set")
+		if img == None:
+			self.draw_white = True
+		else:
+			self.backgroundImg = img
+			print("img set")
 
 	def update(self):
 		self.draw()
@@ -54,7 +58,10 @@ class interface():
 		self.draw_button()
 
 	def draw(self):
-		display.blit(self.backgroundImg, (0, 0))
+		if not self.draw_white:
+			display.blit(self.backgroundImg, (0, 0))
+		else:
+			display.fill(white)
 
 	def draw_button(self):
 		if self.start_type != None:

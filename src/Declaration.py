@@ -28,6 +28,11 @@ const.GAME_PAUSE  = 6
 const.GAME_FINISH = 7
 const.OTHER       = 8
 
+const.LEVEL_NONE  = 0
+const.LEVEL_ONE   = 1
+const.LEVEL_TWO   = 2
+const.LEVEL_THREE = 3
+
 const.PATH       = os.getcwd()
 const.MUSICFILE  = '\\data\\music\\'
 const.UIFILE     = '\\data\\UI\\'
@@ -108,7 +113,9 @@ clock = py.time.Clock()
 
 
 ##
-GAME_SATE = const.GAME_NONE
+GAME_SATE     = const.GAME_NONE
+PLAYING_STATE = const.LEVEL_NONE
+fps = 60
 ##
 
 
