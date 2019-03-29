@@ -4,7 +4,7 @@ from interface import *
 class testBoard():
 
 	def __init__(self):
-		self.board 		  = py.Surface((600, 600))
+		self.board 		  = py.Surface((600, 600)).convert_alpha()
 		self.action       = True
 		self.move         = 0
 		self.angle        = 0
@@ -14,6 +14,7 @@ class testBoard():
 		self.start_move   = False
 		self.spin         = False
 		self.reset        = False
+		self.player       = const.ONE_PLAYER
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -85,8 +86,50 @@ class testBoard():
 					self.mode         = self.mode%4
 					self.start_move   = True
 					print('left',self.mode)
-			if event.key == py.K_DOWN :
-				print('down')
+			if event.key == py.K_SPACE :
+				self.reset = True
+	def event_handle_two_player_mode(self, event) :
+		if event.type == py.KEYDOWN:
+			if event.key == py.K_RIGHT and self.player == const.ONE_PLAYER :
+				if self.action == True and self.move == 0 :
+					self.action       = False
+					self.move         = 60
+					self.change_angle = -90
+					self.mode        += 1
+					self.mode         = self.mode%4
+					self.start_move   = True
+					self.player       = const.TWO_PLAYER
+					print('right',self.mode)
+			if event.key == py.K_LEFT and self.player == const.ONE_PLAYER :
+				if self.action == True and self.move == 0 :
+					self.action       = False
+					self.move         = 60
+					self.change_angle = 90
+					self.mode        -= 1
+					self.mode         = self.mode%4
+					self.start_move   = True
+					self.player       = const.TWO_PLAYER 
+					print('left',self.mode)
+			if event.key == py.K_d and self.player == const.TWO_PLAYER :
+				if self.action == True and self.move == 0 :
+					self.action       = False
+					self.move         = 60
+					self.change_angle = -90
+					self.mode        += 1
+					self.mode         = self.mode%4
+					self.start_move   = True
+					self.player       = const.ONE_PLAYER
+					print('right',self.mode)
+			if event.key == py.K_a and self.player == const.TWO_PLAYER :
+				if self.action == True and self.move == 0 :
+					self.action       = False
+					self.move         = 60
+					self.change_angle = 90
+					self.mode        -= 1
+					self.mode         = self.mode%4
+					self.start_move   = True
+					self.player       = const.ONE_PLAYER 
+					print('left',self.mode)
 			if event.key == py.K_SPACE :
 				self.reset = True
 
@@ -118,5 +161,6 @@ class testBoard():
 		self.start_move   = False
 		self.spin         = False
 		self.reset        = False
+		self.player       = const.ONE_PLAYER
 
 		

@@ -71,6 +71,9 @@ const.GAME_PAUSE_LEFT_BUTTON_HEIGHT     = const.HEIGHT*0.1
 const.GAME_PAUSE_LEFT_BUTTON_FONT       = Font_EN
 const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 
+const.ONE_PLAYER = 1
+const.TWO_PLAYER = 2
+
 ###
 obstacle_list = []
 soldier_list  = []
