@@ -10,6 +10,19 @@ const.SERVANT   = 1
 const.COMMANDER = 2
 const.KING      = 3
 
+chess_image = Image()
+def load_chess():
+	chess_image.loadUI(const.UIFILE,'soldier_servant.jpg')
+	chess_image.loadUI(const.UIFILE,'soldier_commander.jpg')
+	chess_image.loadUI(const.UIFILE,'soldier_king.jpg')
+	chess_image.loadUI(const.UIFILE,'enemy_servant.jpg')
+	chess_image.loadUI(const.UIFILE,'enemy_commander.jpg')
+	chess_image.loadUI(const.UIFILE,'enemy_king.jpg')
+	for i in range(1,7):
+		chess_image.resize(60,60,i)
+
+load_chess()
+
 class chess() :
 
 	def __init__(self,x,y,camp,rank=0) :
@@ -30,15 +43,25 @@ class chess() :
 		if self.camp == const.OBSTACLE :
 			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,cyan_blue)
 		elif self.camp == const.SOLDIER :
-			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,red)
+			if self.rank == const.SERVANT :
+				chess_image.PrintImg(board,1,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
+			if self.rank == const.COMMANDER :
+				chess_image.PrintImg(board,2,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
+			if self.rank == const.KING :
+				chess_image.PrintImg(board,3,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
 		elif self.camp == const.ENEMY :
-			class_interface.block(board,board_x[self.x][self.y],board_y[self.x][self.y],60,green)
+			if self.rank == const.SERVANT :
+				chess_image.PrintImg(board,4,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
+			if self.rank == const.COMMANDER :
+				chess_image.PrintImg(board,5,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
+			if self.rank == const.KING :
+				chess_image.PrintImg(board,6,board_x[self.x][self.y]-30,board_y[self.x][self.y]-30)
 
-		textFont       = py.font.Font(const.PATH+const.FONTFILE+"Regular.ttf", 25)
-		textSurface    = textFont.render(str(self.rank), True, black)
-		textRec        = textSurface.get_rect()
-		textRec.center = (board_x[self.x][self.y],board_y[self.x][self.y])
-		board.blit(textSurface, textRec)
+		# textFont       = py.font.Font(const.PATH+const.FONTFILE+"Regular.ttf", 25)
+		# textSurface    = textFont.render(str(self.rank), True, black)
+		# textRec        = textSurface.get_rect()
+		# textRec.center = (board_x[self.x][self.y],board_y[self.x][self.y])
+		# board.blit(textSurface, textRec)
 
 
 	def whoami(self,x,y):
@@ -105,6 +128,9 @@ class chess() :
 			print('kill: ',x,y,is_board[x][y],self.camp)
 			return True
 		return False
+
+	def kill_myself(self) :
+		is_board[self.x][self.y] = 0
 
 	def defeat(self,spin,mode,list_soldier,list_enemy) : # let OBSTACLE be a base
 		rank = 0

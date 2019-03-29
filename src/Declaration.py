@@ -72,7 +72,9 @@ const.GAME_PAUSE_LEFT_BUTTON_FONT       = Font_EN
 const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 
 ###
-
+obstacle_list = []
+soldier_list  = []
+enemy_list    = []
 ##
 
 image = Image()

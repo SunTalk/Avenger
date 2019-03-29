@@ -20,7 +20,7 @@ class Image():
 
 	def resize(self, width, height, index):
 		if self.img[index] != None:
-			self.img[index] = py.image.scale(self.img[index], (width, height))
+			self.img[index] = py.transform.scale(self.img[index], (width, height))
 		else:
 			print("img is not exist")
 
@@ -38,5 +38,7 @@ class Image():
 	def getName(self, index):
 		return self.name[index]
 
+	def PrintImg(self, surface,index,x,y):
+		surface.blit(self.img[index], (x, y));
 
 

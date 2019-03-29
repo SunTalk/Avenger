@@ -1,8 +1,5 @@
 from Declaration import *
-# from board import *
-
 from interface import *
-
 
 class testBoard():
 
@@ -16,6 +13,7 @@ class testBoard():
 		self.mode         = 0
 		self.start_move   = False
 		self.spin         = False
+		self.reset        = False
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -89,6 +87,8 @@ class testBoard():
 					print('left',self.mode)
 			if event.key == py.K_DOWN :
 				print('down')
+			if event.key == py.K_SPACE :
+				self.reset = True
 
 	def get_action(self):
 		return self.action
@@ -99,5 +99,24 @@ class testBoard():
 	def get_start_move(self) :
 		return self.start_move
 
-	def  get_spin(self):
+	def get_spin(self):
 		return self.spin
+
+	def get_reset(self):
+		if self.reset == True :
+			self.reset = False
+			return True
+		return False
+
+	def for_reset(self):
+		self.action       = True
+		self.move         = 0
+		self.angle        = 0
+		self.change_angle = 0
+		self.center_pos   = (400, 400)
+		self.mode         = 0
+		self.start_move   = False
+		self.spin         = False
+		self.reset        = False
+
+		
