@@ -1,4 +1,5 @@
 from Declaration import *
+from Function_declare import *
 from soundHandler import SoundHandler
 from interface import *
 from Image import *
@@ -7,8 +8,11 @@ from level_one import *
 from level_two import *
 from level_three import *
 from level_double import *
+from KeyHandler import *
+from PlotDisplay import *
 
 soundHandler = SoundHandler()
+plotDisplay  = PlotDisplay()
 
 menu   = interface()
 info   = interface()
@@ -22,7 +26,9 @@ music = False
 
 def init():
 
-	global GAME_SATE
+	global GAME_STATE
+	global CHAPTER
+	global ACT
 
 	load_built_in_UI()
 
@@ -46,7 +52,9 @@ def init():
 	finish.loadUI(image.getImg(const.GAME_FINISH))
 	plot.loadUI(None)
 
-	GAME_SATE = const.MENU
+	GAME_STATE = const.MENU
+	CHAPTER   = const.CHAPTER_1
+	ACT       = const.ACT_1
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object):
@@ -76,6 +84,7 @@ def event_judge(class_object):
 			py.quit()
 			quit()
 		class_object.event_handle(event)
+		keyHandler.setKey(event)
 
 def event_judge_game_play(class_object, level_board):
 	for event in py.event.get():
@@ -88,9 +97,8 @@ def event_judge_game_play(class_object, level_board):
 def update(class_object):
 	class_object.update()
 
-	if GAME_SATE == const.GAME_PLAY:
+	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
-			print("play level one")
 			level_one_run()
 		elif PLAYING_STATE == const.LEVEL_TWO:
 			level_two_run()
@@ -102,7 +110,9 @@ def update(class_object):
 
 def run_menu():
 
-	global GAME_SATE
+	global GAME_STATE
+	global CHAPTER
+	global ACT
 
 	play_music()
 	
@@ -110,14 +120,17 @@ def run_menu():
 	update(menu)
 	if menu.start_is_press():
 		print("play game")
-		GAME_SATE = const.PLOT
+		GAME_STATE = const.PLOT
+		# CHAPTER   = const.CHAPTER_1
+		# ACT       = const.ACT_1
+
 		clear(menu)
 		loadMUSIC(const.MUSICNAME[const.STORY])
 
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
 			print('INFO')
-			GAME_SATE = const.INFO
+			GAME_STATE = const.INFO
 		clear(menu)
 
 	elif menu.back_is_press():
@@ -125,31 +138,52 @@ def run_menu():
 
 def run_info():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	event_judge(info)
 	update(info)
 	
 	if info.back_is_press():
-		GAME_SATE = const.MENU
+		GAME_STATE = const.MENU
 		clear(info)
 
 def run_plot():
 
-	global GAME_SATE
+	global GAME_STATE
 	global PLAYING_STATE
+	global WORLD_LINE
+	global CHAPTER
+	global ACT
 
-	event_judge(plot)
-	update(plot)
+	plotDisplay.load_plot(WORLD_LINE, CHAPTER, ACT)
 
-	if plot.custom_is_press():
-		if plot.get_custom_button_name('SKIP'):
-			print('SKIP')
-			GAME_SATE     = const.GAME_PLAY
+	while True:
+
+		event_judge(plot)
+		plotDisplay.plot_display()
+
+		if plotDisplay.isfinish():
+			GAME_STATE    = const.GAME_PLAY
 			PLAYING_STATE = const.LEVEL_ONE
 			clear(plot)
-			level_one_set()
+			transitions(const.LEVEL_ONE)
+			print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
+			break
 
+
+		if plot.custom_is_press():
+			if plot.get_custom_button_name('SKIP'):
+				if ACT == const.ACT_1:
+					GAME_STATE = const.GAME_PLAY
+				
+				print('SKIP')
+				clear(plot)
+				transitions(CHAPTER)
+				PLAYING_STATE = CHAPTER
+				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
+				print(PLAYING_STATE)
+				break
+		update(plot)
 	#while story is playing
 	#if story is finish
 		#
@@ -158,13 +192,13 @@ def run_plot():
 
 def run_story():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	pass
 
 def run_game_play():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	play_music()
 
@@ -177,13 +211,13 @@ def run_game_play():
 
 def run_game_pause():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	pass
 
 def run_game_finish():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	event_judge(finish)
 	update(finish)
@@ -212,13 +246,13 @@ switch = {
 
 def game_loop():
 
-	global GAME_SATE
+	global GAME_STATE
 
 	init()
 
 	while const.GAME_LOOP:
 		
-		switch.get(GAME_SATE)()
+		switch.get(GAME_STATE)()
 
 
 if __name__ == "__main__":

@@ -18,6 +18,20 @@ const.HEIGHT 	 = 800
 const.UINAME    = [None, 'MENU', 'INFO', 'PLOT', 'STORY', 'GAME_PLAY', None, 'GAME_FINISH']
 const.MUSICNAME = [None, 'MENU', None, None, 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
 
+const.WORLD_LINE_N = 'N'
+const.WORLD_LINE_X = 'X'
+const.WORLD_LINE_Z = 'Z'
+
+const.CHAPTER_N   = 0
+const.CHAPTER_1   = 1
+const.CHAPTER_2   = 2
+const.CHAPTER_3   = 3
+
+const.ACT_N		  = 0
+const.ACT_1       = 1
+const.ACT_2 	  = 2
+const.ACT_CHOOSE  = 3
+
 const.GAME_NONE   = 0
 const.MENU        = 1
 const.INFO        = 2
@@ -33,10 +47,12 @@ const.LEVEL_ONE   = 1
 const.LEVEL_TWO   = 2
 const.LEVEL_THREE = 3
 
+
 const.PATH       = os.getcwd()
 const.MUSICFILE  = '\\data\\music\\'
 const.UIFILE     = '\\data\\UI\\'
 const.FONTFILE   = '\\data\\Font\\'
+const.DIALOGUE   = '\\data\\dialogue\\'
 
 const.GAME_LOOP  = True
 
@@ -119,21 +135,15 @@ clock = py.time.Clock()
 
 
 ##
-GAME_SATE     = const.GAME_NONE
+GAME_STATE     = const.GAME_NONE
 PLAYING_STATE = const.LEVEL_NONE
+WORLD_LINE    = const.WORLD_LINE_N
+CHAPTER 	  = const.CHAPTER_N
+ACT 		  = const.ACT_N
+
 fps = 60
 ##
 
 
-## function
 
-def load_built_in_UI():
-
-	for i in range(const.MENU, const.OTHER):
-		if(i == const.GAME_PAUSE):
-			image.loadUI(const.UIFILE, None)
-			continue
-		image.loadUI(const.UIFILE, const.UINAME[i]+'.jpg')
-
-##
 
