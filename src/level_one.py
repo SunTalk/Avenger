@@ -1,9 +1,9 @@
 from Declaration import *
 from chess import *
-from test_Board import *
+from Board import *
 from interface import *
 
-level_one_board = testBoard()
+level_one_board = Board()
 level_one_surface = interface()
 
 def level_one_set() :
@@ -73,3 +73,10 @@ def level_one_run() :
 		enemy_list[i].down(level_one_board.get_mode(),level_one_board.get_action())
 		
 	obstacle_list[0].defeat(level_one_board.get_spin(),level_one_board.get_mode(),soldier_list,enemy_list)
+
+def level_one_WorL() :
+	if len(soldier_list) == 0 :
+		return const.LOSE
+	if len(enemy_list) == 0 :
+		return const.WIN
+	return 0

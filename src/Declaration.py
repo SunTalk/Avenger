@@ -80,9 +80,15 @@ const.ONE_PLAYER = 1
 const.TWO_PLAYER = 2
 
 ###
+
 obstacle_list = []
 soldier_list  = []
 enemy_list    = []
+
+const.WIN  = 1
+const.LOSE = 2 
+const.FLAT = 3
+
 ##
 
 image = Image()
