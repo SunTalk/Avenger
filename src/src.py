@@ -47,6 +47,8 @@ def init():
 	info.set_button(const.INFO)
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP")
+	
+	game.set_custom_button(1000, 300, 200, 100, white, "restart")
 
 	game.loadUI(image.getImg(const.GAME_PLAY))
 	finish.loadUI(image.getImg(const.GAME_FINISH))
@@ -158,13 +160,12 @@ def run_menu():
 	event_judge(menu)
 	update(menu)
 	if menu.start_is_press():
-		print("play game")
+		print("start")
 		GAME_STATE = const.PLOT
 		# CHAPTER   = const.CHAPTER_1
 		# ACT       = const.ACT_1
-
 		clear(menu)
-		loadMUSIC(const.MUSICNAME[const.STORY])
+		loadMUSIC(const.MUSICNAME[const.PLOT])
 
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
@@ -254,8 +255,11 @@ def run_game_play():
 					clear(game)
 					GAME_STATE = const.GAME_PLAY
 					break
-
-	pass
+		if game.custom_is_press():
+			if game.get_custom_button_name("restart"):
+				clear(game)
+				GAME_STATE = const.GAME_PLAY
+				break
 
 def run_game_pause():
 

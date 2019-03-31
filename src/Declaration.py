@@ -16,7 +16,7 @@ const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
 const.UINAME    = [None, 'MENU', 'INFO', 'PLOT', 'STORY', 'GAME_PLAY', None, 'GAME_FINISH']
-const.MUSICNAME = [None, 'MENU', None, None, 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
+const.MUSICNAME = [None, 'MENU', None, 'PLOT', 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
 
 const.WORLD_LINE_N = 'N'
 const.WORLD_LINE_X = 'X'
