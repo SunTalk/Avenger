@@ -15,6 +15,8 @@ actor:哈哈哈
 main:早知道當時砍下你腦袋了
 actor:現在砍也不遲
 main:嘛，算了
+main:若當初殺了你，我搞不好死更快呢
+actor:...
 teamate:君主...
 main:我應該聽你的話
 main:多帶點兵力的
