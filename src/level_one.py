@@ -74,9 +74,9 @@ def level_one_run() :
 		
 	obstacle_list[0].defeat(level_one_board.get_spin(),level_one_board.get_mode(),soldier_list,enemy_list)
 
-def level_one_WorL() :
-	if len(soldier_list) == 0 :
-		return const.LOSE
-	if len(enemy_list) == 0 :
-		return const.WIN
-	return 0
+# def level_one_WorL() :
+# 	if len(soldier_list) == 0 :
+# 		return const.LOSE
+# 	if len(enemy_list) == 0 :
+# 		return const.WIN
+# 	return 0

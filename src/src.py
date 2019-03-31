@@ -57,12 +57,40 @@ def init():
 	ACT       = const.ACT_1
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
-def clear(class_object):
+def clear(class_object, plotDisplay=None):
 	clear_screen()
 	class_object.clearFlag()
 
+	if plotDisplay != None:
+		plotDisplay.clearContext()
+
 def clear_screen():
 	display.fill(white)
+
+def transitions(level):
+
+	global WORLD_LINE
+	global CHAPTER
+	global ACT
+
+	if GAME_STATE == const.PLOT or GAME_STATE == const.GAME_PLAY:
+		
+		ACT += 1
+		if (ACT == const.ACT_CHOOSE) and (CHAPTER != const.CHAPTER_2):
+			ACT = const.ACT_1
+			CHAPTER += 1
+		
+		if ACT == 4:
+			ACT = const.ACT_1
+			CHAPTER += 1
+
+
+	if level == const.LEVEL_ONE:
+		level_one_set()
+	elif level == const.LEVEL_TWO:
+		level_two_set()
+	elif level == const.LEVEL_THREE:
+		level_three_set()
 
 def loadMUSIC(name):
 
@@ -86,7 +114,17 @@ def event_judge(class_object):
 		class_object.event_handle(event)
 		keyHandler.setKey(event)
 
-def event_judge_game_play(class_object, level_board):
+def event_judge_game_play(class_object):
+
+	level_board = None
+
+	if CHAPTER == const.CHAPTER_1:
+		level_board = level_one_board
+	if CHAPTER == const.CHAPTER_2:
+		level_board = level_two_board
+	if CHAPTER == const.CHAPTER_3:
+		level_board = level_three_board
+
 	for event in py.event.get():
 		if event.type == py.QUIT:
 			py.quit()
@@ -156,33 +194,27 @@ def run_plot():
 	global ACT
 
 	plotDisplay.load_plot(WORLD_LINE, CHAPTER, ACT)
+	#print(plotDisplay.index)
 
 	while True:
 
 		event_judge(plot)
 		plotDisplay.plot_display()
 
-		if plotDisplay.isfinish():
-			GAME_STATE    = const.GAME_PLAY
-			PLAYING_STATE = const.LEVEL_ONE
-			clear(plot)
-			transitions(const.LEVEL_ONE)
-			print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
-			break
-
-
-		if plot.custom_is_press():
-			if plot.get_custom_button_name('SKIP'):
+		if plotDisplay.isfinish() or plot.custom_is_press():
+			if plot.get_custom_button_name('SKIP') or plotDisplay.isfinish():
+				if plot.get_custom_button_name('SKIP'):
+					print('SKIP')
 				if ACT == const.ACT_1:
-					GAME_STATE = const.GAME_PLAY
-				
-				print('SKIP')
-				clear(plot)
+					GAME_STATE    = const.GAME_PLAY
+					PLAYING_STATE = CHAPTER
+				else:
+					GAME_STATE = const.PLOT
+				clear(plot, plotDisplay)
 				transitions(CHAPTER)
-				PLAYING_STATE = CHAPTER
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
-				print(PLAYING_STATE)
 				break
+
 		update(plot)
 	#while story is playing
 	#if story is finish
@@ -203,9 +235,21 @@ def run_game_play():
 	play_music()
 
 	while 1:
-		event_judge_game_play(game, level_one_board)
-
+		event_judge_game_play(game)
 		update(game)
+		if isFinish():
+			print("finish")
+			if win():
+				print("win")
+				#transitions(level_two_board)
+				clear(game)
+				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
+				GAME_STATE = const.PLOT
+				break
+			else:
+				print("lose")
+				GAME_STATE = const.GAME_FINISH
+				break
 
 	pass
 

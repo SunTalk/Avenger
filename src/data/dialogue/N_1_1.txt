@@ -3,15 +3,11 @@ Avenger輕量版劇情第一章
 main 	    => 主角
 soldier     => 對上士兵
 enemy 	    => 敵對士兵
-teamate[1~] => 同隊重要人物
-actor[1~]   => 敵對重要人物
+teamate => 同隊重要人物
+actor   => 敵對重要人物
 
 [dialogue]
-enemy:哇~~~!
-main:很好，就這樣殺進去。
-enemy:你...怎麼可以...殺害無辜...
-main:你怎麼不問問你的首領10年前為甚麼要殺害無辜呢?
-(刺
-enemy:啊~~~!
-main:就這樣進去把城毀了!
-soldier:喔!!!
+teammate: 就快到敵人的城鎮了，您就快可以完成復仇了呢。
+main: ......
+soldier: 報告!敵方城外出現一些民兵，請問該怎麼辦。
+main: 輾過去，一個不留。

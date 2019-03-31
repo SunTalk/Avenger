@@ -66,3 +66,8 @@ class PlotDisplay():
 
 	def isfinish(self):
 		return self.finish
+
+	def clearContext(self):
+		self.context.clear()
+		self.reset_finish()
+		self.reset_index()
