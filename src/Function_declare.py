@@ -25,27 +25,13 @@ def load_built_in_UI():
 		image.loadUI(const.UIFILE, const.UINAME[i]+'.jpg')
 
 
-def transitions(level):
+def win():
+	if len(soldier_list) == 0:
+		return const.LOSE
+	if len(enemy_list) == 0:
+		return const.WIN
+	return 0
 
-	global WORLD_LINE
-	global CHAPTER
-	global ACT
-
-	if GAME_STATE == const.PLOT or GAME_STATE == const.GAME_PLAY:
-		
-		ACT += 1
-		if ACT == const.ACT_CHOOSE and CHAPTER != const.CHAPTER_2:
-			ACT = const.ACT_1
-			CHAPTER += 1
-		
-		if ACT == 4:
-			ACT = const.ACT_1
-			CHAPTER += 1
-
-
-	if level == const.LEVEL_ONE:
-		level_one_set()
-	elif level == const.LEVEL_TWO:
-		level_two_set()
-	elif level == const.LEVEL_THREE:
-		level_three_set()
+def isFinish():
+	if len(soldier_list) == 0 or len(enemy_list) == 0:
+		return True
