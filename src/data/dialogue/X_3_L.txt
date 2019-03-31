@@ -1,0 +1,27 @@
+Avenger輕量版劇情第三章X線
+不殺
+
+main 	    => 主角
+soldier     => 對上士兵
+enemy 	    => 敵對士兵
+teamate[1~] => 同隊重要人物
+actor[1~]   => 敵對重要人物
+
+[dialogue]
+main:你來幫有啥用啊
+actor:都要死了，還想吵架
+main:沒想到會跟你死在一起
+actor:哈哈哈
+main:早知道當時砍下你腦袋了
+actor:現在砍也不遲
+main:嘛，算了
+teamate:君主...
+main:我應該聽你的話
+main:多帶點兵力的
+main:雖然不能看到國家建立的時候
+main:但我在這趟旅途上的表現
+main:應該還不錯吧
+main:我的朋友們
+(砍
+
+end:

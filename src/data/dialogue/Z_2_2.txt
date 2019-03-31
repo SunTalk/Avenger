@@ -1,0 +1,33 @@
+Avenger輕量版劇情第二章Y線
+殺
+
+main 	    => 主角
+soldier     => 對上士兵
+enemy 	    => 敵對士兵
+teamate[1~] => 同隊重要人物
+actor[1~]   => 敵對重要人物
+
+[dialogue]
+main:我當時的感受...
+main:我當時滿腦子都想殺掉他阿...
+main:現在這麼好的機會我怎能不殺呢
+teamate:但這樣那些人也會有跟你一樣的想法
+teamate:想要殺你啊
+main:那又怎樣，只要他們殺不了我不就解決了嗎
+teamate:......
+main:我等這一刻很久了
+actor:亨，我的報應來了
+(斬
+teamate:君主...
+main:對了還有你
+teamate:...!
+main:你滾吧，離開我的軍隊，離開我的領土
+teamate:什..什麼!
+main:你敢勸說我讓他活下來，你也不得好死。
+main:但念在你跟我征戰許久份上，不殺你已經很慷慨了
+main:來人把他丟到附近森林自生自滅
+soldier:據說那森林很危險...
+main:你也想被放生在那?
+soldier:我這就去辦
+teamate:你會後悔的
+main:我不會後悔的

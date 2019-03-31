@@ -89,8 +89,8 @@ def transitions():
 		
 		ACT += 1
 
-		if (ACT == ACT_F):
-			if CHAPTER == CHAPTER_2:
+		if (ACT == const.ACT_F):
+			if CHAPTER == const.CHAPTER_2:
 				pass
 
 			else:
