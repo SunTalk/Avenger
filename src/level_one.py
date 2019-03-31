@@ -57,7 +57,7 @@ def level_one_run() :
 
 	level_one_board.display(display)
 	level_one_board.build(level_one_surface)
-	level_one_board.set_move_time()
+	level_one_board.set_clock_time()
 
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].draw(level_one_board.board, level_one_surface)

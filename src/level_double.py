@@ -74,7 +74,7 @@ def level_double_run() :
 
 	level_double_board.display(display)
 	level_double_board.build(level_double_surface)
-	level_double_board.set_move_time()
+	level_double_board.set_clock_time()
 
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].draw(level_double_board.board, level_double_surface)

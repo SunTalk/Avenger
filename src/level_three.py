@@ -59,7 +59,7 @@ def level_three_run() :
 
 	level_three_board.display(display)
 	level_three_board.build(level_three_surface)
-	level_three_board.set_move_time()
+	level_three_board.set_clock_time()
 
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].draw(level_three_board.board, level_three_surface)
@@ -76,9 +76,9 @@ def level_three_run() :
 		
 	obstacle_list[0].defeat(level_three_board.get_spin(),level_three_board.get_mode(),soldier_list,enemy_list)
 
-# def level_three_WorL() :
-# 	if len(soldier_list) == 0 :
-# 		return const.LOSE
-# 	if len(enemy_list) == 2 :
-# 		return const.WIN
-# 	return 0
+def level_three_WorL() :
+	if len(soldier_list) == 0 :
+		return const.LOSE
+	if len(enemy_list) == 2 :
+		return const.WIN
+	return 0

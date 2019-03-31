@@ -6,23 +6,24 @@ class Board():
 	def __init__(self):
 		self.board 		  = py.Surface((600, 600)).convert_alpha()
 		self.action       = True
-		self.move         = 0
+		self.clock        = 0
 		self.angle        = 0
 		self.change_angle = 0
-		self.center_pos   = (400, 400)
+		self.move         = 0
 		self.mode         = 0
+		self.count        = 0
+		self.center_pos   = (400, 400)
 		self.start_move   = False
 		self.spin         = False
 		self.reset        = False
 		self.player       = const.ONE_PLAYER
-		self.count        = 0
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
 
-	def set_move_time(self) :
-		if self.move > 0 :
-			self.move -= 1
+	def set_clock_time(self) :
+		if self.clock > 0 :
+			self.clock -= 1
 
 	def blitRotate(self, surf, image, pos, originPos, angle):
 
@@ -70,18 +71,20 @@ class Board():
 	def event_handle(self, event):
 		if event.type == py.KEYDOWN:
 			if event.key == py.K_RIGHT:
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = -90
 					self.mode        += 1
 					self.mode         = self.mode%4
 					self.start_move   = True
 					print('right',self.mode)
 			if event.key == py.K_LEFT:
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = 90
 					self.mode        -= 1
 					self.mode         = self.mode%4
@@ -92,9 +95,10 @@ class Board():
 	def event_handle_two_player_mode(self, event) :
 		if event.type == py.KEYDOWN:
 			if event.key == py.K_RIGHT and self.player == const.ONE_PLAYER :
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = -90
 					self.mode        += 1
 					self.mode         = self.mode%4
@@ -103,9 +107,10 @@ class Board():
 					self.count       += 1
 					print('right',self.mode,'player',const.ONE_PLAYER)
 			if event.key == py.K_LEFT and self.player == const.ONE_PLAYER :
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = 90
 					self.mode        -= 1
 					self.mode         = self.mode%4
@@ -114,9 +119,10 @@ class Board():
 					self.count       += 1
 					print('left',self.mode,'player',const.ONE_PLAYER)
 			if event.key == py.K_d and self.player == const.TWO_PLAYER :
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = -90
 					self.mode        += 1
 					self.mode         = self.mode%4
@@ -125,9 +131,10 @@ class Board():
 					self.count       += 1
 					print('right',self.mode,'player',const.TWO_PLAYER)
 			if event.key == py.K_a and self.player == const.TWO_PLAYER :
-				if self.action == True and self.move == 0 :
+				if self.action == True and self.clock == 0 :
 					self.action       = False
-					self.move         = 60
+					self.move        += 1
+					self.clock        = 60
 					self.change_angle = 90
 					self.mode        -= 1
 					self.mode         = self.mode%4
@@ -150,6 +157,9 @@ class Board():
 	def get_mode(self):
 		return self.mode
 
+	def get_move(self) :
+		return self.move
+
 	def get_start_move(self) :
 		return self.start_move
 
@@ -167,6 +177,7 @@ class Board():
 
 	def for_reset(self):
 		self.action       = True
+		self.clock        = 0
 		self.move         = 0
 		self.angle        = 0
 		self.change_angle = 0

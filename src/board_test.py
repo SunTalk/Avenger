@@ -52,8 +52,10 @@ while const.GAME_LOOP:
 	# level_three_run()
 	# level_double_run()
 
-	if level_one_WorL() != 0 :
-		level_one_board.end_level()
+	print(level_one_board.get_move())
+
+	# if level_one_WorL() != 0 :
+	# 	level_one_board.end_level()
 
 	py.display.update()
 	clock.tick(60)
