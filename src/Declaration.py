@@ -57,8 +57,8 @@ const.DIALOGUE   = '\\data\\dialogue\\'
 const.GAME_LOOP  = True
 
 const.MENU_START_BUTTON_X               = const.WIDTH*0.1
-const.MENU_START_BUTTON_Y               = const.HEIGHT*0.1
-const.MENU_START_BUTTON_WIDTH           = const.WIDTH*0.1
+const.MENU_START_BUTTON_Y               = const.HEIGHT*0.2
+const.MENU_START_BUTTON_WIDTH           = const.WIDTH*0.2
 const.MENU_START_BUTTON_HEIGHT          = const.HEIGHT*0.1
 const.MENU_START_BUTTON_FONT            = Font_EN
 const.MENU_START_BUTTON_SIZE            = 50
@@ -72,8 +72,8 @@ const.GAME_PAUSE_CONTINUE_BUTTON_SIZE   = 50
 
                                         ### TODO
 const.MENU_QUIT_BUTTON_X                = const.WIDTH*0.1
-const.MENU_QUIT_BUTTON_Y                = const.HEIGHT*0.5
-const.MENU_QUIT_BUTTON_WIDTH            = const.WIDTH*0.1
+const.MENU_QUIT_BUTTON_Y                = const.HEIGHT*0.6
+const.MENU_QUIT_BUTTON_WIDTH            = const.WIDTH*0.2
 const.MENU_QUIT_BUTTON_HEIGHT           = const.HEIGHT*0.1
 const.MENU_QUIT_BUTTON_FONT             = Font_EN
 const.MENU_QUIT_BUTTON_SIZE             = 50
@@ -120,6 +120,9 @@ blue      = (0,0,255)
 purple    = (128,0,128)
 cyan_blue = (0, 255, 255)
 gray      = (204, 204, 204)
+
+trans_white = (255, 255, 255, 0)
+trans_red   = (255, 0, 0, 100)
 ##
 
 ## display

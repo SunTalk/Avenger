@@ -23,6 +23,7 @@ def load_built_in_UI():
 			image.loadUI(const.UIFILE, None)
 			continue
 		image.loadUI(const.UIFILE, const.UINAME[i]+'.jpg')
+		image.resize(const.WIDTH, const.HEIGHT, i)
 
 
 def win():

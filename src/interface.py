@@ -28,6 +28,7 @@ class interface():
 		self.custom_button_font      = list()
 		self.custom_button_font_size = list()
 		self.custom_text_color       = list()
+		self.custom_button_alpha     = list()
 		self.press_custom            = list()
 
 	def block(self, surface, center_x, center_y, size, color):
@@ -74,26 +75,31 @@ class interface():
 
 		if self.custom_type != None:
 			for i in range(0, self.custom_index):
-				self.draw_bt(self.custom_button_color[i], self.custom_button_x[i], self.custom_button_y[i], self.custom_button_width[i], self.custom_button_height[i])
+				self.draw_bt(self.custom_button_color[i], self.custom_button_x[i], self.custom_button_y[i], self.custom_button_width[i], self.custom_button_height[i], self.custom_button_alpha[i])
 				self.write(self.custom_text_color[i])
 
 	def draw_start_button(self):
-		py.draw.rect(display, self.start_button_color, [self.start_button_x, self.start_button_y, self.start_button_width, self.start_button_height])
+		s = py.Surface((self.start_button_width, self.start_button_height))
+		s.set_alpha(128)
+		s.fill(self.start_button_color)
+		display.blit(s, (self.start_button_x, self.start_button_y))
+
+		# py.draw.rect(display, self.start_button_color, [self.start_button_x, self.start_button_y, self.start_button_width, self.start_button_height])
 
 	def draw_back_button(self):
-		py.draw.rect(display, self.back_button_color, [self.back_button_x, self.back_button_y, self.back_button_width, self.back_button_height])
+		s = py.Surface((self.back_button_width, self.back_button_height))
+		s.set_alpha(128)
+		s.fill(self.back_button_color)
+		display.blit(s, (self.back_button_x, self.back_button_y))
+		#py.draw.rect(display, self.back_button_color, [self.back_button_x, self.back_button_y, self.back_button_width, self.back_button_height])
 
-	def draw_bt(self, color, x, y, width, height):
-		py.draw.rect(display, color, [x, y, width, height])
+	def draw_bt(self, color, x, y, width, height, alpha):
+		s = py.Surface((width, height))
+		s.set_alpha(128)
+		s.fill(color)
+		display.blit(s, (x, y))
 
-	# def writeMSG(self):
-	# 	display.blit(self.textSurface, self.textRec)
-
-	# def writeText(self, text, center_x, center_y, font, color=(255, 0, 0),size=50):
-	# 	self.textFont       = py.font.Font(const.PATH+const.FONTFILE+font, size)
-	# 	self.textSurface    = self.textFont.render(text, True, color)
-	# 	self.textRec        = self.textSurface.get_rect()
-	# 	self.textRec.center = (center_x, center_y)
+		#py.draw.rect(display, color, [x, y, width, height])
 
 	def write(self, color=(0, 0, 0)):
 		if self.start_type == 'start':
@@ -184,7 +190,7 @@ class interface():
 		self.set_start_button(start_type=type)
 		self.set_quit_button(back_type=type)
 
-	def set_custom_button(self, x, y, width, height, color, text, font=Font_EN, size=50, textColor=red):
+	def set_custom_button(self, x, y, width, height, color, text, alpha, font=Font_EN, size=50, textColor=red):
 		print("set custom button")
 		self.custom_button_x.append(x)
 		self.custom_button_y.append(y)
@@ -195,6 +201,7 @@ class interface():
 		self.custom_button_font.append(font)
 		self.custom_button_font_size.append(size)
 		self.custom_text_color.append(textColor)
+		self.custom_button_alpha.append(alpha)
 		self.press_custom.append(False)
 		self.custom_type = 'custom'
 		self.custom_index += 1

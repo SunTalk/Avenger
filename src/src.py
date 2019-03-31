@@ -36,19 +36,21 @@ def init():
 	info.loadUI(image.getImg(const.INFO))
 
 	menu.set_button(const.MENU)
+
 	menu.set_custom_button(const.MENU_START_BUTTON_X,
 						   const.MENU_START_BUTTON_Y+2*const.MENU_START_BUTTON_HEIGHT,
 						   const.MENU_START_BUTTON_WIDTH,
 						   const.MENU_START_BUTTON_HEIGHT,
 						   white,
-						   "INFO"
+						   "INFO",
+						   128
 						   )
 
 	info.set_button(const.INFO)
 
-	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP")
+	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
 	
-	game.set_custom_button(1000, 300, 200, 100, white, "restart")
+	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
 
 	game.loadUI(image.getImg(const.GAME_PLAY))
 	finish.loadUI(image.getImg(const.GAME_FINISH))
@@ -86,13 +88,14 @@ def transitions():
 	if GAME_STATE == const.PLOT or GAME_STATE == const.GAME_PLAY:
 		
 		ACT += 1
-		if (ACT == const.ACT_CHOOSE) and (CHAPTER != const.CHAPTER_2):
-			ACT = const.ACT_1
-			CHAPTER += 1
-		
-		if ACT == 4:
-			ACT = const.ACT_1
-			CHAPTER += 1
+
+		if (ACT == ACT_F):
+			if CHAPTER == CHAPTER_2:
+				pass
+
+			else:
+				ACT = ACT_1
+				CHAPTER += 1
 
 def loadMUSIC(name):
 
