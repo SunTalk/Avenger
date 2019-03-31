@@ -30,7 +30,7 @@ const.CHAPTER_3   = 3
 const.ACT_N		  = 0
 const.ACT_1       = 1
 const.ACT_2 	  = 2
-const.ACT_CHOOSE  = 3
+const.ACT_F		  = 3
 
 const.GAME_NONE   = 0
 const.MENU        = 1
