@@ -18,6 +18,7 @@ teamate:總有一天會被背次的。
 main:放過他?跟我開玩笑嗎。
 main:還是說你也要一起死呢。
 teamate:想想你當時的感受，若你是這城裡的人，你會怎麼想。
+teamate:你死去的朋友家人會希望你這麼做嗎
 main:......
 teamate:選擇吧
 choose
