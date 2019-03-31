@@ -67,7 +67,15 @@ def clear(class_object, plotDisplay=None):
 def clear_screen():
 	display.fill(white)
 
-def transitions(level):
+def level_set(level):
+	if level == const.LEVEL_ONE:
+		level_one_set()
+	elif level == const.LEVEL_TWO:
+		level_two_set()
+	elif level == const.LEVEL_THREE:
+		level_three_set()
+
+def transitions():
 
 	global WORLD_LINE
 	global CHAPTER
@@ -83,14 +91,6 @@ def transitions(level):
 		if ACT == 4:
 			ACT = const.ACT_1
 			CHAPTER += 1
-
-
-	if level == const.LEVEL_ONE:
-		level_one_set()
-	elif level == const.LEVEL_TWO:
-		level_two_set()
-	elif level == const.LEVEL_THREE:
-		level_three_set()
 
 def loadMUSIC(name):
 
@@ -212,7 +212,7 @@ def run_plot():
 				else:
 					GAME_STATE = const.PLOT
 				clear(plot, plotDisplay)
-				transitions(CHAPTER)
+				transitions()
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 				break
 
@@ -233,6 +233,8 @@ def run_game_play():
 
 	global GAME_STATE
 
+	level_set(CHAPTER)
+
 	play_music()
 
 	while 1:
@@ -240,15 +242,17 @@ def run_game_play():
 		update(game)
 		if isFinish():
 			if win():
-				#transitions(level_two_board)
+				print("win")
 				if keyHandler.getKey() == py.K_RETURN:
 					clear(game)
 					print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 					GAME_STATE = const.PLOT
 					break
 			else:
-				if KeyHandler.getKey == py.K_RETURN:
-					GAME_STATE = const.GAME_FINISH
+				print("lose")
+				if keyHandler.getKey() == py.K_RETURN:
+					clear(game)
+					GAME_STATE = const.GAME_PLAY
 					break
 
 	pass

@@ -27,10 +27,9 @@ def load_built_in_UI():
 
 def win():
 	if len(soldier_list) == 0:
-		return const.LOSE
+		return 0
 	if len(enemy_list) == 0:
-		return const.WIN
-	return 0
+		return 1
 
 def isFinish():
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
