@@ -1,0 +1,18 @@
+Avenger輕量版劇情第二章X線
+不殺
+
+main 	    => 主角
+soldier     => 對上士兵
+enemy 	    => 敵對士兵
+teamate[1~] => 同隊重要人物
+actor[1~]   => 敵對重要人物
+
+[dialogue]
+main:......
+actor:怎麼決定不殺了嗎
+main:再吵我就砍了你
+actor:......
+teamate:君主...
+main:要是哪天我後會做了這個決定，
+main:我一定砍下你的腦袋
+teamate:你不會後悔的

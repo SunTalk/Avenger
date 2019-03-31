@@ -1,0 +1,11 @@
+Avenger輕量版劇情第三章X線
+不殺
+
+main 	    => 主角
+soldier     => 對上士兵
+enemy 	    => 敵對士兵
+teamate[1~] => 同隊重要人物
+actor[1~]   => 敵對重要人物
+
+[dialogue]
+

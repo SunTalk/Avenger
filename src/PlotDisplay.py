@@ -18,12 +18,8 @@ class PlotDisplay():
 
 		load = False
 
-		if ACT == const.ACT_CHOOSE:
-			dialogue_file = WORLD_LINE+'_'+str(CHAPTER)+'_choose.txt'
-			fp = open(const.PATH+const.DIALOGUE+dialogue_file)
-		else:
-			dialogue_file = WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT)+'.txt'
-			fp = open(const.PATH+const.DIALOGUE+dialogue_file)
+		dialogue_file = WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT)+'.txt'
+		fp = open(const.PATH+const.DIALOGUE+dialogue_file)
 
 		lines = fp.readlines()
 		for i in range(len(lines)):
