@@ -71,3 +71,4 @@ class PlotDisplay():
 		self.context.clear()
 		self.reset_finish()
 		self.reset_index()
+		self.reset_show()
