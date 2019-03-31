@@ -1,4 +1,4 @@
-Avenger輕量版劇情第三章Z線
+	Avenger輕量版劇情第三章Z線
 殺
 
 main 	    => 主角
@@ -17,7 +17,7 @@ actor[1~]   => 敵對重要人物
 太多...太多...
 soldier:報告...
 soldier:各處的武將紛紛反叛
-soldier:像這裡衝了過來
+soldier:向這裡衝了過來
 soldier:許多人紛紛投靠他們
 soldier:怎麼辦
 main:你們也想投靠嗎
