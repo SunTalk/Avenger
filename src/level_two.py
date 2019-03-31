@@ -1,6 +1,6 @@
 from Declaration import *
 from chess import *
-from Board import *
+from board import *
 from interface import *
 
 level_two_board = Board()
