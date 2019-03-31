@@ -131,6 +131,7 @@ def event_judge_game_play(class_object):
 			quit()
 		class_object.event_handle(event)
 		level_board.event_handle(event)
+		keyHandler.setKey(event)
 
 def update(class_object):
 	class_object.update()
@@ -238,18 +239,17 @@ def run_game_play():
 		event_judge_game_play(game)
 		update(game)
 		if isFinish():
-			print("finish")
 			if win():
-				print("win")
 				#transitions(level_two_board)
-				clear(game)
-				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
-				GAME_STATE = const.PLOT
-				break
+				if keyHandler.getKey() == py.K_RETURN:
+					clear(game)
+					print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
+					GAME_STATE = const.PLOT
+					break
 			else:
-				print("lose")
-				GAME_STATE = const.GAME_FINISH
-				break
+				if KeyHandler.getKey == py.K_RETURN:
+					GAME_STATE = const.GAME_FINISH
+					break
 
 	pass
 
