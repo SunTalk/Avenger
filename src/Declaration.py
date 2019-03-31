@@ -1,11 +1,16 @@
 import pygame as py
 import time
 import random
+import datetime
 import const
 import numpy as np
 import os
 from block_center import *
 from Image import *
+
+# set datetime to random seed
+random.seed(datetime.datetime.now())
+
 # from multipledispatch import dispatch
 
 Font_EN = 'LucidaBrightDemiBold.ttf'
