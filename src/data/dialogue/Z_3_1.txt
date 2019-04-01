@@ -1,4 +1,4 @@
-	Avenger輕量版劇情第三章Z線
+Avenger輕量版劇情第三章Z線
 殺
 
 main 	    => 主角

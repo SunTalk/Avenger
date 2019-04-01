@@ -56,9 +56,9 @@ def init():
 	finish.loadUI(image.getImg(const.GAME_FINISH))
 	plot.loadUI(None)
 
-	GAME_STATE = const.MENU
-	CHAPTER   = const.CHAPTER_1
-	ACT       = const.ACT_1
+	GAME_STATE = const.PLOT
+	CHAPTER   = const.CHAPTER_2
+	ACT       = const.ACT_2
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
@@ -219,12 +219,21 @@ def run_plot():
 	global ACT
 
 	plotDisplay.load_plot(WORLD_LINE, CHAPTER, ACT)
+	if WORLD_LINE == 'N':
+		plot.loadUI(plot_image.getImg(CHAPTER))
+	elif WORLD_LINE == 'X' and CHAPTER == const.CHAPTER_3:
+		plot.loadUI(plot_image.getImg(const.PLOT_3_X))
+	elif WORLD_LINE == 'Z' and CHAPTER == const.CHAPTER_3:
+		plot.loadUI(plot_image.getImg(const.PLOT_3_Z))
 	#print(plotDisplay.index)
+
 
 	while True:
 
 		event_judge(plot, plotDisplay)
 		plotDisplay.plot_display()
+	
+		update(plot, plotDisplay)
 
 		if plotDisplay.isfinish() or plot.custom_is_press():
 			if plot.get_custom_button_name('SKIP') or plotDisplay.isfinish():
@@ -245,7 +254,6 @@ def run_plot():
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 				break
 
-		update(plot, plotDisplay)
 	#while story is playing
 	#if story is finish
 		#
