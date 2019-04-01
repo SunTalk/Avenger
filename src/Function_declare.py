@@ -11,6 +11,8 @@ from KeyHandler import *
 from level_one import *
 from level_two import *
 from level_three import *
+from level_four import *
+from board import *
 
 show 	   = False
 plot_index = 0
@@ -30,7 +32,7 @@ def load_built_in_UI():
 		plot_image.resize(const.WIDTH, const.HEIGHT, i)
 
 
-	
+
 def win():
 	if len(soldier_list) == 0:
 		return 0
