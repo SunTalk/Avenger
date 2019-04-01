@@ -1,3 +1,4 @@
+from pygame.locals import *
 import pygame as py
 import time
 import random
@@ -7,10 +8,11 @@ import numpy as np
 import os
 from block_center import *
 from Image import *
+# from board import *
 
 # set datetime to random seed
 random.seed(datetime.datetime.now())
-
+py.HWSURFACE = True
 # from multipledispatch import dispatch
 
 Font_EN = 'LucidaBrightDemiBold.ttf'

@@ -17,7 +17,7 @@ py.init()
 # level_two_set()
 # level_three_set()
 # level_double_set()
-	
+level_four_set()
 
 while const.GAME_LOOP:
 	
