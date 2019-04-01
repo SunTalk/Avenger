@@ -6,11 +6,19 @@ class textHandler:
 		self.text        = list()
 		self.textSurface = list()
 		self.textRec     = list()
+		self.size		 = list()
 		self.index       = 0
 
 	def write(self):
-
 		for i in range(0, self.getIndex()):
+			display.blit(self.textSurface[i], self.textRec[i])
+
+	def rec_write(self):
+		for i in range(0, self.getIndex()):
+			s = py.Surface((self.textSurface[i].get_width(), self.textSurface[i].get_height()))
+			s.set_alpha(128)
+			s.fill(white)
+			display.blit(s, (self.textRec[i].x, self.textRec[i].y))
 			display.blit(self.textSurface[i], self.textRec[i])
 
 	def setText(self, text, center_x, center_y, font='LucidaBrightDemiBold.ttf', color=(255, 0, 0), size=50):
@@ -30,6 +38,7 @@ class textHandler:
 
 	def addText(self, text, center_x, center_y, font, color, size):
 		self.text.append(text)
+		self.size.append(size)
 		self.text_object(text, center_x, center_y, font, color, size)
 		self.addIndex()
 
@@ -45,4 +54,5 @@ class textHandler:
 		self.text        = list()
 		self.textSurface = list()
 		self.textRec     = list()
+		self.size  	   	 = list()
 		self.index       = 0

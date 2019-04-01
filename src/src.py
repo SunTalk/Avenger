@@ -13,9 +13,12 @@ from level_double import *
 from KeyHandler import *
 from PlotDisplay import *
 
-soundHandler = SoundHandler()
-plotDisplay  = PlotDisplay()
-writeText     = textHandler()
+soundHandler   = SoundHandler()
+plotDisplay    = PlotDisplay()
+writeText      = textHandler()
+win_text    = textHandler()
+lose_text   = textHandler()
+
 
 menu   = interface()
 info   = interface()
@@ -26,6 +29,8 @@ finish = interface()
 Font = Font_EN
 
 music = False
+
+MAXMOVE = 20
 
 def initBackground():
 	menu.loadUI(image.getImg(const.MENU))
@@ -62,6 +67,12 @@ def init():
 	load_built_in_UI()
 	initBackground()
 	initButton()
+
+	win_text.setText("You Win", 600, 200, size=100)
+	win_text.setText("Press enter to continue", 600, 350, size=100)
+
+	lose_text.setText("You Lose", 600, 200, size=100)
+	lose_text.setText("Press enter to continue", 600, 350, size=100)
 
 	GAME_STATE = const.MENU
 	WORLD_LINE = 'N'
@@ -168,12 +179,15 @@ def event_judge_game_play(class_object):
 		level_board.event_handle(event)
 		keyHandler.setKey(event)
 
-def update(class_object, class_object2=None, write_object=None):
+def update(class_object, class_object2=None, write_object=None, board=None):
 	class_object.update()
 	if class_object2 != None:
 		class_object2.update()
-	if write_object != None:
-		write_object.write()
+	if board != None:
+		move = board.get_move()
+		font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
+		text = font.render(str(move)+" Move", True, red)
+		display.blit(text, (1000, 0))
 
 	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
@@ -185,11 +199,64 @@ def update(class_object, class_object2=None, write_object=None):
 				level_three_run()
 			if WORLD_LINE == 'Z':
 				level_four_run()
+	if write_object != None:
+		write_object.rec_write()
 
 	py.display.update()
-
-
 	clock.tick(fps)
+
+def get_level_board():
+	if CHAPTER == const.CHAPTER_1:
+		return level_one_board
+	if CHAPTER == const.CHAPTER_2:
+		return level_two_board
+	if CHAPTER == const.CHAPTER_3:
+		if WORLD_LINE == 'X':
+			return level_three_board
+		if WORLD_LINE == 'Z':
+			return level_four_board
+
+def win():
+
+	if CHAPTER == const.CHAPTER_1:
+		if level_one_board.get_move() > MAXMOVE:
+			return False
+	if CHAPTER == const.CHAPTER_2:
+		if level_two_board.get_move() > MAXMOVE:
+			return False
+	if CHAPTER == const.CHAPTER_3:
+		if WORLD_LINE == 'X':
+			if level_three_board.get_move() > MAXMOVE:
+				return False
+		if WORLD_LINE == 'Z':
+			if level_four_board.get_move() > MAXMOVE:
+				return False
+
+	if len(soldier_list) == 0:
+		return False
+	if len(enemy_list) == 0:
+		return True
+	
+
+
+def isFinish():
+
+	if CHAPTER == const.CHAPTER_1:
+		if level_one_board.get_move() > MAXMOVE:
+			return True
+	if CHAPTER == const.CHAPTER_2:
+		if level_two_board.get_move() > MAXMOVE:
+			return True
+	if CHAPTER == const.CHAPTER_3:
+		if WORLD_LINE == 'X':
+			if level_three_board.get_move() > MAXMOVE:
+				return True
+		if WORLD_LINE == 'Z':
+			if level_four_board.get_move() > MAXMOVE:
+				return True
+
+	if len(soldier_list) == 0 or len(enemy_list) == 0:
+		return True
 
 def run_menu():
 
@@ -300,36 +367,50 @@ def run_game_play():
 	global GAME_STATE
 	global ACT
 
+	leave = False
+
 	level_set(CHAPTER)
+	level_board = get_level_board()
 
 	play_music()
 
 	while 1:
 		event_judge_game_play(game)
-		update(game)
+		update(game, board=level_board)
 		if isFinish():
 			if win():
-				if keyHandler.getKey() == py.K_RETURN:
-					clear(game)
-					print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
-					GAME_STATE = const.PLOT
-					if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
-						ACT = 'W'
-						print(ACT)
-					break
+				while 1:
+					event_judge_game_play(game)
+					update(game, board=level_board, write_object=win_text)
+					if keyHandler.getKey() == py.K_RETURN:
+						leave = True
+						clear(game)
+						print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
+						GAME_STATE = const.PLOT
+						if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
+							ACT = 'W'
+							print(ACT)
+						break
 			else:
-				if keyHandler.getKey() == py.K_RETURN:
-					clear(game)
-					GAME_STATE = const.PLOT
-					if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
-						ACT = 'L'
-						print(ACT)
-					break
+				while 1:
+					event_judge_game_play(game)
+					update(game, board=level_board, write_object=lose_text)
+					if keyHandler.getKey() == py.K_RETURN:
+						leave = True
+						clear(game)
+						GAME_STATE = const.GAME_PLAY
+						if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
+							GAME_STATE = const.PLOT
+							ACT = 'L'
+							print(ACT)
+						break
 		if game.custom_is_press():
 			if game.get_custom_button_name("restart"):
 				clear(game)
 				GAME_STATE = const.GAME_PLAY
 				break
+		if leave:
+			break;
 
 def run_game_pause():
 
