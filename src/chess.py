@@ -147,8 +147,8 @@ class chess() :
 			return
 		is_board[self.x][self.y] = 0
 
-	def defeat(self,spin,mode,list_soldier,list_enemy) : # let OBSTACLE be a base
-		if self.life == False :
+	def defeat(self,spin,mode,move,list_soldier,list_enemy) : # let OBSTACLE be a base
+		if self.life == False or move == False :
 			return
 		rank = 0
 		if spin :

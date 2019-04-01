@@ -89,7 +89,7 @@ def level_double_run() :
 			enemy_list[i].check(level_double_board.get_mode())
 		enemy_list[i].down(level_double_board.get_mode(),level_double_board.get_action())
 		
-	obstacle_list[0].defeat(level_double_board.get_spin(),level_double_board.get_mode(),soldier_list,enemy_list)
+	obstacle_list[0].defeat(level_double_board.get_spin(),level_double_board.get_mode(),level_double_board.get_start_move(),soldier_list,enemy_list)
 
 def level_one_WorL() :
 	if len(soldier_list) == 0 and len(enemy_list) == 0 :

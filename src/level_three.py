@@ -25,9 +25,7 @@ def level_three_set() :
 	obstacle_list.append(chess( C5_x, C5_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( F5_x, F5_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( D3_x, D3_y, const.OBSTACLE  ))
-	obstacle_list.append(chess( E3_x, E3_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( D6_x, D6_y, const.OBSTACLE  ))
-	obstacle_list.append(chess( E6_x, E6_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( B2_x, B2_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( B7_x, B7_y, const.OBSTACLE  ))
 	obstacle_list.append(chess( G2_x, G2_y, const.OBSTACLE  ))
@@ -39,8 +37,12 @@ def level_three_set() :
 	soldier_list.append(chess( H2_x, H2_y, const.SOLDIER, const.SERVANT   ))
 	soldier_list.append(chess( H5_x, H5_y, const.SOLDIER, const.SERVANT   ))
 	soldier_list.append(chess( H4_x, H4_y, const.SOLDIER, const.SERVANT   ))
+	soldier_list.append(chess( H3_x, H3_y, const.SOLDIER, const.SERVANT   ))
+	soldier_list.append(chess( H6_x, H6_y, const.SOLDIER, const.SERVANT   ))
 	soldier_list.append(chess( H1_x, H1_y, const.SOLDIER, const.COMMANDER ))
 	soldier_list.append(chess( H8_x, H8_y, const.SOLDIER, const.COMMANDER ))
+	soldier_list.append(chess( E4_x, E4_y, const.SOLDIER, const.KING      ))
+	soldier_list.append(chess( D5_x, D5_y, const.SOLDIER, const.KING      ))
 
 	enemy_list.append(chess( A7_x, A7_y, const.ENEMY, const.SERVANT   ))
 	enemy_list.append(chess( B8_x, B8_y, const.ENEMY, const.SERVANT   ))
@@ -52,6 +54,10 @@ def level_three_set() :
 	enemy_list.append(chess( B5_x, B5_y, const.ENEMY, const.COMMANDER ))
 	enemy_list.append(chess( A4_x, A4_y, const.ENEMY, const.KING      ))
 	enemy_list.append(chess( A5_x, A5_y, const.ENEMY, const.KING      ))
+	enemy_list.append(chess( D4_x, D4_y, const.ENEMY, const.KING      ))
+	enemy_list.append(chess( E5_x, E5_y, const.ENEMY, const.KING      ))
+	enemy_list.append(chess( E1_x, E1_y, const.ENEMY, const.KING      ))
+	enemy_list.append(chess( E8_x, E8_y, const.ENEMY, const.KING      ))
 
 	level_three_board.build(level_three_surface)
 
@@ -74,7 +80,7 @@ def level_three_run() :
 			enemy_list[i].check(level_three_board.get_mode())
 		enemy_list[i].down(level_three_board.get_mode(),level_three_board.get_action())
 		
-	obstacle_list[0].defeat(level_three_board.get_spin(),level_three_board.get_mode(),soldier_list,enemy_list)
+	obstacle_list[0].defeat(level_three_board.get_spin(),level_three_board.get_mode(),level_three_board.get_start_move(),soldier_list,enemy_list)
 
 def level_three_WorL() :
 	if len(soldier_list) == 0 :

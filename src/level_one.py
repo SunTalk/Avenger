@@ -72,7 +72,7 @@ def level_one_run() :
 			enemy_list[i].check(level_one_board.get_mode())
 		enemy_list[i].down(level_one_board.get_mode(),level_one_board.get_action())
 		
-	obstacle_list[0].defeat(level_one_board.get_spin(),level_one_board.get_mode(),soldier_list,enemy_list)
+	obstacle_list[0].defeat(level_one_board.get_spin(),level_one_board.get_mode(),level_one_board.get_start_move(),soldier_list,enemy_list)
 
 # def level_one_WorL() :
 # 	if len(soldier_list) == 0 :
