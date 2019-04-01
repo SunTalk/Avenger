@@ -56,9 +56,9 @@ def init():
 	finish.loadUI(image.getImg(const.GAME_FINISH))
 	plot.loadUI(None)
 
-	GAME_STATE = const.PLOT
-	CHAPTER   = const.CHAPTER_2
-	ACT       = const.ACT_2
+	GAME_STATE = const.MENU
+	CHAPTER   = const.CHAPTER_1
+	ACT       = const.ACT_1
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
