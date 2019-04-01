@@ -79,7 +79,7 @@ class Board():
 					self.mode        += 1
 					self.mode         = self.mode%4
 					self.start_move   = True
-					print('right',self.mode)
+					print('right',self.mode,self.move)
 			if event.key == py.K_LEFT:
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -89,7 +89,7 @@ class Board():
 					self.mode        -= 1
 					self.mode         = self.mode%4
 					self.start_move   = True
-					print('left',self.mode)
+					print('left',self.mode,self.move)
 			if event.key == py.K_SPACE :
 				self.reset = True
 	def event_handle_two_player_mode(self, event) :
@@ -105,7 +105,7 @@ class Board():
 					self.start_move   = True
 					self.player       = const.TWO_PLAYER
 					self.count       += 1
-					print('right',self.mode,'player',const.ONE_PLAYER)
+					print('right',self.mode,self.move,'player',const.ONE_PLAYER)
 			if event.key == py.K_LEFT and self.player == const.ONE_PLAYER :
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -117,7 +117,7 @@ class Board():
 					self.start_move   = True
 					self.player       = const.TWO_PLAYER 
 					self.count       += 1
-					print('left',self.mode,'player',const.ONE_PLAYER)
+					print('left',self.mode,self.move,'player',const.ONE_PLAYER)
 			if event.key == py.K_d and self.player == const.TWO_PLAYER :
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -129,7 +129,7 @@ class Board():
 					self.start_move   = True
 					self.player       = const.ONE_PLAYER
 					self.count       += 1
-					print('right',self.mode,'player',const.TWO_PLAYER)
+					print('right',self.mode,self.move,'player',const.TWO_PLAYER)
 			if event.key == py.K_a and self.player == const.TWO_PLAYER :
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -141,7 +141,7 @@ class Board():
 					self.start_move   = True
 					self.player       = const.ONE_PLAYER 
 					self.count       += 1
-					print('left',self.mode,'player',const.TWO_PLAYER)
+					print('left',self.mode,self.move,'player',const.TWO_PLAYER)
 			if event.key == py.K_SPACE :
 				self.reset = True
 
