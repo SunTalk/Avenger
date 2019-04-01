@@ -1,18 +1,21 @@
 from Declaration import *
 from Function_declare import *
 from soundHandler import SoundHandler
+from textHandler import *
 from interface import *
 from Image import *
 from test_level import *
 from level_one import *
 from level_two import *
 from level_three import *
+from level_four import *
 from level_double import *
 from KeyHandler import *
 from PlotDisplay import *
 
 soundHandler = SoundHandler()
 plotDisplay  = PlotDisplay()
+writeText     = textHandler()
 
 menu   = interface()
 info   = interface()
@@ -24,17 +27,14 @@ Font = Font_EN
 
 music = False
 
-def init():
-
-	global GAME_STATE
-	global CHAPTER
-	global ACT
-
-	load_built_in_UI()
-
+def initBackground():
 	menu.loadUI(image.getImg(const.MENU))
 	info.loadUI(image.getImg(const.INFO))
+	game.loadUI(image.getImg(const.GAME_PLAY))
+	finish.loadUI(image.getImg(const.GAME_FINISH))
+	plot.loadUI(None)
 
+def initButton():
 	menu.set_button(const.MENU)
 
 	menu.set_custom_button(const.MENU_START_BUTTON_X,
@@ -49,14 +49,22 @@ def init():
 	info.set_button(const.INFO)
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
-	
 	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
+	finish.set_custom_button(500, 550, 200, 100, white, "Menu", 128)
 
-	game.loadUI(image.getImg(const.GAME_PLAY))
-	finish.loadUI(image.getImg(const.GAME_FINISH))
-	plot.loadUI(None)
+def init():
+
+	global WORLD_LINE
+	global GAME_STATE
+	global CHAPTER
+	global ACT
+
+	load_built_in_UI()
+	initBackground()
+	initButton()
 
 	GAME_STATE = const.MENU
+	WORLD_LINE = 'N'
 	CHAPTER   = const.CHAPTER_1
 	ACT       = const.ACT_1
 	loadMUSIC(const.MUSICNAME[const.MENU])
@@ -77,7 +85,10 @@ def level_set(level):
 	elif level == const.LEVEL_TWO:
 		level_two_set()
 	elif level == const.LEVEL_THREE:
-		level_three_set()
+		if WORLD_LINE == 'X':
+			level_three_set()
+		if WORLD_LINE == 'Z':
+			level_four_set()
 
 def transitions():
 
@@ -144,7 +155,10 @@ def event_judge_game_play(class_object):
 	if CHAPTER == const.CHAPTER_2:
 		level_board = level_two_board
 	if CHAPTER == const.CHAPTER_3:
-		level_board = level_three_board
+		if WORLD_LINE == 'X':
+			level_board = level_three_board
+		if WORLD_LINE == 'Z':
+			level_board = level_four_board
 
 	for event in py.event.get():
 		if event.type == py.QUIT:
@@ -154,10 +168,12 @@ def event_judge_game_play(class_object):
 		level_board.event_handle(event)
 		keyHandler.setKey(event)
 
-def update(class_object, class_object2=None):
+def update(class_object, class_object2=None, write_object=None):
 	class_object.update()
 	if class_object2 != None:
 		class_object2.update()
+	if write_object != None:
+		write_object.write()
 
 	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
@@ -165,7 +181,10 @@ def update(class_object, class_object2=None):
 		elif PLAYING_STATE == const.LEVEL_TWO:
 			level_two_run()
 		elif PLAYING_STATE == const.LEVEL_THREE:
-			level_three_run()
+			if WORLD_LINE == 'X':
+				level_three_run()
+			if WORLD_LINE == 'Z':
+				level_four_run()
 
 	py.display.update()
 
@@ -238,12 +257,22 @@ def run_plot():
 		if plotDisplay.isfinish() or plot.custom_is_press():
 			if plot.get_custom_button_name('SKIP') or plotDisplay.isfinish():
 				if plot.get_custom_button_name('SKIP'):
-					if CHAPTER == const.CHAPTER_2 and ACT == const.ACT_2:
+					if CHAPTER == const.CHAPTER_2 and ACT == const.ACT_2 and WORLD_LINE == 'N':
 						plotDisplay.toChoose()
 						clear(plot)
 						print('SKIP')
 						continue
+					if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
+						clear(plot, plotDisplay)
+						GAME_STATE = const.GAME_FINISH
+						print('finish')
+						break
 					print('SKIP')
+				if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
+					clear(plot, plotDisplay)
+					GAME_STATE = const.GAME_FINISH
+					print('finish')
+					break
 				if ACT == const.ACT_1:
 					GAME_STATE    = const.GAME_PLAY
 					PLAYING_STATE = CHAPTER
@@ -269,6 +298,7 @@ def run_story():
 def run_game_play():
 
 	global GAME_STATE
+	global ACT
 
 	level_set(CHAPTER)
 
@@ -283,11 +313,17 @@ def run_game_play():
 					clear(game)
 					print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 					GAME_STATE = const.PLOT
+					if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
+						ACT = 'W'
+						print(ACT)
 					break
 			else:
 				if keyHandler.getKey() == py.K_RETURN:
 					clear(game)
-					GAME_STATE = const.GAME_PLAY
+					GAME_STATE = const.PLOT
+					if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
+						ACT = 'L'
+						print(ACT)
 					break
 		if game.custom_is_press():
 			if game.get_custom_button_name("restart"):
@@ -304,10 +340,31 @@ def run_game_pause():
 def run_game_finish():
 
 	global GAME_STATE
+	global WORLD_LINE
+	global CHAPTER
+	global ACT
 
-	event_judge(finish)
-	update(finish)
-	clear_screen()
+	writeText.setText("結局", 600, 250, 'SimHei.ttf', green, 100)
+	writeText.setText("達成",600, 450, 'SimHei.ttf', purple, 100)
+	if WORLD_LINE == 'X':
+		if ACT == 'W':
+			writeText.setText("美麗的世界", 600, 350, 'SimHei.ttf', gold, 100)
+		if ACT == 'L':
+			writeText.setText("不後悔的決定", 600, 350, 'SimHei.ttf', gold, 100)
+	if WORLD_LINE == 'Z':
+		if ACT == 'W':
+			writeText.setText("深淵的等待", 600, 350, 'SimHei.ttf', black, 100)
+		if ACT == 'L':
+			writeText.setText("喪鐘為誰而鳴", 600, 350, 'SimHei.ttf', gold, 100)
+	#writeText.setText("Thanks for playing", 600, 300, 'Regular.ttf', orangered, 100)
+
+	while True:
+		event_judge(finish)
+		update(finish, write_object=writeText)
+		if finish.get_custom_button_name("Menu"):
+			clear(finish)
+			GAME_STATE = const.MENU
+			break
 
 	pass
 

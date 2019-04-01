@@ -30,6 +30,7 @@ def load_built_in_UI():
 		plot_image.resize(const.WIDTH, const.HEIGHT, i)
 
 
+	
 def win():
 	if len(soldier_list) == 0:
 		return 0
