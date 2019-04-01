@@ -8,6 +8,7 @@ import numpy as np
 import os
 from block_center import *
 from Image import *
+# from board import *
 
 # set datetime to random seed
 random.seed(datetime.datetime.now())

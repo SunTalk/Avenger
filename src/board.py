@@ -195,4 +195,6 @@ class Board():
 		self.reset        = False
 		self.player       = const.ONE_PLAYER
 
-		
+
+level_board = Board()
+level_surface = interface()

@@ -81,14 +81,14 @@ def clear_screen():
 
 def level_set(level):
 	if level == const.LEVEL_ONE:
-		level_one_set()
+		level_one_set(level_board,level_surface)
 	elif level == const.LEVEL_TWO:
-		level_two_set()
+		level_two_set(level_board,level_surface)
 	elif level == const.LEVEL_THREE:
 		if WORLD_LINE == 'X':
-			level_three_set()
+			level_three_set(level_board,level_surface)
 		if WORLD_LINE == 'Z':
-			level_four_set()
+			level_four_set(level_board,level_surface)
 
 def transitions():
 
@@ -148,18 +148,6 @@ def event_judge(class_object, class_object2=None):
 
 def event_judge_game_play(class_object):
 
-	level_board = None
-
-	if CHAPTER == const.CHAPTER_1:
-		level_board = level_one_board
-	if CHAPTER == const.CHAPTER_2:
-		level_board = level_two_board
-	if CHAPTER == const.CHAPTER_3:
-		if WORLD_LINE == 'X':
-			level_board = level_three_board
-		if WORLD_LINE == 'Z':
-			level_board = level_four_board
-
 	for event in py.event.get():
 		if event.type == py.QUIT:
 			py.quit()
@@ -177,14 +165,14 @@ def update(class_object, class_object2=None, write_object=None):
 
 	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
-			level_one_run()
+			level_one_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_TWO:
-			level_two_run()
+			level_two_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_THREE:
 			if WORLD_LINE == 'X':
-				level_three_run()
+				level_three_run(level_board,level_surface)
 			if WORLD_LINE == 'Z':
-				level_four_run()
+				level_four_run(level_board,level_surface)
 
 	py.display.update()
 
