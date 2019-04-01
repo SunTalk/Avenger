@@ -163,8 +163,14 @@ class Board():
 	def get_start_move(self) :
 		return self.start_move
 
+	def add_chess(self) :
+		self.start_move = False
+
 	def get_spin(self):
 		return self.spin
+
+	def get_clock(self) :
+		return self.clock
 
 	def get_reset(self):
 		if self.reset == True :
