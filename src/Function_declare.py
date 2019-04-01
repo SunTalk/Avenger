@@ -25,6 +25,10 @@ def load_built_in_UI():
 		image.loadUI(const.UIFILE, const.UINAME[i]+'.jpg')
 		image.resize(const.WIDTH, const.HEIGHT, i)
 
+	for i in range(const.PLOT_1, const.PLOT_3_Z+1):
+		plot_image.loadUI(const.UIFILE, const.PLOT_UI[i]+'.jpg')
+		plot_image.resize(const.WIDTH, const.HEIGHT, i)
+
 
 def win():
 	if len(soldier_list) == 0:

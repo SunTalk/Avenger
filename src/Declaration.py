@@ -21,7 +21,14 @@ const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
 const.UINAME    = [None, 'MENU', 'INFO', 'PLOT', 'STORY', 'GAME_PLAY', None, 'GAME_FINISH']
-const.MUSICNAME = [None, 'MENU', None, 'PLOT', 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
+const.MUSICNAME = [None, 'MENU', None, None, 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
+const.PLOT_UI   = [None, '1', '2', 'X_3', 'Z_3']
+
+const.PLOT_1	= 1
+const.PLOT_2	= 2
+const.PLOT_3_X  = 3
+const.PLOT_3_Z  = 4
+
 
 const.WORLD_LINE_N = 'N'
 const.WORLD_LINE_X = 'X'
@@ -113,6 +120,7 @@ const.FLAT = 3
 ##
 
 image = Image()
+plot_image = Image()
 
 ## rgb
 black     = (0, 0, 0)

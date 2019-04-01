@@ -91,10 +91,24 @@ def transitions():
 
 		if (ACT == const.ACT_F):
 			if CHAPTER == const.CHAPTER_2:
-				pass
-
+				if plotDisplay.press[0]:#press kill
+					print("in Z")
+					WORLD_LINE = 'Z'
+					CHAPTER    = const.CHAPTER_2
+					ACT        = const.ACT_2
+					plotDisplay.reset_press()
+				elif plotDisplay.press[1]: #press not kill
+					print("in X")
+					WORLD_LINE = 'X'
+					CHAPTER    = const.CHAPTER_2
+					ACT 	   = const.ACT_2
+					plotDisplay.reset_press()
+				else:
+					print("in else")
+					ACT = const.ACT_1
+					CHAPTER += 1
 			else:
-				ACT = ACT_1
+				ACT = const.ACT_1
 				CHAPTER += 1
 
 def loadMUSIC(name):
@@ -111,12 +125,14 @@ def play_music():
 		if not soundHandler.isPlaying():
 			soundHandler.play()
 
-def event_judge(class_object):
+def event_judge(class_object, class_object2=None):
 	for event in py.event.get():
 		if event.type == py.QUIT:
 			py.quit()
 			quit()
 		class_object.event_handle(event)
+		if class_object2 != None:
+			class_object2.event_handle(event)
 		keyHandler.setKey(event)
 
 def event_judge_game_play(class_object):
@@ -138,8 +154,10 @@ def event_judge_game_play(class_object):
 		level_board.event_handle(event)
 		keyHandler.setKey(event)
 
-def update(class_object):
+def update(class_object, class_object2=None):
 	class_object.update()
+	if class_object2 != None:
+		class_object2.update()
 
 	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
@@ -150,6 +168,8 @@ def update(class_object):
 			level_three_run()
 
 	py.display.update()
+
+
 	clock.tick(fps)
 
 def run_menu():
@@ -199,16 +219,30 @@ def run_plot():
 	global ACT
 
 	plotDisplay.load_plot(WORLD_LINE, CHAPTER, ACT)
+	if WORLD_LINE == 'N':
+		plot.loadUI(plot_image.getImg(CHAPTER))
+	elif WORLD_LINE == 'X' and CHAPTER == const.CHAPTER_3:
+		plot.loadUI(plot_image.getImg(const.PLOT_3_X))
+	elif WORLD_LINE == 'Z' and CHAPTER == const.CHAPTER_3:
+		plot.loadUI(plot_image.getImg(const.PLOT_3_Z))
 	#print(plotDisplay.index)
+
 
 	while True:
 
-		event_judge(plot)
+		event_judge(plot, plotDisplay)
 		plotDisplay.plot_display()
+	
+		update(plot, plotDisplay)
 
 		if plotDisplay.isfinish() or plot.custom_is_press():
 			if plot.get_custom_button_name('SKIP') or plotDisplay.isfinish():
 				if plot.get_custom_button_name('SKIP'):
+					if CHAPTER == const.CHAPTER_2 and ACT == const.ACT_2:
+						plotDisplay.toChoose()
+						clear(plot)
+						print('SKIP')
+						continue
 					print('SKIP')
 				if ACT == const.ACT_1:
 					GAME_STATE    = const.GAME_PLAY
@@ -220,7 +254,6 @@ def run_plot():
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 				break
 
-		update(plot)
 	#while story is playing
 	#if story is finish
 		#
@@ -246,14 +279,12 @@ def run_game_play():
 		update(game)
 		if isFinish():
 			if win():
-				print("win")
 				if keyHandler.getKey() == py.K_RETURN:
 					clear(game)
 					print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
 					GAME_STATE = const.PLOT
 					break
 			else:
-				print("lose")
 				if keyHandler.getKey() == py.K_RETURN:
 					clear(game)
 					GAME_STATE = const.GAME_PLAY

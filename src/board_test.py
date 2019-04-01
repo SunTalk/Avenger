@@ -1,4 +1,4 @@
-from Board import *
+from board import *
 from chess import *
 from interface import *
 from Declaration import *

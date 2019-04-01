@@ -8,7 +8,7 @@ teamate[1~] => 同隊重要人物
 actor[1~]   => 敵對重要人物
 
 [dialogue]
-teamate:感謝你的出手相助
+teammate:感謝你的出手相助
 main:你哪來的兵力
 actor:你放過我的命之後
 actor:我來到這城附近的村庄生活

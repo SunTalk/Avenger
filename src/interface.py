@@ -47,6 +47,7 @@ class interface():
 			self.draw_white = True
 		else:
 			self.backgroundImg = img
+			self.draw_white = False
 			print("img set")
 
 	def update(self):
