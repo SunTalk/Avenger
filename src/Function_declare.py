@@ -1,18 +1,7 @@
 from Declaration import *
 import pygame as py
-import time
-import random
 import const
-import numpy as np
-import os
-from block_center import *
 from Image import *
-from KeyHandler import *
-from level_one import *
-from level_two import *
-from level_three import *
-from level_four import *
-from board import *
 
 show 	   = False
 plot_index = 0

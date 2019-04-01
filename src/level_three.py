@@ -3,10 +3,10 @@ from chess import *
 from board import *
 from interface import *
 
-# level_three_board = Board()
-# level_three_surface = interface()
+level_three_board = Board()
+level_three_surface = interface()
 
-def level_three_set(level_three_board,level_three_surface) :
+def level_three_set() :
 
 	level_three_board.for_reset()
 	for i in range(0,len(obstacle_list)) :
@@ -61,7 +61,7 @@ def level_three_set(level_three_board,level_three_surface) :
 
 	level_three_board.build(level_three_surface)
 
-def level_three_run(level_three_board,level_three_surface) :
+def level_three_run() :
 
 	level_three_board.display(display)
 	level_three_board.build(level_three_surface)
