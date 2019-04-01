@@ -11,6 +11,8 @@ from KeyHandler import *
 from level_one import *
 from level_two import *
 from level_three import *
+from level_four import *
+from board import *
 
 show 	   = False
 plot_index = 0
@@ -28,6 +30,7 @@ def load_built_in_UI():
 	for i in range(const.PLOT_1, const.PLOT_3_Z+1):
 		plot_image.loadUI(const.UIFILE, const.PLOT_UI[i]+'.jpg')
 		plot_image.resize(const.WIDTH, const.HEIGHT, i)
+
 
 
 def win():
