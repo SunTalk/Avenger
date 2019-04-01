@@ -39,6 +39,7 @@ class Image():
 		return self.name[index]
 
 	def PrintImg(self, surface,index,x,y):
+		self.img[index].convert()
 		surface.blit(self.img[index], (x, y));
 
 

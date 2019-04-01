@@ -5,6 +5,7 @@ class Board():
 
 	def __init__(self):
 		self.board 		  = py.Surface((600, 600)).convert_alpha()
+		self.board.convert()
 		self.action       = True
 		self.clock        = 0
 		self.angle        = 0
@@ -44,7 +45,7 @@ class Board():
 
 		# get a rotated image
 		self.rotated_image = py.transform.rotate(image, angle)
-
+		self.rotated_image.convert()
 		# rotate and blit the image
 		surf.blit(self.rotated_image, self.origin)
 
