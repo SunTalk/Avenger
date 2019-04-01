@@ -92,14 +92,14 @@ def clear_screen():
 
 def level_set(level):
 	if level == const.LEVEL_ONE:
-		level_one_set()
+		level_one_set(level_board,level_surface)
 	elif level == const.LEVEL_TWO:
-		level_two_set()
+		level_two_set(level_board,level_surface)
 	elif level == const.LEVEL_THREE:
 		if WORLD_LINE == 'X':
-			level_three_set()
+			level_three_set(level_board,level_surface)
 		if WORLD_LINE == 'Z':
-			level_four_set()
+			level_four_set(level_board,level_surface)
 
 def transitions():
 
@@ -159,17 +159,17 @@ def event_judge(class_object, class_object2=None):
 
 def event_judge_game_play(class_object):
 
-	level_board = None
+	# level_board = None
 
-	if CHAPTER == const.CHAPTER_1:
-		level_board = level_one_board
-	if CHAPTER == const.CHAPTER_2:
-		level_board = level_two_board
-	if CHAPTER == const.CHAPTER_3:
-		if WORLD_LINE == 'X':
-			level_board = level_three_board
-		if WORLD_LINE == 'Z':
-			level_board = level_four_board
+	# if CHAPTER == const.CHAPTER_1:
+	# 	level_board = level_one_board
+	# if CHAPTER == const.CHAPTER_2:
+	# 	level_board = level_two_board
+	# if CHAPTER == const.CHAPTER_3:
+	# 	if WORLD_LINE == 'X':
+	# 		level_board = level_three_board
+	# 	if WORLD_LINE == 'Z':
+	# 		level_board = level_four_board
 
 	for event in py.event.get():
 		if event.type == py.QUIT:
@@ -191,45 +191,45 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 	if GAME_STATE == const.GAME_PLAY:
 		if PLAYING_STATE == const.LEVEL_ONE:
-			level_one_run()
+			level_one_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_TWO:
-			level_two_run()
+			level_two_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_THREE:
 			if WORLD_LINE == 'X':
-				level_three_run()
+				level_three_run(level_board,level_surface)
 			if WORLD_LINE == 'Z':
-				level_four_run()
+				level_four_run(level_board,level_surface)
 	if write_object != None:
 		write_object.rec_write()
 
 	py.display.update()
 	clock.tick(fps)
 
-def get_level_board():
-	if CHAPTER == const.CHAPTER_1:
-		return level_one_board
-	if CHAPTER == const.CHAPTER_2:
-		return level_two_board
-	if CHAPTER == const.CHAPTER_3:
-		if WORLD_LINE == 'X':
-			return level_three_board
-		if WORLD_LINE == 'Z':
-			return level_four_board
+# def get_level_board():
+# 	if CHAPTER == const.CHAPTER_1:
+# 		return level_one_board
+# 	if CHAPTER == const.CHAPTER_2:
+# 		return level_two_board
+# 	if CHAPTER == const.CHAPTER_3:
+# 		if WORLD_LINE == 'X':
+# 			return level_three_board
+# 		if WORLD_LINE == 'Z':
+# 			return level_four_board
 
 def win():
 
 	if CHAPTER == const.CHAPTER_1:
-		if level_one_board.get_move() > MAXMOVE:
+		if level_board.get_move() > MAXMOVE:
 			return False
 	if CHAPTER == const.CHAPTER_2:
-		if level_two_board.get_move() > MAXMOVE:
+		if level_board.get_move() > MAXMOVE:
 			return False
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_three_board.get_move() > MAXMOVE:
+			if level_board.get_move() > MAXMOVE:
 				return False
 		if WORLD_LINE == 'Z':
-			if level_four_board.get_move() > MAXMOVE:
+			if level_board.get_move() > MAXMOVE:
 				return False
 
 	if len(soldier_list) == 0:
@@ -242,17 +242,17 @@ def win():
 def isFinish():
 
 	if CHAPTER == const.CHAPTER_1:
-		if level_one_board.get_move() > MAXMOVE:
+		if level_board.get_move() > MAXMOVE:
 			return True
 	if CHAPTER == const.CHAPTER_2:
-		if level_two_board.get_move() > MAXMOVE:
+		if level_board.get_move() > MAXMOVE:
 			return True
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_three_board.get_move() > MAXMOVE:
+			if level_board.get_move() > MAXMOVE:
 				return True
 		if WORLD_LINE == 'Z':
-			if level_four_board.get_move() > MAXMOVE:
+			if level_board.get_move() > MAXMOVE:
 				return True
 
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
@@ -370,7 +370,7 @@ def run_game_play():
 	leave = False
 
 	level_set(CHAPTER)
-	level_board = get_level_board()
+	# level_board = get_level_board()
 
 	play_music()
 
