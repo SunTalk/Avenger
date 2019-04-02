@@ -66,11 +66,14 @@ class PlotDisplay():
 		self.draw_context()
 
 		if self.write and self.index < len(self.context):
-			if self.name != None:
+			if self.name != None:#wirte namw
 				self.write_context(self.name, 0, 550)
+				# for i in range(len(charList)):
+				# 	if charList[i].getName() == self.name:
+				# 		charList[i].draw(display, MiddleCharactor)
 			else:
-				self.draw_context()
-			self.write_context(self.line, 0, 600)
+				self.draw_context()#if narrator talking draw again to cover prev name
+			self.write_context(self.line, 0, 600)#write context
 
 		if self.draw:
 			for i in range(2):
@@ -90,6 +93,11 @@ class PlotDisplay():
 		display.blit(tmp_texturface, tmp_Rec)
 
 	def draw_context(self):
+		for i in range(len(charList)):
+			if charList[i].getName() == self.name:
+				#print(self.name)
+				charList[i].draw(display, MiddleCharactor)
+
 		s = py.Surface((1200, 200))
 		s.set_alpha(170)
 		s.fill(gray)
@@ -107,18 +115,23 @@ class PlotDisplay():
 			if self.line[4] == ':':#main
 				self.line = self.line[5:]
 				self.name = 'main'
+
 			elif self.line[5] == ':':
 				if self.line[0] == 'a':#actor
 					self.name = 'actor'
+
 				elif self.line[0] == 'e':#enemy
 					self.name = 'enemy'
+
 				self.line = self.line[6:]
 			elif self.line[7] == ':':#soldier
 				self.line = self.line[8:]
 				self.name = 'soldier'
+
 			elif self.line[8] == ':':#teammate
 				self.line = self.line[9:]
 				self.name = 'teammate'
+				print("in teammate")
 		else:
 			self.line = self.line
 			self.name = None
@@ -148,6 +161,9 @@ class PlotDisplay():
 				self.index = i
 				self.reset_show()
 				break;
+
+	def get_name(self):
+		return self.name
 
 	def reset_press(self):
 		for i in range(2):

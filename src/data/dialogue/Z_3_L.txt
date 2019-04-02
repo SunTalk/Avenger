@@ -11,9 +11,9 @@ actor[1~]   => 敵對重要人物
 [dialogue]
 main:到此為止了嗎
 enemy:用火燒他
-actor:把他五馬分屍
+enemy:把他五馬分屍
 enemy:讓他不得好死
-actor:把我的家人還給我
+enemy:把我的家人還給我
 teammate:後悔了嗎
 teammate:你到處結仇
 teammate:到最後在你有困難的時候
@@ -29,7 +29,7 @@ main:但請丟棄你們復仇的心態
 main:別踏上跟我一樣的道路
 enemy:上活活捉他
 actor:讓他不得好死
-teamate:抱歉了...君主
+teammate:抱歉了...君主
 看著大軍向你衝來
 你想起你小時候的夢想
 是成為一個能夠聚人心平天下的君主
