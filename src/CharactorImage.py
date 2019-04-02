@@ -8,10 +8,11 @@ class CharactorImage():
 
 	def loadUI(self, file, name):
 		if name != None:
-			self.img = py.image.load(const.PATH+file+name+'.jpg').convert()
+			self.img = py.image.load(const.PATH+file+name+'.png').convert()
 			self.name = name
 			print("charactor {} loaded".format(name))
 			self.resize(250, 400)
+			self.img.set_colorkey(self.img.get_at((0,0)), py.RLEACCEL)
 
 	def resize(self, width, height):
 		if self.img != None:
