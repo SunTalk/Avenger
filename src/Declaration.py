@@ -8,6 +8,7 @@ import numpy as np
 import os
 from block_center import *
 from Image import *
+from CharactorImage import *
 # from board import *
 
 # set datetime to random seed
@@ -22,9 +23,10 @@ Font_EN = 'LucidaBrightDemiBold.ttf'
 const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
-const.UINAME    = [None, 'MENU', 'INFO', 'PLOT', 'STORY', 'GAME_PLAY', None, 'GAME_FINISH']
-const.MUSICNAME = [None, 'MENU', None, None, 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
+const.UINAME    = [None, 'MENU', 'INFO', None, None, 'GAME_PLAY', None, 'GAME_FINISH']
+const.MUSICNAME = [None, 'MENU', None, 'PLOT', 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
 const.PLOT_UI   = [None, '1', '2', 'X_3', 'Z_3']
+const.CHARACTOR = [None, 'main', 'actor', 'teammate', 'soldier', 'enemy']
 
 const.PLOT_1	= 1
 const.PLOT_2	= 2
@@ -109,6 +111,12 @@ const.GAME_PAUSE_LEFT_BUTTON_SIZE       = 50
 const.ONE_PLAYER = 1
 const.TWO_PLAYER = 2
 
+const.MAIN_CHARACTOR     = 1
+const.ACTOR_CHARACTOR    = 2
+const.TEAMMATE_CHARACTOR = 3
+const.SOLDIER_CHARACTOR  = 4
+const.ENEMY_CHARACTOR    = 5
+
 ###
 
 obstacle_list = []
@@ -119,11 +127,26 @@ const.WIN  = 1
 const.LOSE = 2 
 const.FLAT = 3
 
+## display
+py.init()
+display = py.display.set_mode((const.WIDTH, const.HEIGHT))
+py.display.set_caption('Avenger')
+
+##
 ##
 
-image = Image()
+image      = Image()
 plot_image = Image()
+mainC      = CharactorImage()
+actorC     = CharactorImage()
+teammateC  = CharactorImage()
+soldierC   = CharactorImage()
+enemyC     = CharactorImage()
 
+charList = [mainC, actorC, teammateC, soldierC, enemyC]
+LeftCharactor   = (200, 250)
+MiddleCharactor = (500, 250)
+RightCharactor  = (800, 250)
 ## rgb
 black     = (0, 0, 0)
 white     = (255, 255, 255)
@@ -141,12 +164,6 @@ trans_white = (255, 255, 255, 0)
 trans_red   = (255, 0, 0, 100)
 ##
 
-## display
-py.init()
-display = py.display.set_mode((const.WIDTH, const.HEIGHT))
-py.display.set_caption('Avenger')
-
-##
 
 ## clock
 clock = py.time.Clock()
@@ -154,7 +171,7 @@ clock = py.time.Clock()
 
 
 ##
-GAME_STATE     = const.GAME_NONE
+GAME_STATE    = const.GAME_NONE
 PLAYING_STATE = const.LEVEL_NONE
 WORLD_LINE    = const.WORLD_LINE_N
 CHAPTER 	  = const.CHAPTER_N

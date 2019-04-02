@@ -1,3 +1,4 @@
+import pygame as py
 from Declaration import *
 
 class Image():
@@ -9,8 +10,9 @@ class Image():
 		self.name.append('discarded')
 
 	def loadUI(self, file, name):
+		print(name)
 		if name != None:
-			self.img.append(py.image.load(const.PATH+file+name))
+			self.img.append(py.image.load(const.PATH+file+name).convert())
 			self.name.append(name)
 			print("{} loaded".format(name))
 		else:
@@ -40,6 +42,4 @@ class Image():
 
 	def PrintImg(self, surface,index,x,y):
 		self.img[index].convert()
-		surface.blit(self.img[index], (x, y));
-
-
+		surface.blit(self.img[index], (x, y))

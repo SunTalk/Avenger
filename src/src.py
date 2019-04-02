@@ -12,13 +12,13 @@ from level_four import *
 from level_double import *
 from KeyHandler import *
 from PlotDisplay import *
+from CharactorImage import *
 
 soundHandler   = SoundHandler()
 plotDisplay    = PlotDisplay()
 writeText      = textHandler()
 win_text    = textHandler()
 lose_text   = textHandler()
-
 
 menu   = interface()
 info   = interface()
@@ -76,8 +76,8 @@ def init():
 
 	GAME_STATE = const.MENU
 	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_1
-	ACT       = const.ACT_1
+	CHAPTER   = const.CHAPTER_2
+	ACT       = const.ACT_2
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
@@ -159,18 +159,6 @@ def event_judge(class_object, class_object2=None):
 
 def event_judge_game_play(class_object):
 
-	# level_board = None
-
-	# if CHAPTER == const.CHAPTER_1:
-	# 	level_board = level_one_board
-	# if CHAPTER == const.CHAPTER_2:
-	# 	level_board = level_two_board
-	# if CHAPTER == const.CHAPTER_3:
-	# 	if WORLD_LINE == 'X':
-	# 		level_board = level_three_board
-	# 	if WORLD_LINE == 'Z':
-	# 		level_board = level_four_board
-
 	for event in py.event.get():
 		if event.type == py.QUIT:
 			py.quit()
@@ -180,16 +168,19 @@ def event_judge_game_play(class_object):
 		keyHandler.setKey(event)
 
 def update(class_object, class_object2=None, write_object=None, board=None):
-	class_object.update()
-	if class_object2 != None:
+	
+	class_object.update()#background
+	
+	if class_object2 != None:# plotdisplay
 		class_object2.update()
-	if board != None:
-		move = board.get_move()
-		font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
-		text = font.render(str(move)+" Move", True, red)
-		display.blit(text, (1000, 0))
+	
 
 	if GAME_STATE == const.GAME_PLAY:
+		if board != None:
+			move = board.get_move()
+			font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
+			text = font.render(str(move)+" Move", True, red)
+			display.blit(text, (1000, 0))
 		if PLAYING_STATE == const.LEVEL_ONE:
 			level_one_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_TWO:
@@ -204,17 +195,6 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 	py.display.update()
 	clock.tick(fps)
-
-# def get_level_board():
-# 	if CHAPTER == const.CHAPTER_1:
-# 		return level_one_board
-# 	if CHAPTER == const.CHAPTER_2:
-# 		return level_two_board
-# 	if CHAPTER == const.CHAPTER_3:
-# 		if WORLD_LINE == 'X':
-# 			return level_three_board
-# 		if WORLD_LINE == 'Z':
-# 			return level_four_board
 
 def win():
 
