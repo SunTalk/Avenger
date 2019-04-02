@@ -76,8 +76,8 @@ def init():
 
 	GAME_STATE = const.MENU
 	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_2
-	ACT       = const.ACT_2
+	CHAPTER   = const.CHAPTER_1
+	ACT       = const.ACT_1
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
