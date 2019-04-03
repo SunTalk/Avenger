@@ -111,8 +111,11 @@ def writeMove(board):
 
 	color = None
 
+	Mmove = MAXMOVE
+
 	if WORLD_LINE == 'Z':
 		color = gold
+		Mmove = 15
 	else:
 		color = red
 
@@ -122,7 +125,7 @@ def writeMove(board):
 	display.blit(text, (1000, 0))
 
 	if GAME_STATE == const.GAME_PLAY:
-		text_move = font.render("Max move is "+str(MAXMOVE), True, color)
+		text_move = font.render("Max move is "+str(Mmove), True, color)
 		display.blit(text_move, (825, 70))
 	elif GAME_STATE == const.INFO:
 		text_move = font.render("Max move is INF", True, color)
@@ -243,18 +246,23 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 def win():
 
+	Mmove = MAXMOVE
+
+	if WORLD_LINE == 'Z':
+		Mmove = 15
+
 	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > MAXMOVE:
+		if level_board.get_move() > Mmove:
 			return False
 	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > MAXMOVE:
+		if level_board.get_move() > Mmove:
 			return False
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_board.get_move() > MAXMOVE:
+			if level_board.get_move() > Mmove:
 				return False
 		if WORLD_LINE == 'Z':
-			if level_board.get_move() > MAXMOVE:
+			if level_board.get_move() > Mmove:
 				return False
 
 	if len(soldier_list) == 0:
@@ -266,18 +274,24 @@ def win():
 
 def isFinish():
 
+	Mmove = MAXMOVE
+
+	if WORLD_LINE == 'Z':
+		Mmove = 15
+
+
 	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > MAXMOVE:
+		if level_board.get_move() > Mmove:
 			return True
 	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > MAXMOVE:
+		if level_board.get_move() > Mmove:
 			return True
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_board.get_move() > MAXMOVE:
+			if level_board.get_move() > Mmove:
 				return True
 		if WORLD_LINE == 'Z':
-			if level_board.get_move() > MAXMOVE:
+			if level_board.get_move() > Mmove:
 				return True
 
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
