@@ -111,16 +111,24 @@ def clear_screen():
 	display.fill(white)
 
 def writeMove(board):
+
+	color = None
+
+	if WORLD_LINE == 'Z':
+		color = gold
+	else:
+		color = red
+
 	move = board.get_move()
 	font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
-	text = font.render(str(move)+" Move", True, red)
+	text = font.render(str(move)+" Move", True, color)
 	display.blit(text, (1000, 0))
 
 	if GAME_STATE == const.GAME_PLAY:
-		text_move = font.render("Max move is "+str(MAXMOVE), True, red)
+		text_move = font.render("Max move is "+str(MAXMOVE), True, color)
 		display.blit(text_move, (825, 70))
 	elif GAME_STATE == const.INFO:
-		text_move = font.render("Max move is INF", True, red)
+		text_move = font.render("Max move is INF", True, color)
 		display.blit(text_move, (825, 70))
 
 
