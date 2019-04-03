@@ -82,10 +82,10 @@ def init():
 	initButton()
 
 	win_text.setText("You Win", 600, 200, size=100)
-	win_text.setText("Press enter to continue", 600, 350, size=100)
+	win_text.setText("Press enter to continue", 600, 480, size=100)
 
 	lose_text.setText("You Lose", 600, 200, size=100)
-	lose_text.setText("Press enter to continue", 600, 350, size=100)
+	lose_text.setText("Press enter to continue", 600, 480, size=100)
 
 	info_text.setText("左右鍵移動板子", 950, 320, 'SimHei.ttf',size=33)
 	info_text.setText("使我方(綠色)及", 950, 360, 'SimHei.ttf', size=33)
@@ -116,7 +116,7 @@ def writeMove(board):
 
 	if GAME_STATE == const.GAME_PLAY:
 		text_move = font.render("Max move is "+str(MAXMOVE), True, red)
-		display.blit(text_move, (850, 70))
+		display.blit(text_move, (825, 70))
 	elif GAME_STATE == const.INFO:
 		text_move = font.render("Max move is INF", True, red)
 		display.blit(text_move, (825, 70))
