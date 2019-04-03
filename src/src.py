@@ -254,47 +254,18 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 def win():
 
-	changeMAXMOVE()
-
-	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > MMOVE:
-			return False
-	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > MMOVE:
-			return False
-	if CHAPTER == const.CHAPTER_3:
-		if WORLD_LINE == 'X':
-			if level_board.get_move() > MMOVE:
-				return False
-		if WORLD_LINE == 'Z':
-			if level_board.get_move() > MMOVE:
-				return False
-
-	if len(soldier_list) == 0:
-		return False
 	if len(enemy_list) == 0:
 		return True
-	
-
+	if level_board.get_move() >= MMOVE:
+		return False
+	if len(soldier_list) == 0:
+		return False
 
 def isFinish():
 
 	changeMAXMOVE()
-
-	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > MMOVE:
-			return True
-	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > MMOVE:
-			return True
-	if CHAPTER == const.CHAPTER_3:
-		if WORLD_LINE == 'X':
-			if level_board.get_move() > MMOVE:
-				return True
-		if WORLD_LINE == 'Z':
-			if level_board.get_move() > MMOVE:
-				return True
-
+	if level_board.get_move() >= MMOVE:
+		return True
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
 		return True
 
