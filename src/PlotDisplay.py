@@ -68,9 +68,6 @@ class PlotDisplay():
 		if self.write and self.index < len(self.context):
 			if self.name != None:#wirte namw
 				self.write_context(self.name, 0, 550)
-				# for i in range(len(charList)):
-				# 	if charList[i].getName() == self.name:
-				# 		charList[i].draw(display, MiddleCharactor)
 			else:
 				self.draw_context()#if narrator talking draw again to cover prev name
 			self.write_context(self.line, 0, 600)#write context
@@ -114,24 +111,23 @@ class PlotDisplay():
 		if self.line[0].encode('UTF-8').isalpha() and self.line[0] != '(':
 			if self.line[4] == ':':#main
 				self.line = self.line[5:]
-				self.name = 'main'
+				self.name = '亞梭爾-雪諾'
 
 			elif self.line[5] == ':':
 				if self.line[0] == 'a':#actor
-					self.name = 'actor'
+					self.name = '札爾斯-契爾'
 
 				elif self.line[0] == 'e':#enemy
-					self.name = 'enemy'
+					self.name = '敵方雜魚'
 
 				self.line = self.line[6:]
 			elif self.line[7] == ':':#soldier
 				self.line = self.line[8:]
-				self.name = 'soldier'
+				self.name = '我方雜魚'
 
 			elif self.line[8] == ':':#teammate
 				self.line = self.line[9:]
-				self.name = 'teammate'
-				print("in teammate")
+				self.name = '阿斯托爾福'
 		else:
 			self.line = self.line
 			self.name = None

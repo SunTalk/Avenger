@@ -31,7 +31,7 @@ const.PLOTMZ_W	= 'Z_W'
 const.PLOTMZ_L  = 'Z_L'
 const.BATTLEM   = [None, 'N', 'X_3', 'Z_3']
 const.PLOT_UI   = [None, '1', '2', 'X_3', 'Z_3']
-const.CHARACTOR = [None, 'main', 'actor', 'teammate', 'soldier', 'enemy']
+const.CHARACTOR = [None, '亞梭爾-雪諾', '札爾斯-契爾', '阿斯托爾福', '我方雜魚', '敵方雜魚']
 
 const.PLOT_1	= 1
 const.PLOT_2	= 2

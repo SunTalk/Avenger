@@ -34,6 +34,7 @@ Font = Font_EN
 music = True
 
 MAXMOVE = 20
+MMOVE   = 20
 
 def initBackground():
 	menu.loadUI(image.getImg(const.MENU))
@@ -107,15 +108,22 @@ def clear(class_object, plotDisplay=None):
 def clear_screen():
 	display.fill(white)
 
+def changeMAXMOVE():
+	global MMOVE
+
+	if CHAPTER == const.CHAPTER_3:
+		MMOVE = 15
+	else:
+		MMOVE = 20 
+
 def writeMove(board):
 
 	color = None
 
-	Mmove = MAXMOVE
+	changeMAXMOVE()
 
 	if WORLD_LINE == 'Z':
 		color = gold
-		Mmove = 15
 	else:
 		color = red
 
@@ -125,7 +133,7 @@ def writeMove(board):
 	display.blit(text, (1000, 0))
 
 	if GAME_STATE == const.GAME_PLAY:
-		text_move = font.render("Max move is "+str(Mmove), True, color)
+		text_move = font.render("Max move is "+str(MMOVE), True, color)
 		display.blit(text_move, (825, 70))
 	elif GAME_STATE == const.INFO:
 		text_move = font.render("Max move is INF", True, color)
@@ -246,23 +254,20 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 def win():
 
-	Mmove = MAXMOVE
-
-	if WORLD_LINE == 'Z':
-		Mmove = 15
+	changeMAXMOVE()
 
 	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > Mmove:
+		if level_board.get_move() > MMOVE:
 			return False
 	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > Mmove:
+		if level_board.get_move() > MMOVE:
 			return False
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_board.get_move() > Mmove:
+			if level_board.get_move() > MMOVE:
 				return False
 		if WORLD_LINE == 'Z':
-			if level_board.get_move() > Mmove:
+			if level_board.get_move() > MMOVE:
 				return False
 
 	if len(soldier_list) == 0:
@@ -274,24 +279,20 @@ def win():
 
 def isFinish():
 
-	Mmove = MAXMOVE
-
-	if WORLD_LINE == 'Z':
-		Mmove = 15
-
+	changeMAXMOVE()
 
 	if CHAPTER == const.CHAPTER_1:
-		if level_board.get_move() > Mmove:
+		if level_board.get_move() > MMOVE:
 			return True
 	if CHAPTER == const.CHAPTER_2:
-		if level_board.get_move() > Mmove:
+		if level_board.get_move() > MMOVE:
 			return True
 	if CHAPTER == const.CHAPTER_3:
 		if WORLD_LINE == 'X':
-			if level_board.get_move() > Mmove:
+			if level_board.get_move() > MMOVE:
 				return True
 		if WORLD_LINE == 'Z':
-			if level_board.get_move() > Mmove:
+			if level_board.get_move() > MMOVE:
 				return True
 
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
