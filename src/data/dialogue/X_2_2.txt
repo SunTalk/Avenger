@@ -13,6 +13,6 @@ actor:怎麼決定不殺了嗎
 main:再吵我就砍了你
 actor:......
 teammate:君主...
-main:要是哪天我後會做了這個決定
+main:要是哪天我後悔做了這個決定
 main:我一定砍下你的腦袋
 teammate:你不會後悔的
