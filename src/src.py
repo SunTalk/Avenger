@@ -60,6 +60,16 @@ def initButton():
 	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
 	finish.set_custom_button(500, 550, 200, 100, white, "Menu", 128)
 
+def clear_WORLD():
+	global WORLD_LINE
+	global CHAPTER
+	global ACT
+
+	WORLD_LINE = 'N'
+	CHAPTER   = const.CHAPTER_1
+	ACT       = const.ACT_1
+
+
 def init():
 
 	global WORLD_LINE
@@ -86,9 +96,7 @@ def init():
 
 
 	GAME_STATE = const.MENU
-	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_1
-	ACT       = const.ACT_1
+	clear_WORLD()
 	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
@@ -381,6 +389,13 @@ def run_game_play():
 	global GAME_STATE
 	global ACT
 
+	if WORLD_LINE == 'N':
+		game.loadUI(plot_image.getImg(CHAPTER))
+	elif WORLD_LINE == 'X' and CHAPTER == const.CHAPTER_3:
+		game.loadUI(plot_image.getImg(const.PLOT_3_X))
+	elif WORLD_LINE == 'Z' and CHAPTER == const.CHAPTER_3:
+		game.loadUI(plot_image.getImg(const.PLOT_3_Z))
+
 	leave = False
 
 	level_set(CHAPTER)
@@ -459,6 +474,8 @@ def run_game_finish():
 		if finish.get_custom_button_name("Menu"):
 			clear(finish)
 			GAME_STATE = const.MENU
+			clear_WORLD()
+			loadMUSIC(const.MUSICNAME[const.MENU])
 			break
 
 	pass
