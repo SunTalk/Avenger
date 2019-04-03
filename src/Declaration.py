@@ -24,7 +24,12 @@ const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
 const.UINAME    = [None, 'MENU', 'INFO', None, None, 'GAME_PLAY', None, 'GAME_FINISH']
-const.MUSICNAME = [None, 'MENU', None, 'PLOT', 'STORY', ['battle_1_2', '3-1', '3-2'], None, 'GAME_FINISH']
+const.MUSICNAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', None, None, 'GAME_FINISH']
+const.PLOTMX_W  = 'X_W'
+const.PLOTMX_L	= 'X_L'
+const.PLOTMZ_W	= 'Z_W'
+const.PLOTMZ_L  = 'Z_L'
+const.BATTLEM   = [None, 'N', 'X_3', 'Z_3']
 const.PLOT_UI   = [None, '1', '2', 'X_3', 'Z_3']
 const.CHARACTOR = [None, 'main', 'actor', 'teammate', 'soldier', 'enemy']
 

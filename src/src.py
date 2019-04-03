@@ -31,7 +31,7 @@ finish = interface()
 
 Font = Font_EN
 
-music = False
+music = True
 
 MAXMOVE = 20
 
@@ -97,7 +97,6 @@ def init():
 
 	GAME_STATE = const.MENU
 	clear_WORLD()
-	loadMUSIC(const.MUSICNAME[const.MENU])
 
 def clear(class_object, plotDisplay=None):
 	clear_screen()
@@ -170,15 +169,18 @@ def transitions():
 def loadMUSIC(name):
 
 	if music:
-		if soundHandler.isPlaying():
-			soundHandler.stop()
-
-		soundHandler.loadMUSIC(name)
-		py.time.delay(500)
+		if soundHandler.getName() != name:
+			if soundHandler.isPlaying():
+				soundHandler.stop()
+			soundHandler.loadMUSIC(name)
+			py.time.delay(500)
+		else:
+			print("music is same")
 
 def play_music():
 	if music:
 		if not soundHandler.isPlaying():
+			print(soundHandler.getName() + " play")
 			soundHandler.play()
 
 def event_judge(class_object, class_object2=None):
@@ -216,10 +218,7 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 
 	if GAME_STATE == const.GAME_PLAY:
 		if board != None:
-			move = board.get_move()
-			font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
-			text = font.render(str(move)+" Move", True, red)
-			display.blit(text, (1000, 0))
+			writeMove(board)
 		if PLAYING_STATE == const.LEVEL_ONE:
 			level_one_run(level_board,level_surface)
 		elif PLAYING_STATE == const.LEVEL_TWO:
@@ -283,6 +282,7 @@ def run_menu():
 	global CHAPTER
 	global ACT
 
+	loadMUSIC(const.MUSICNAME[const.MENU])
 	play_music()
 	
 	event_judge(menu)
@@ -293,7 +293,6 @@ def run_menu():
 		# CHAPTER   = const.CHAPTER_1
 		# ACT       = const.ACT_1
 		clear(menu)
-		loadMUSIC(const.MUSICNAME[const.PLOT])
 
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
@@ -308,9 +307,11 @@ def run_info():
 
 	global GAME_STATE
 
+	loadMUSIC(const.MUSICNAME[const.INFO])
 	level_newplayer_set(level_board, level_surface)
 
 	while True:
+		play_music()
 		event_judge_game_play(info)
 		update(info, board=level_board, write_object=info_text)
 		if info.back_is_press():
@@ -326,6 +327,21 @@ def run_plot():
 	global CHAPTER
 	global ACT
 
+	if CHAPTER == const.CHAPTER_3 and (ACT == 'L' or ACT == 'W'):
+		if WORLD_LINE == 'X':
+			if ACT == 'W':
+				loadMUSIC(const.PLOTMX_W)
+			if ACT == 'L':
+				loadMUSIC(const.PLOTMX_L)
+		if WORLD_LINE == 'Z':
+			if ACT == 'W':
+				loadMUSIC(const.PLOTMZ_W)
+			if ACT == 'L':
+				loadMUSIC(const.PLOTMZ_L)
+	else:
+		print("loadMUSIC")
+		loadMUSIC(const.MUSICNAME[const.PLOT])
+
 	plotDisplay.load_plot(WORLD_LINE, CHAPTER, ACT)
 	if WORLD_LINE == 'N':
 		plot.loadUI(plot_image.getImg(CHAPTER))
@@ -337,6 +353,8 @@ def run_plot():
 
 
 	while True:
+
+		play_music()
 
 		event_judge(plot, plotDisplay)
 		plotDisplay.plot_display()
@@ -389,6 +407,16 @@ def run_game_play():
 	global GAME_STATE
 	global ACT
 
+	if CHAPTER == const.CHAPTER_3:
+		if WORLD_LINE == 'X':
+			loadMUSIC(const.BATTLEM[2])
+		if WORLD_LINE == 'Z':
+			loadMUSIC(const.BATTLEM[3])
+	else:
+		loadMUSIC(const.BATTLEM[1])
+
+
+
 	if WORLD_LINE == 'N':
 		game.loadUI(plot_image.getImg(CHAPTER))
 	elif WORLD_LINE == 'X' and CHAPTER == const.CHAPTER_3:
@@ -401,9 +429,9 @@ def run_game_play():
 	level_set(CHAPTER)
 	# level_board = get_level_board()
 
-	play_music()
 
 	while 1:
+		play_music()
 		event_judge_game_play(game)
 		update(game, board=level_board)
 		if isFinish():
@@ -469,6 +497,7 @@ def run_game_finish():
 	#writeText.setText("Thanks for playing", 600, 300, 'Regular.ttf', orangered, 100)
 
 	while True:
+		play_music()
 		event_judge(finish)
 		update(finish, write_object=writeText)
 		if finish.get_custom_button_name("Menu"):
