@@ -87,6 +87,11 @@ def level_four_run(level_four_board,level_four_surface) :
 		enemy_list.append(chess( random.randint(0,7), random.randint(0,7), const.ENEMY, random.randint(1,3) ))
 		level_four_board.add_chess()
 
+	for i in range(0,len(enemy_list)) :
+		if enemy_list[i].get_life() == False :
+			del enemy_list[i]
+			break
+
 # def level_four_WorL() :
 # 	if len(soldier_list) == 0 :
 # 		return const.LOSE
