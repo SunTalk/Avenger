@@ -81,7 +81,7 @@ def level_four_run(level_four_board,level_four_surface) :
 		
 	obstacle_list[0].defeat(level_four_board.get_spin(),level_four_board.get_mode(),level_four_board.get_start_move(),soldier_list,enemy_list)
 
-	if level_four_board.get_spin() == False and level_four_board.get_move()%3 == 0 and level_four_board.get_clock() == 1 :
+	if level_four_board.get_spin() == False and level_four_board.get_move()%3 == 0 and level_four_board.get_clock() == 1 and len(enemy_list) != 0 :
 		enemy_list.append(chess( random.randint(0,7), random.randint(0,7), const.ENEMY, random.randint(1,3) ))
 		enemy_list.append(chess( random.randint(0,7), random.randint(0,7), const.ENEMY, random.randint(1,3) ))
 		enemy_list.append(chess( random.randint(0,7), random.randint(0,7), const.ENEMY, random.randint(1,3) ))
