@@ -66,8 +66,8 @@ def clear_WORLD():
 	global ACT
 
 	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_2
-	ACT       = const.ACT_2
+	CHAPTER   = const.CHAPTER_1
+	ACT       = const.ACT_1
 
 
 def init():
