@@ -5,6 +5,7 @@ from textHandler import *
 from interface import *
 from Image import *
 from test_level import *
+from level_newplayer import *
 from level_one import *
 from level_two import *
 from level_three import *
@@ -19,6 +20,8 @@ plotDisplay    = PlotDisplay()
 writeText      = textHandler()
 win_text    = textHandler()
 lose_text   = textHandler()
+info_text   = textHandler()
+max_move    = textHandler()
 
 menu   = interface()
 info   = interface()
@@ -74,6 +77,14 @@ def init():
 	lose_text.setText("You Lose", 600, 200, size=100)
 	lose_text.setText("Press enter to continue", 600, 350, size=100)
 
+	info_text.setText("左右鍵移動板子", 950, 320, 'SimHei.ttf',size=33)
+	info_text.setText("使我方(綠色)及", 950, 360, 'SimHei.ttf', size=33)
+	info_text.setText("敵方(紅色)掉落", 950, 400, 'SimHei.ttf', size=33)
+	info_text.setText("並依照階級大小", 950, 440, 'SimHei.ttf', size=33)
+	info_text.setText("吃掉對立的敵人", 950, 480, 'SimHei.ttf', size=33)
+	info_text.setText("每關會限制步數", 950, 520, 'SimHei.ttf', size=33)
+
+
 	GAME_STATE = const.MENU
 	WORLD_LINE = 'N'
 	CHAPTER   = const.CHAPTER_1
@@ -90,7 +101,22 @@ def clear(class_object, plotDisplay=None):
 def clear_screen():
 	display.fill(white)
 
+def writeMove(board):
+	move = board.get_move()
+	font = py.font.Font(const.PATH+const.FONTFILE+"SimHei.ttf", 50)
+	text = font.render(str(move)+" Move", True, red)
+	display.blit(text, (1000, 0))
+
+	if GAME_STATE == const.GAME_PLAY:
+		text_move = font.render("Max move is "+str(MAXMOVE), True, red)
+		display.blit(text_move, (850, 70))
+	elif GAME_STATE == const.INFO:
+		text_move = font.render("Max move is INF", True, red)
+		display.blit(text_move, (825, 70))
+
+
 def level_set(level):
+
 	if level == const.LEVEL_ONE:
 		level_one_set(level_board,level_surface)
 	elif level == const.LEVEL_TWO:
@@ -174,6 +200,11 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 	if class_object2 != None:# plotdisplay
 		class_object2.update()
 	
+	if GAME_STATE == const.INFO:
+		if board != None:
+			writeMove(board)
+			level_newplayer_run(level_board, level_surface)
+
 
 	if GAME_STATE == const.GAME_PLAY:
 		if board != None:
@@ -269,12 +300,15 @@ def run_info():
 
 	global GAME_STATE
 
-	event_judge(info)
-	update(info)
-	
-	if info.back_is_press():
-		GAME_STATE = const.MENU
-		clear(info)
+	level_newplayer_set(level_board, level_surface)
+
+	while True:
+		event_judge_game_play(info)
+		update(info, board=level_board, write_object=info_text)
+		if info.back_is_press():
+			GAME_STATE = const.MENU
+			clear(info)
+			break
 
 def run_plot():
 

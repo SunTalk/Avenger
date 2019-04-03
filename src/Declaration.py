@@ -94,8 +94,8 @@ const.MENU_QUIT_BUTTON_HEIGHT           = const.HEIGHT*0.1
 const.MENU_QUIT_BUTTON_FONT             = Font_EN
 const.MENU_QUIT_BUTTON_SIZE             = 50
 
-const.INFO_BACK_BUTTON_X                = const.WIDTH*0.125
-const.INFO_BACK_BUTTON_Y                = const.HEIGHT - 5*(const.HEIGHT*0.1)
+const.INFO_BACK_BUTTON_X                = const.WIDTH*0.85
+const.INFO_BACK_BUTTON_Y                = const.HEIGHT*0.75
 const.INFO_BACK_BUTTON_WIDTH            = const.WIDTH*0.125
 const.INFO_BACK_BUTTON_HEIGHT           = const.HEIGHT*0.1
 const.INFO_BACK_BUTTON_FONT             = Font_EN
