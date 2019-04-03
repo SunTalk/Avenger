@@ -65,11 +65,8 @@ def clear_WORLD():
 	global CHAPTER
 	global ACT
 
-	# WORLD_LINE = 'N'
-	# CHAPTER   = const.CHAPTER_1
-	# ACT       = const.ACT_1
-	WORLD_LINE = 'Z'
-	CHAPTER   = const.CHAPTER_3
+	WORLD_LINE = 'N'
+	CHAPTER   = const.CHAPTER_1
 	ACT       = const.ACT_1
 
 def init():
