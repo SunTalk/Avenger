@@ -66,8 +66,8 @@ def clear_WORLD():
 	global ACT
 
 	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_1
-	ACT       = const.ACT_1
+	CHAPTER   = const.CHAPTER_2
+	ACT       = const.ACT_2
 
 
 def init():
@@ -505,6 +505,7 @@ def run_game_finish():
 			GAME_STATE = const.MENU
 			clear_WORLD()
 			loadMUSIC(const.MUSICNAME[const.MENU])
+			writeText.clear()
 			break
 
 	pass
