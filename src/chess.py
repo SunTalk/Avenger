@@ -133,6 +133,9 @@ class chess() :
 			return self.rank
 		return 0
 
+	def get_life(self) :
+		return self.life
+
 	def kill(self,x,y,rank) :
 		if self.life == False :
 			return False
