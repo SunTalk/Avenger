@@ -264,7 +264,7 @@ def win():
 def isFinish():
 
 	changeMAXMOVE()
-	if level_board.get_move() >= MMOVE:
+	if level_board.get_move() >= MMOVE and level_board.get_clock() == 0 :
 		return True
 	if len(soldier_list) == 0 or len(enemy_list) == 0:
 		return True
