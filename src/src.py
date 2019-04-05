@@ -69,8 +69,8 @@ def clear_WORLD():
 	global ACT
 
 	WORLD_LINE = 'N'
-	CHAPTER   = const.CHAPTER_1
-	ACT       = const.ACT_1
+	CHAPTER   = const.CHAPTER_2
+	ACT       = const.ACT_2
 
 def init():
 
@@ -374,15 +374,13 @@ def run_plot():
 						continue
 					if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
 						clear(plot, plotDisplay)
-						GAME_STATE = const.LOADING
-						NEXT_STATE = const.GAME_FINISH
+						GAME_STATE = const.GAME_FINISH
 						print('finish')
 						break
 					print('SKIP')
 				if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
 					clear(plot, plotDisplay)
-					GAME_STATE = const.LOADING
-					NEXT_STATE = const.GAME_FINISH
+					GAME_STATE = const.GAME_FINISH
 					print('finish')
 					break
 				if ACT == const.ACT_1:
@@ -390,8 +388,11 @@ def run_plot():
 					NEXT_STATE    = const.GAME_PLAY
 					PLAYING_STATE = CHAPTER
 				else:
-					GAME_STATE = const.LOADING
-					NEXT_STATE = const.PLOT
+					if (WORLD_LINE=='N') and (CHAPTER == const.CHAPTER_2 and ACT == const.ACT_2):
+						GAME_STATE == const.PLOT
+					else:
+						GAME_STATE = const.LOADING
+						NEXT_STATE = const.PLOT
 				clear(plot, plotDisplay)
 				transitions()
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
@@ -531,6 +532,7 @@ def run_loading() :
 	global NEXT_STATE
 	load_len = 0
 	loading.update()
+	print("loading")
 	while True:
 		load_len = load_len + random.randint(0,5)
 		py.draw.rect(display,gold,[150,600,load_len,20])
