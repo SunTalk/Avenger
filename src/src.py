@@ -23,11 +23,12 @@ lose_text   = textHandler()
 info_text   = textHandler()
 max_move    = textHandler()
 
-menu   = interface()
-info   = interface()
-plot   = interface()
-game   = interface()
-finish = interface()
+menu    = interface()
+info    = interface()
+plot    = interface()
+game    = interface()
+finish  = interface()
+loading = interface()
 
 Font = Font_EN
 
@@ -41,6 +42,7 @@ def initBackground():
 	info.loadUI(image.getImg(const.INFO))
 	game.loadUI(image.getImg(const.GAME_PLAY))
 	finish.loadUI(image.getImg(const.GAME_FINISH))
+	loading.loadUI(image.getImg(const.LOADING))
 	plot.loadUI(None)
 
 def initButton():
@@ -74,6 +76,7 @@ def init():
 
 	global WORLD_LINE
 	global GAME_STATE
+	global NEXT_STATE
 	global CHAPTER
 	global ACT
 
@@ -96,6 +99,7 @@ def init():
 
 
 	GAME_STATE = const.MENU
+	NEXT_STATE = const.GAME_NONE
 	clear_WORLD()
 
 def clear(class_object, plotDisplay=None):
@@ -158,7 +162,7 @@ def transitions():
 	global CHAPTER
 	global ACT
 
-	if GAME_STATE == const.PLOT or GAME_STATE == const.GAME_PLAY:
+	if NEXT_STATE == const.PLOT or NEXT_STATE == const.GAME_PLAY:
 		
 		ACT += 1
 
@@ -272,6 +276,7 @@ def isFinish():
 def run_menu():
 
 	global GAME_STATE
+	global NEXT_STATE
 	global CHAPTER
 	global ACT
 
@@ -282,7 +287,8 @@ def run_menu():
 	update(menu)
 	if menu.start_is_press():
 		print("start")
-		GAME_STATE = const.PLOT
+		GAME_STATE = const.LOADING
+		NEXT_STATE = const.PLOT
 		# CHAPTER   = const.CHAPTER_1
 		# ACT       = const.ACT_1
 		clear(menu)
@@ -290,7 +296,8 @@ def run_menu():
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
 			print('INFO')
-			GAME_STATE = const.INFO
+			GAME_STATE = const.LOADING
+			NEXT_STATE = const.INFO
 		clear(menu)
 
 	elif menu.back_is_press():
@@ -299,6 +306,7 @@ def run_menu():
 def run_info():
 
 	global GAME_STATE
+	global NEXT_STATE
 
 	loadMUSIC(const.MUSICNAME[const.INFO])
 	level_newplayer_set(level_board, level_surface)
@@ -308,13 +316,15 @@ def run_info():
 		event_judge_game_play(info)
 		update(info, board=level_board, write_object=info_text)
 		if info.back_is_press():
-			GAME_STATE = const.MENU
+			GAME_STATE = const.LOADING
+			NEXT_STATE = const.MENU
 			clear(info)
 			break
 
 def run_plot():
 
 	global GAME_STATE
+	global NEXT_STATE
 	global PLAYING_STATE
 	global WORLD_LINE
 	global CHAPTER
@@ -364,20 +374,24 @@ def run_plot():
 						continue
 					if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
 						clear(plot, plotDisplay)
-						GAME_STATE = const.GAME_FINISH
+						GAME_STATE = const.LOADING
+						NEXT_STATE = const.GAME_FINISH
 						print('finish')
 						break
 					print('SKIP')
 				if (CHAPTER == const.CHAPTER_3) and (ACT == 'W' or ACT == 'L'):
 					clear(plot, plotDisplay)
-					GAME_STATE = const.GAME_FINISH
+					GAME_STATE = const.LOADING
+					NEXT_STATE = const.GAME_FINISH
 					print('finish')
 					break
 				if ACT == const.ACT_1:
-					GAME_STATE    = const.GAME_PLAY
+					GAME_STATE    = const.LOADING
+					NEXT_STATE    = const.GAME_PLAY
 					PLAYING_STATE = CHAPTER
 				else:
-					GAME_STATE = const.PLOT
+					GAME_STATE = const.LOADING
+					NEXT_STATE = const.PLOT
 				clear(plot, plotDisplay)
 				transitions()
 				print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
@@ -392,12 +406,14 @@ def run_plot():
 def run_story():
 
 	global GAME_STATE
+	global NEXT_STATE
 
 	pass
 
 def run_game_play():
 
 	global GAME_STATE
+	global NEXT_STATE
 	global ACT
 
 	if CHAPTER == const.CHAPTER_3:
@@ -436,7 +452,8 @@ def run_game_play():
 						leave = True
 						clear(game)
 						print(WORLD_LINE+'_'+str(CHAPTER)+'_'+str(ACT))
-						GAME_STATE = const.PLOT
+						GAME_STATE = const.LOADING
+						NEXT_STATE = const.PLOT
 						if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
 							ACT = 'W'
 							print(ACT)
@@ -448,16 +465,19 @@ def run_game_play():
 					if keyHandler.getKey() == py.K_RETURN:
 						leave = True
 						clear(game)
-						GAME_STATE = const.GAME_PLAY
+						GAME_STATE = const.LOADING
+						NEXT_STATE = const.GAME_PLAY
 						if CHAPTER == const.CHAPTER_3 and ACT == const.ACT_2:
-							GAME_STATE = const.PLOT
+							GAME_STATE = const.LOADING
+							NEXT_STATE = const.PLOT
 							ACT = 'L'
 							print(ACT)
 						break
 		if game.custom_is_press():
 			if game.get_custom_button_name("restart"):
 				clear(game)
-				GAME_STATE = const.GAME_PLAY
+				GAME_STATE = const.LOADING
+				NEXT_STATE = const.GAME_PLAY
 				break
 		if leave:
 			break;
@@ -465,12 +485,14 @@ def run_game_play():
 def run_game_pause():
 
 	global GAME_STATE
+	global NEXT_STATE
 
 	pass
 
 def run_game_finish():
 
 	global GAME_STATE
+	global NEXT_STATE
 	global WORLD_LINE
 	global CHAPTER
 	global ACT
@@ -495,7 +517,8 @@ def run_game_finish():
 		update(finish, write_object=writeText)
 		if finish.get_custom_button_name("Menu"):
 			clear(finish)
-			GAME_STATE = const.MENU
+			GAME_STATE = const.LOADING
+			NEXT_STATE = const.MENU
 			clear_WORLD()
 			loadMUSIC(const.MUSICNAME[const.MENU])
 			writeText.clear()
@@ -503,6 +526,18 @@ def run_game_finish():
 
 	pass
 
+def run_loading() :
+	global GAME_STATE
+	global NEXT_STATE
+	load_len = 0
+	loading.update()
+	while True:
+		load_len = load_len + random.randint(0,5)
+		py.draw.rect(display,gold,[150,600,load_len,20])
+		py.display.update()
+		if load_len > 900 :
+			GAME_STATE = NEXT_STATE
+			break
 
 switch = {
 	
@@ -519,12 +554,15 @@ switch = {
 	const.GAME_PAUSE:
 		run_game_pause,
 	const.GAME_FINISH:
-		run_game_finish
+		run_game_finish,
+	const.LOADING:
+		run_loading
 }
 
 def game_loop():
 
 	global GAME_STATE
+	global NEXT_STATE
 
 	init()
 
