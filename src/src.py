@@ -534,10 +534,13 @@ def run_loading() :
 	loading.update()
 	print("loading")
 	while True:
-		load_len = load_len + random.randint(0,5)
-		py.draw.rect(display,gold,[150,600,load_len,20])
-		py.display.update()
+		load_len = load_len + random.randint(0,3)
 		if load_len > 900 :
+			load_len = 900
+		py.draw.rect(display,gold,[150,600,load_len,20])
+		py.draw.rect(display,black,[150,600,900,20],3)
+		py.display.update()
+		if load_len >= 900 :
 			GAME_STATE = NEXT_STATE
 			break
 
