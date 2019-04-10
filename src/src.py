@@ -305,6 +305,10 @@ def run_menu():
 			print('INFO')
 			GAME_STATE = const.LOADING
 			NEXT_STATE = const.INFO
+		if menu.get_custom_button_name('2PLAYER'):
+			print('2PLAYER')
+			#GAME_STATE = const.LOADING
+			#NEXT_STATE = const.DOUBLEPLAYER
 		clear(menu)
 
 	elif menu.back_is_press():
