@@ -615,7 +615,10 @@ switch = {
 	const.GAME_FINISH:
 		run_game_finish,
 	const.LOADING:
-		run_loading
+		run_loading,
+	const.DOUBLE:
+		run_doublePlayer
+		
 }
 
 def game_loop():
