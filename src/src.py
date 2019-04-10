@@ -41,6 +41,7 @@ MMOVE   = 20
 def initBackground():
 	menu.loadUI(image.getImg(const.MENU))
 	info.loadUI(image.getImg(const.INFO))
+	double.loadUI(image.getImg(const.DOUBLE))
 	game.loadUI(image.getImg(const.GAME_PLAY))
 	finish.loadUI(image.getImg(const.GAME_FINISH))
 	loading.loadUI(image.getImg(const.LOADING))
@@ -67,6 +68,9 @@ def initButton():
                           )
 
 	info.set_button(const.INFO)
+
+	double.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
+	double.set_custom_button(1000, 600, 200, 100, white, "menu", 128)
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
 	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
@@ -315,8 +319,8 @@ def run_menu():
 			NEXT_STATE = const.INFO
 		if menu.get_custom_button_name('2PLAYER'):
 			print('2PLAYER')
-			#GAME_STATE = const.LOADING
-			#NEXT_STATE = const.DOUBLEPLAYER
+			GAME_STATE = const.LOADING
+			NEXT_STATE = const.DOUBLE
 		clear(menu)
 
 	elif menu.back_is_press():
@@ -603,11 +607,17 @@ def run_double():
 	while True:
 		event_judge_game_play(double)
 		update(double, board=level_board)
-		# if double.back_is_press():
-		# 	GAME_STATE = const.LOADING
-		# 	NEXT_STATE = const.MENU
-		# 	clear(double)
-		# 	break
+		if double.custom_is_press():
+			if double.get_custom_button_name('restart'):
+				clear(double)
+				GAME_STATE = const.LOADING
+				NEXT_STATE = const.DOUBLE
+				break
+			if double.get_custom_button_name('menu'):
+				GAME_STATE = const.LOADING
+				NEXT_STATE = const.MENU
+				clear(info)
+				break
 
 
 switch = {
