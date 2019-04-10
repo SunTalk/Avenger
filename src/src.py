@@ -65,7 +65,6 @@ def initButton():
                            "2PLAYER",
                            128
                           )
-	#wait to pull
 
 	info.set_button(const.INFO)
 
@@ -207,8 +206,8 @@ def loadMUSIC(name):
 				soundHandler.stop()
 			soundHandler.loadMUSIC(name)
 			py.time.delay(500)
-		else:
-			print("music is same")
+		# else:
+		# 	print("music is same")
 
 def play_music():
 	if music:
