@@ -9,6 +9,7 @@ from interface import *
 def level_double_set(level_double_board,level_double_surface) :
 
 	level_double_board.for_reset()
+	level_double_board.doublemode = True
 	for i in range(0,len(obstacle_list)) :
 		obstacle_list[i].kill_myself()
 	for i in range(0,len(soldier_list)) :

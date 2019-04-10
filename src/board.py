@@ -18,6 +18,7 @@ class Board():
 		self.spin         = False
 		self.reset        = False
 		self.player       = const.ONE_PLAYER
+		self.doublemode   = False
 
 	def __setattr__(self, name, value):
 		self.__dict__[name] = value
@@ -70,7 +71,7 @@ class Board():
 		self.blitRotate(surface, self.board, self.center_pos, (300,300), self.angle)
 
 	def event_handle(self, event):
-		if event.type == py.KEYDOWN:
+		if event.type == py.KEYDOWN and self.doublemode == False :
 			if event.key == py.K_RIGHT:
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -93,8 +94,7 @@ class Board():
 					print('left',self.mode,self.move)
 			if event.key == py.K_SPACE :
 				self.reset = True
-	def event_handle_two_player_mode(self, event) :
-		if event.type == py.KEYDOWN:
+		if event.type == py.KEYDOWN and self.doublemode == True :
 			if event.key == py.K_RIGHT and self.player == const.ONE_PLAYER :
 				if self.action == True and self.clock == 0 :
 					self.action       = False
@@ -193,6 +193,7 @@ class Board():
 		self.start_move   = False
 		self.spin         = False
 		self.reset        = False
+		self.doublemode   = False
 		self.player       = const.ONE_PLAYER
 
 
