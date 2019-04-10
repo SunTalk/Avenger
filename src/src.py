@@ -601,9 +601,11 @@ def run_double():
 	global GAME_STATE
 	global NEXT_STATE
 
+	loadMUSIC(const.MUSICNAME[const.DOUBLE])
 	level_double_set(level_board, level_surface)
 
 	while True:
+		play_music()
 		event_judge_game_play(double)
 		update(double, board=level_board)
 		if double.custom_is_press():

@@ -24,7 +24,7 @@ const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
 const.UINAME    = [None, 'MENU', 'INFO', None, None, 'GAME_PLAY', None, 'GAME_FINISH','LOADING', 'DOUBLEPLAYER']
-const.MUSICNAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', None, None, 'GAME_FINISH', None, 'DOUBLEPLAYER']
+const.MUSICNAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', None, None, 'GAME_FINISH', None, 'DOUBLE']
 const.PLOTMX_W  = 'X_W'
 const.PLOTMX_L	= 'X_L'
 const.PLOTMZ_W	= 'Z_W'
