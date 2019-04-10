@@ -632,7 +632,7 @@ switch = {
 		run_game_finish,
 	const.LOADING:
 		run_loading,
-	const.DOUBLEPLAYER:
+	const.DOUBLE:
 		run_doublePlayer
 }
 
