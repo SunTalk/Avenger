@@ -67,6 +67,8 @@ def initButton():
 						   128
 						  )
 
+	#wait to pull
+
 	info.set_button(const.INFO)
 
 	dplayer.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
