@@ -25,6 +25,7 @@ max_move    = textHandler()
 
 menu    = interface()
 info    = interface()
+dplayer = interface()
 plot    = interface()
 game    = interface()
 finish  = interface()
@@ -66,6 +67,9 @@ def initButton():
 						  )
 
 	info.set_button(const.INFO)
+
+	dplayer.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
+	dplayer.set_custom_button(1000, 600, 200, 100, white, "menu", 128)
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
 	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
@@ -298,15 +302,16 @@ def run_menu():
 		print("start")
 		GAME_STATE = const.LOADING
 		NEXT_STATE = const.PLOT
-		# CHAPTER   = const.CHAPTER_1
-		# ACT       = const.ACT_1
 		clear(menu)
-
 	elif menu.custom_is_press():
 		if menu.get_custom_button_name('INFO'):
 			print('INFO')
 			GAME_STATE = const.LOADING
 			NEXT_STATE = const.INFO
+		if menu.get_custom_button_name('2PLAYER'):
+			print('2PLAYER')
+			#GAME_STATE = const.LOADING
+			#NEXT_STATE = const.DOUBLEPLAYER
 		clear(menu)
 
 	elif menu.back_is_press():
@@ -329,6 +334,9 @@ def run_info():
 			NEXT_STATE = const.MENU
 			clear(info)
 			break
+
+def run_doublePlayer():
+	pass
 
 def run_plot():
 
@@ -600,7 +608,9 @@ switch = {
 	const.GAME_FINISH:
 		run_game_finish,
 	const.LOADING:
-		run_loading
+		run_loading,
+	const.DOUBLEPLAYER:
+		run_doublePlayer
 }
 
 def game_loop():
