@@ -29,6 +29,7 @@ plot    = interface()
 game    = interface()
 finish  = interface()
 loading = interface()
+double  = interface()
 
 Font = Font_EN
 
@@ -238,6 +239,11 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 			writeMove(board)
 			level_newplayer_run(level_board, level_surface)
 
+	if GAME_STATE == const.DOUBLE:
+		if board != None :
+			writeMove(board)
+			random_obstacle(level_board)
+			level_double_run(level_board,level_surface)
 
 	if GAME_STATE == const.GAME_PLAY:
 		if board != None:
@@ -574,6 +580,23 @@ def run_loading() :
 		if load_len >= 900 :
 			GAME_STATE = NEXT_STATE
 			break
+
+def run_double():
+
+	global GAME_STATE
+	global NEXT_STATE
+
+	level_double_set(level_board, level_surface)
+
+	while True:
+		event_judge_game_play(double)
+		update(double, board=level_board)
+		# if double.back_is_press():
+		# 	GAME_STATE = const.LOADING
+		# 	NEXT_STATE = const.MENU
+		# 	clear(double)
+		# 	break
+
 
 switch = {
 	

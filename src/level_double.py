@@ -3,10 +3,10 @@ from chess import *
 from board import *
 from interface import *
 
-level_double_board = Board()
-level_double_surface = interface()
+# level_double_board = Board()
+# level_double_surface = interface()
 
-def level_double_set() :
+def level_double_set(level_double_board,level_double_surface) :
 
 	level_double_board.for_reset()
 	for i in range(0,len(obstacle_list)) :
@@ -61,16 +61,17 @@ def level_double_set() :
 
 	level_double_board.build(level_double_surface)
 
-def random_obstacle() :
-	for i in range(0,len(obstacle_list)) :
-		obstacle_list[i].kill_myself()
-	obstacle_list.clear()
-	for i in range(0,10) :
-		x = random.randint(0,7)
-		y = random.randint(0,7)
-		obstacle_list.append(chess( x, y, const.OBSTACLE  ))
+def random_obstacle(level_double_board) :
+	if level_double_board.random_count() :
+		for i in range(0,len(obstacle_list)) :
+			obstacle_list[i].kill_myself()
+		obstacle_list.clear()
+		for i in range(0,10) :
+			x = random.randint(0,7)
+			y = random.randint(0,7)
+			obstacle_list.append(chess( x, y, const.OBSTACLE  ))
 
-def level_double_run() :
+def level_double_run(level_double_board,level_double_surface) :
 
 	level_double_board.display(display)
 	level_double_board.build(level_double_surface)

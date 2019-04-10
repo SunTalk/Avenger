@@ -23,8 +23,8 @@ Font_EN = 'LucidaBrightDemiBold.ttf'
 const.WIDTH 	 = 1200
 const.HEIGHT 	 = 800
 
-const.UINAME    = [None, 'MENU', 'INFO', None, None, 'GAME_PLAY', None, 'GAME_FINISH','LOADING']
-const.MUSICNAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', None, None, 'GAME_FINISH', None]
+const.UINAME    = [None, 'MENU', 'INFO', None, None, 'GAME_PLAY', None, 'GAME_FINISH','LOADING', 'DOUBLE']
+const.MUSICNAME = [None, 'MENU', 'INFO', 'PLOT', 'STORY', None, None, 'GAME_FINISH', None, None]
 const.PLOTMX_W  = 'X_W'
 const.PLOTMX_L	= 'X_L'
 const.PLOTMZ_W	= 'Z_W'
@@ -62,7 +62,8 @@ const.GAME_PLAY   = 5
 const.GAME_PAUSE  = 6
 const.GAME_FINISH = 7
 const.LOADING     = 8
-const.OTHER       = 9
+const.DOUBLE      = 9
+const.OTHER       = 10
 
 const.LEVEL_NONE  = 0
 const.LEVEL_ONE   = 1
