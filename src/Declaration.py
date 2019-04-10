@@ -52,20 +52,6 @@ const.ACT_N		  = 0
 const.ACT_1       = 1
 const.ACT_2 	  = 2
 const.ACT_F		  = 3
-
-<<<<<<< HEAD
-const.GAME_NONE   = 0
-const.MENU        = 1
-const.INFO        = 2
-const.PLOT        = 3
-const.STORY       = 4
-const.GAME_PLAY   = 5
-const.GAME_PAUSE  = 6
-const.GAME_FINISH = 7
-const.LOADING     = 8
-const.DOUBLE      = 9
-const.OTHER       = 10
-=======
 const.GAME_NONE    = 0
 const.MENU         = 1
 const.INFO         = 2
@@ -77,7 +63,6 @@ const.GAME_FINISH  = 7
 const.LOADING      = 8
 const.DOUBLEPLAYER = 9
 const.OTHER        = 10
->>>>>>> 8974b42d3679f1c0d2e56a10ef55ab1d99480bb6
 
 const.LEVEL_NONE  = 0
 const.LEVEL_ONE   = 1
