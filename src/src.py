@@ -58,6 +58,8 @@ def initButton():
 						   128
 						   )
 
+	#wait to pull
+
 	info.set_button(const.INFO)
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
