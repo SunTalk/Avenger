@@ -57,6 +57,14 @@ def initButton():
 						   "INFO",
 						   128
 						   )
+	menu.set_custom_button(const.MENU_START_BUTTON_X*4,
+						   const.MENU_START_BUTTON_Y,
+						   const.MENU_START_BUTTON_WIDTH,
+						   const.MENU_START_BUTTON_HEIGHT,
+						   white,
+						   "2PLAYER",
+						   128
+						  )
 
 	info.set_button(const.INFO)
 
@@ -198,8 +206,8 @@ def loadMUSIC(name):
 				soundHandler.stop()
 			soundHandler.loadMUSIC(name)
 			py.time.delay(500)
-		else:
-			print("music is same")
+		# else:
+		# 	print("music is same")
 
 def play_music():
 	if music:
