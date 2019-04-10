@@ -57,7 +57,14 @@ def initButton():
 						   "INFO",
 						   128
 						   )
-
+	menu.set_custom_button(const.MENU_START_BUTTON_X*4,
+                           const.MENU_START_BUTTON_Y,
+                           const.MENU_START_BUTTON_WIDTH,
+                           const.MENU_START_BUTTON_HEIGHT,
+                           white,
+                           "2PLAYER",
+                           128
+                          )
 	#wait to pull
 
 	info.set_button(const.INFO)
