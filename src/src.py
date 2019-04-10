@@ -239,7 +239,7 @@ def update(class_object, class_object2=None, write_object=None, board=None):
 			writeMove(board)
 			level_newplayer_run(level_board, level_surface)
 
-	if GAME_STATE == const.DOUBLEPLAYER:
+	if GAME_STATE == const.DOUBLE:
 		if board != None :
 			writeMove(board)
 			random_obstacle(level_board)
@@ -617,8 +617,8 @@ switch = {
 	const.LOADING:
 		run_loading,
 	const.DOUBLE:
-		run_doublePlayer
-		
+		run_double
+
 }
 
 def game_loop():
