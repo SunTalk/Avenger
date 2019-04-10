@@ -63,14 +63,13 @@ def level_double_set(level_double_board,level_double_surface) :
 	level_double_board.build(level_double_surface)
 
 def random_obstacle(level_double_board) :
-	if level_double_board.random_count() :
-		for i in range(0,len(obstacle_list)) :
-			obstacle_list[i].kill_myself()
-		obstacle_list.clear()
-		for i in range(0,10) :
-			x = random.randint(0,7)
-			y = random.randint(0,7)
-			obstacle_list.append(chess( x, y, const.OBSTACLE  ))
+	for i in range(0,len(obstacle_list)) :
+		obstacle_list[i].kill_myself()
+	obstacle_list.clear()
+	for i in range(0,10) :
+		x = random.randint(0,7)
+		y = random.randint(0,7)
+		obstacle_list.append(chess( x, y, const.OBSTACLE  ))
 
 def level_double_run(level_double_board,level_double_surface) :
 
@@ -90,8 +89,17 @@ def level_double_run(level_double_board,level_double_surface) :
 		if level_double_board.get_start_move() :
 			enemy_list[i].check(level_double_board.get_mode())
 		enemy_list[i].down(level_double_board.get_mode(),level_double_board.get_action())
-		
+
 	obstacle_list[0].defeat(level_double_board.get_spin(),level_double_board.get_mode(),level_double_board.get_start_move(),soldier_list,enemy_list)
+
+	if level_double_board.get_spin() == False and level_double_board.get_move()%3 == 0 and level_double_board.get_clock() == 1 :
+		random_obstacle(level_double_board)
+
+	for i in range(0,len(obstacle_list)) :
+		if obstacle_list[i].get_life() == False :
+			del obstacle_list[i]
+			break
+
 
 def level_one_WorL() :
 	if len(soldier_list) == 0 and len(enemy_list) == 0 :
