@@ -61,6 +61,7 @@ def initButton():
 
 	plot.set_custom_button(1000, 0, 200, 100, white, "SKIP", 128)
 	game.set_custom_button(1000, 300, 200, 100, white, "restart", 128)
+	game.set_custom_button(1000, 600, 200, 100, white, "menu", 128)
 	finish.set_custom_button(500, 550, 200, 100, white, "Menu", 128)
 
 def clear_WORLD():
@@ -459,6 +460,17 @@ def run_game_play():
 							ACT = 'W'
 							print(ACT)
 						break
+					if game.custom_is_press():
+						if game.get_custom_button_name("menu"):
+							clear(game)
+							GAME_STATE = const.LOADING
+							NEXT_STATE = const.MENU
+							clear_WORLD()
+							loadMUSIC(const.MUSICNAME[const.MENU])
+							writeText.clear()
+							leave = True
+							break
+
 			else:
 				while 1:
 					event_judge_game_play(game)
@@ -474,12 +486,31 @@ def run_game_play():
 							ACT = 'L'
 							print(ACT)
 						break
+					if game.custom_is_press():
+						if game.get_custom_button_name("menu"):
+							clear(game)
+							GAME_STATE = const.LOADING
+							NEXT_STATE = const.MENU
+							clear_WORLD()
+							loadMUSIC(const.MUSICNAME[const.MENU])
+							writeText.clear()
+							leave = True
+							break
 		if game.custom_is_press():
 			if game.get_custom_button_name("restart"):
 				clear(game)
 				GAME_STATE = const.LOADING
 				NEXT_STATE = const.GAME_PLAY
 				break
+			if game.get_custom_button_name("menu"):
+				clear(game)
+				GAME_STATE = const.LOADING
+				NEXT_STATE = const.MENU
+				clear_WORLD()
+				loadMUSIC(const.MUSICNAME[const.MENU])
+				writeText.clear()
+				break
+
 		if leave:
 			break;
 
