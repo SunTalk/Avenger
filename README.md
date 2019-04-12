@@ -52,3 +52,8 @@
 			* Walter's Burial-16
 * 兩人對戰:
 	* 和煦的糖果風 - 軌風
+
+## 下載專區
+
+* [GoogleDrive](https://drive.google.com/drive/folders/14g6dBrGnHvXT8y8RPo-Y0E3n5e75_9ef?usp=sharing)
+	* 解壓後可直接點選exe檔開啟遊戲
