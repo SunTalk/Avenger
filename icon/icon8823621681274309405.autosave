@@ -1,0 +1,8 @@
+
+void setup(){
+	PImage ice = loadImage("ice.png");
+	PImage fire = loadImage("fire.png");
+	size(600,600);
+	image(ice, 0, 0, 600, 600);
+  
+}
