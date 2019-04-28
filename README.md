@@ -24,7 +24,15 @@
 * 雙人模式
 	* [x] 雙人模式
 
+* 階級(大到小): 
+	* <img src=https://i.imgur.com/iKCoQvK.jpg width="20"> : KING
+	* <img src=https://i.imgur.com/dyh9AgU.jpg width="20"> : COMMANDER 
+	* <img src=https://i.imgur.com/8mhC4pf.jpg width="20"> : SERVANT 
+
+
 ## 劇情
+
+* 按 Enter 繼續
 
 * 多結局
 	* 美麗的世界
